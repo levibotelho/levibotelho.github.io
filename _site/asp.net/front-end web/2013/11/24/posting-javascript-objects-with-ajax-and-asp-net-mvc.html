@@ -1,0 +1,35 @@
+<p>As websites become more and more interactive the need frequently arises to send data back and forth between web clients and servers using Ajax. ASP.NET combined with jQuery makes this process simple to implement for web developers.</p><p>For this example, we’re going to POST the following JavaScript object to our server, and return a Boolean value indicating if the data was correctly received.</p><p>[javascript]<br />
+var tommy = {<br />
+    name: &quot;Tommy&quot;,<br />
+    birthday: new Date(1921, 0, 1),<br />
+    hobbies: [&quot;Pinball&quot;, &quot;Holiday camp&quot;]<br />
+};<br />
+[/javascript]</p><h2>The server side</h2><p>The first thing we need to do on the server side is define a data structure corresponding to the JavaScript object we wish to send.</p><p>[csharp]<br />
+public class Person<br />
+{<br />
+    public string Name { get; set; }<br />
+    public DateTime Birthday { get; set; }<br />
+    public string[] Hobbies { get; set; }<br />
+}<br />
+[/csharp]</p><p>Notice how the casing of the variable names in the JavaScript and C# objects doesn’t have to match. We can declare our JavaScript object properties in camel case and our C# properties in Pascal case and the model binder will work just fine.</p><p>Now let’s write our method. All we need to do is create a standard ASP.NET MVC controller method which takes a single parameter of the Person type, like so.</p><p>[csharp]<br />
+public bool ProcessData(Person person)<br />
+{<br />
+    return person != null;<br />
+}<br />
+[/csharp]<br />
+<a id='more' /><a id='more-2952' /><br />
+As mentioned, I’m returning a Boolean value indicating whether the person object was successfully received.</p><p>That’s all we need to do on the server side. Let’s writ the client-side code.</p><h2>The client side</h2><p>The first thing we’ll do is use jQuery to write the Ajax call.</p><p>[javascript]<br />
+$.ajax({<br />
+    url: &quot;@Url.Action(&quot;ProcessData&quot;, &quot;Home&quot;)&quot;,<br />
+    type: &quot;POST&quot;,<br />
+    contentType: &quot;application/json&quot;,<br />
+    data: JSON.stringify({ person: tommy }),<br />
+    success: function(response) {<br />
+        response ? alert(&quot;It worked!&quot;) : alert(&quot;It didn't work.&quot;);<br />
+    }<br />
+});<br />
+[/javascript]</p><p>Here we’re invoking the ubiquitous “ajax” method, passing it an object containing all the information it needs to get the job done in the form of field values. Let’s take a brief look at each one.</p><h3>url</h3><p>The url field contains the dynamically-calculated address of our target method.</p><h3>type</h3><p>The type field indicates the type of HTTP request we wish to send. In this case it is a POST request.</p><h3>contentType</h3><p>Here we are specifying that the data is of the JSON format. This is important as it provides the server with the knowledge it needs to be able to deserialise our data into a POCO object.</p><h3>data</h3><p>The data field contains the actual data that we want to send in the POST request. There are two things of note here. The first is that we have assigned our “tommy” object to a field named “person” in a new anonymous object. Why is this? Well, the JSON object that we send to the server needs to correspond to the signature of the method that will receive the request. As our method looks like this:</p><p>[csharp]<br />
+public bool ProcessData(Person person)<br />
+[/csharp]</p><p>We need to send it an object that looks like this:</p><p>[javascript]<br />
+{ person: [our person object] }<br />
+[/javascript]</p><p>The second thing to note is that we invoke the JSON.stringify method in order to serialise the whole thing into a JSON string. This JSON string is what the server will receive and attempt to deserialise when we make the Ajax call from a web browser. We need to do this because "person" is a complex object and not a primitive JavaScript value, such as a string. Were we to send an object to the server consisting entirely of primitive values, this stringify call would not be necessary.</p><h3>success</h3><p>This function executes if the request succeeds. While in this case I’ve used an anonymous function, I could also have externalised this method and set “success” to a function pointer instead.</p><p>This is all the server side code we need. Let’s fire up our website and run the code to see what happens.</p><h2>Making the call</h2><p>If we insert a breakpoint in our ProcessData method and execute our JavaScript, this the result we get in Visual Studio.</p><p><a href='http://www.levibotelho.com/wp-content/uploads/2013/11/ajax0.png'><img alt='ajax0' src='http://www.levibotelho.com/wp-content/uploads/2013/11/ajax0.png' /></a></p><p>As you can see, the model binder has done a wonderful job. Not only has it instantiated our object and mapped the simple Name property, but it has also translated the JavaScript Date value into a valid C# DateTime object, and mapped out our string array perfectly. We can now go ahead and do what we like with the data.</p>

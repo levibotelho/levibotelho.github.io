@@ -1,0 +1,17 @@
+<p>I recently encountered a problem when trying to implement drag and drop file uploads in a site I'm working on that uses Knockout.js. A simplified reproduction of the problem is as follows:</p><p>[html]<br />
+&lt;div data-bind=&quot;event: { drop: acceptDrop }&quot;&gt;<br />
+    Drop it here.<br />
+&lt;/div&gt;<br />
+&lt;script src=&quot;jquery-1.10.2.js&quot;&gt;&lt;/script&gt;<br />
+&lt;script src=&quot;knockout-2.3.0.js&quot;&gt;&lt;/script&gt;<br />
+&lt;script&gt;<br />
+    var viewModel = function () {<br />
+        var self = this;</p><p>        self.acceptDrop = function (model, e) {<br />
+            var files = e.dataTransfer.files;<br />
+            // Do something with the files...<br />
+        };<br />
+    };</p><p>    ko.applyBindings(new viewModel());<br />
+&lt;/script&gt;<br />
+[/html]</p><p>The problem that I encountered was that when I attempted to retrieve the files from the event object (line 15), e.dataTransfer was undefined.</p><p>The problem ended up being that when using Knockout with jQuery, the event object sent to the view model function is a jQuery event object. While jQuery event objects are helpful in as much as they contain additional information not found in standard event objects, they do not expose certain case-specific event members such as dataTransfer. In order to get to dataTransfer, we need to access it via the jQuery event's “originalEvent” property like so.</p><p>[javascript]<br />
+var files = e.originalEvent.dataTransfer.files;<br />
+[/javascript]</p><p>This returns the original event object, which contains the dataTransfer property that will allow us to get to our files.</p><hr /><p><em>Note: If you aren’t using jQuery Knockout sends up standard event objects so you won’t encounter this problem. That said, if you’re using Knockout chances are you’re probably using jQuery as well.</em></p>
