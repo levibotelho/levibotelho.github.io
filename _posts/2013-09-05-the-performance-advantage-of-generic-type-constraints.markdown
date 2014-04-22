@@ -6,21 +6,6 @@ title: The performance advantage of generic type constraints
 author: Levi
 author_login: levi_botelho@hotmail.com
 author_email: levi_botelho@hotmail.com
-excerpt: ! "Have a look at the following two methods.\r\n\r\n[csharp]\r\nstatic int
-  CompareToSix(IComparable&lt;int&gt; input)\r\n{\r\n    return input.CompareTo(6);\r\n}\r\n\r\nstatic
-  int CompareToSixGeneric&lt;T&gt;(T input)\r\n    where T : IComparable&lt;int&gt;\r\n{\r\n
-  \   return input.CompareTo(6);\r\n}\r\n[/csharp]\r\n\r\nFunctionally they aren’t
-  much different. Both take an IComparable<int>, compare it to the number six, and
-  then return the result. However when I execute the following code which calls the
-  two methods 100,000,000 times each and compares the running time:\r\n\r\n[csharp]\r\nstatic
-  void Main(string[] args)\r\n{\r\n    var sw = new Stopwatch();\r\n\r\n    sw.Start();\r\n\r\n
-  \   for (var i = 0; i &lt; 100000000; i++)\r\n        CompareToSix(2);\r\n\r\n    sw.Stop();\r\n
-  \   Console.WriteLine(&quot;Non-Generic: &quot; + sw.ElapsedMilliseconds + &quot;ms&quot;);\r\n
-  \   sw.Restart();\r\n\r\n    for (var i = 0; i &lt; 100000000; i++)\r\n        CompareToSixGeneric(2);\r\n\r\n
-  \   sw.Stop();\r\n    Console.WriteLine(&quot;Generic: &quot; + sw.ElapsedMilliseconds
-  + &quot;ms&quot;);\r\n    Console.ReadLine();\r\n}\r\n[/csharp]\r\n\r\nI get the
-  following result.*\r\n\r\n\r\n<blockquote>Non-Generic: 1214ms\r\nGeneric: 512ms</blockquote>\r\n\r\n\r\nWeird,
-  eh?\r\n"
 wordpress_id: 2292
 wordpress_url: http://www.levibotelho.com/?p=2292
 date: !binary |-
