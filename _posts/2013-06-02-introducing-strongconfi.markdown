@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: Introducing strong.config
+author: Levi
+author_login: levi_botelho@hotmail.com
+author_email: levi_botelho@hotmail.com
+wordpress_id: 812
+wordpress_url: http://www.levibotelho.com/?p=812
+date: !binary |-
+  MjAxMy0wNi0wMiAyMjowODozNCArMDIwMA==
+date_gmt: !binary |-
+  MjAxMy0wNi0wMiAyMDowODozNCArMDIwMA==
+categories:
+- Open Source
+tags:
+- strong.config
+comments: []
+---
+<p>I've always been surprised by the obvious lack of strong typing in accessing configuration data. Calls to ConfigurationManager are null reference exceptions waiting to happen, as key changes in the config file or typos in the string passed to the call aren't picked up until they hit you later on with a runtime exception.</p>
+<p>I've traditionally managed this problem by writing a façade class that sits between my application code and the configuration file. As this results in having only one weakly-typed reference to each configuration value, the number of errors is greatly reduced. But the façade still needs to be kept up to date...</p>
+<p>And that's why I wrote strong.config. strong.config is a single T4 file which automatically generates a strongly-typed façade in front of an application's configuration file. It takes config code like this:</p>
+<p>[xml]<br />
+&lt;!-- The boolean key value. --&gt;<br />
+&lt;add key=&quot;BooleanKey&quot; value=&quot;true&quot;/&gt;<br />
+[/xml]</p>
+<p>and turns it into this:</p>
+<p>[csharp]<br />
+/// &lt;summary&gt;<br />
+/// The boolean key value.<br />
+/// &lt;/summary&gt;<br />
+public static bool BooleanKey<br />
+{<br />
+    get { return bool.Parse(ConfigurationManager.AppSettings[&quot;BooleanKey&quot;]); }<br />
+}<br />
+[/csharp]</p>
+<p>Feel free to check the project out on Codeplex (<a title="strong.config on Codeplex" href="https://strongconfig.codeplex.com/" target="_blank">strongconfig.codeplex.com</a>) and to use it in your own projects if you think it could help you out. I did spend some time writing the Codeplex documentation so hopefully everything is clear right from the start. However if that's not the case, or if you have a comment or suggestion to make, please leave me a comment either here or on the Codeplex site. All feedback is greatly appreciated!</p>

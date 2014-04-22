@@ -1,0 +1,109 @@
+---
+layout: post
+status: publish
+published: true
+title: The difference between const and readonly in C#
+author: Levi
+author_login: levi_botelho@hotmail.com
+author_email: levi_botelho@hotmail.com
+excerpt: ! "Const and readonly are two very useful keywords in C#. While they both
+  perform roughly the same function, they are not implemented in the same way. As
+  we’ll see later, being aware of the real difference between the two can help us
+  write more robust applications.\r\n\r\nIn short, the difference between const and
+  readonly is that a const’s value is known at compile time, and that a readonly variable’s
+  value does not need to be known until runtime. Or, to be more specific, a readonly
+  variable’s value does not need to be known until the constructor of the class containing
+  the readonly variable finishes executing.\r\n\r\nSo that’s the short answer to the
+  question. However it isn’t the full story."
+wordpress_id: 1882
+wordpress_url: http://www.levibotelho.com/?p=1882
+date: !binary |-
+  MjAxMy0wNy0xMSAxNzo0MDoyOSArMDIwMA==
+date_gmt: !binary |-
+  MjAxMy0wNy0xMSAxNTo0MDoyOSArMDIwMA==
+categories:
+- C#
+- CLR
+tags:
+- c#
+- clr
+comments: []
+---
+<p>Const and readonly are two very useful keywords in C#. While they both perform roughly the same function, they are not implemented in the same way. As we’ll see later, being aware of the real difference between the two can help us write more robust applications.</p>
+<p>In short, the difference between const and readonly is that a const’s value is known at compile time, and that a readonly variable’s value does not need to be known until runtime. Or, to be more specific, a readonly variable’s value does not need to be known until the constructor of the class containing the readonly variable finishes executing.</p>
+<p>So that’s the short answer to the question. However it isn’t the full story.<a id="more"></a><a id="more-1882"></a> Take a look at the following code:</p>
+<p>[csharp]<br />
+const MyClass myClass = new MyClass();<br />
+[/csharp]</p>
+<p>Where MyClass is defined as:</p>
+<p>[csharp]<br />
+class MyClass<br />
+{<br />
+    const int MyInt = 6;<br />
+}<br />
+[/csharp]</p>
+<p>The fact that this doesn't compile seems quite strange at first. If a const is simply a value that needs to be known at compile time, then nothing should prevent us from doing this. The truth, however, is that a const is more than just a known value. To understand what a const really is requires that we look at some IL. Take the following program:</p>
+<p>[csharp]<br />
+class Program<br />
+{<br />
+    const string Greeting = &quot;Hello World&quot;;</p>
+<p>    static void Main(string[] args)<br />
+    {<br />
+        Console.WriteLine(Greeting);<br />
+    }<br />
+}<br />
+[/csharp]</p>
+<p>The corresponding IL for the Main method is as follows:</p>
+<p>[csharp]<br />
+.method private hidebysig static void  Main(string[] args) cil managed<br />
+{<br />
+  .entrypoint<br />
+  // Code size       11 (0xb)<br />
+  .maxstack  8<br />
+  IL_0000:  ldstr      &quot;Hello World&quot;<br />
+  IL_0005:  call       void [mscorlib]System.Console::WriteLine(string)<br />
+  IL_000a:  ret<br />
+} // end of method Program::Main<br />
+[/csharp]</p>
+<p>Now look at what happens if we change the const value to be static readonly:</p>
+<p>[csharp]<br />
+.method private hidebysig static void  Main(string[] args) cil managed<br />
+{<br />
+  .entrypoint<br />
+  // Code size       11 (0xb)<br />
+  .maxstack  8<br />
+  IL_0000:  ldsfld     string ConsoleApplication2.Program::Greeting<br />
+  IL_0005:  call       void [mscorlib]System.Console::WriteLine(string)<br />
+  IL_000a:  ret<br />
+} // end of method Program::Main<br />
+[/csharp]</p>
+<p>Notice the instruction IL_0000 in both cases. This is the key to understanding the difference between const and readonly. <em>When we use const to declare a constant value, the value is embedded directly into our code. When we use a readonly variable, the variable itself is referenced.</em></p>
+<p>So, returning to our first example, the reason why we cannot declare</p>
+<p>[csharp]<br />
+const MyClass myClass = new MyClass();<br />
+[/csharp]</p>
+<p>is because myClass holds the memory address of an instantiation of a MyClass object. Because we cannot know this address at compile time, we cannot embed this value into our IL as is necessary when declaring a constant.</p>
+<p>This distinction between consts and readonlys becomes very important when we start referencing these values across assemblies. For example, imagine that we have two assemblies: Assembly A and Assembly B. Assembly A contains the following code:</p>
+<p>[csharp]<br />
+namespace AssemblyA<br />
+{<br />
+    class Program<br />
+    {<br />
+        static void Main(string[] args)<br />
+        {<br />
+            Console.WriteLine(AssemblyB.ContainerClass.Value);<br />
+        }<br />
+    }<br />
+}<br />
+[/csharp]</p>
+<p>And Assembly B contains this:</p>
+<p>[csharp]<br />
+namespace AssemblyB<br />
+{<br />
+    public class ContainerClass<br />
+    {<br />
+        public const int Value = 6;<br />
+    }<br />
+}<br />
+[/csharp]</p>
+<p>If we deploy these assemblies together and run the program, the number 6 will be written to the console. However, if we modify the Value const in Assembly B and redeploy it without rebuilding Assembly A, <em>the program will continue to write number 6 to the console</em>. While this particular example is trivial, you can imagine the consequences that this kind of error can have on a real-world application. For this reason, unchanging public and protected values should only be declared as constants if they are sure to never change. If there is even a slight risk of them changing in the future, they should be declared as public static readonly variables, which will result in them being referenced by calling code instead of them being embedded directly in it.</p>

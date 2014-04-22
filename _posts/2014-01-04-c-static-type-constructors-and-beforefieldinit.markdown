@@ -1,0 +1,88 @@
+---
+layout: post
+status: publish
+published: true
+title: ! '[C#] Static type constructors and beforefieldinit'
+author: Levi
+author_login: levi_botelho@hotmail.com
+author_email: levi_botelho@hotmail.com
+excerpt: ! "If you’re a professional programmer (and chances are that you are), I’ll
+  bet that at one time or another you’ve gotten into some form of quarrel over which
+  of the following is “better”.\n\n[csharp]\r\nclass MessageHolder1\r\n{\r\n\tstatic
+  string Message = &quot;Hello World!&quot;;\r\n}\r\n[/csharp]\n[csharp]\r\nclass
+  MessageHolder2\r\n{\r\n\tstatic string Message;\r\n\r\n\tstatic MessageHolder2()\r\n\t{\r\n\t\tMessage
+  = &quot;Hello World!&quot;;\r\n\t}\r\n}\r\n[/csharp]\n\nWhile I find the MessageHolder1
+  syntax to be stylistically superior, is it also in fact a potentially better choice
+  when it comes to performance. The key to understanding why, as is frequently the
+  case, is in the IL. Take a look at the definitions of the two classes.\n\n[sourcecode]\r\n.class
+  private auto ansi beforefieldinit ConsoleApplication1.MessageHolder1\r\n       extends
+  [mscorlib]System.Object\r\n{\r\n} // end of class ConsoleApplication1.MessageHolder1\r\n[/sourcecode]\n\n[sourcecode]\r\n.class
+  private auto ansi ConsoleApplication1.MessageHolder2\r\n       extends [mscorlib]System.Object\r\n{\r\n}
+  // end of class ConsoleApplication1.MessageHolder2\r\n[/sourcecode]\n\nNotice anything?
+  The definition for the MessageHolder1 class contains an additional type attribute,
+  “beforefieldinit”. To understand what impact this attribute has, we must first get
+  one thing out of the way. As far as C# is concerned, both class definitions are
+  equivalent. Each class has what is known as a “type initializer”, which is simply
+  code that is executed to prepare the type for use. MessageHolder1’s type initializer
+  is defined implicitly in the static “message” variable assignment, and MessageHolder2’s
+  type initializer is defined explicitly as a static type constructor.\n"
+wordpress_id: 3312
+wordpress_url: http://www.levibotelho.com/?p=3312
+date: !binary |-
+  MjAxNC0wMS0wNCAxMjowNzoyOCArMDEwMA==
+date_gmt: !binary |-
+  MjAxNC0wMS0wNCAxMTowNzoyOCArMDEwMA==
+categories:
+- C#
+- CLR
+tags:
+- c#
+- clr
+- performance
+comments: []
+---
+<p>If you’re a professional programmer (and chances are that you are), I’ll bet that at one time or another you’ve gotten into some form of quarrel over which of the following is “better”.</p>
+<p>[csharp]<br />
+class MessageHolder1<br />
+{<br />
+	static string Message = &quot;Hello World!&quot;;<br />
+}<br />
+[/csharp]<br />
+[csharp]<br />
+class MessageHolder2<br />
+{<br />
+	static string Message;</p>
+<p>	static MessageHolder2()<br />
+	{<br />
+		Message = &quot;Hello World!&quot;;<br />
+	}<br />
+}<br />
+[/csharp]</p>
+<p>While I find the MessageHolder1 syntax to be stylistically superior, is it also in fact a potentially better choice when it comes to performance. The key to understanding why, as is frequently the case, is in the IL. Take a look at the definitions of the two classes.</p>
+<p>[sourcecode]<br />
+.class private auto ansi beforefieldinit ConsoleApplication1.MessageHolder1<br />
+       extends [mscorlib]System.Object<br />
+{<br />
+} // end of class ConsoleApplication1.MessageHolder1<br />
+[/sourcecode]</p>
+<p>[sourcecode]<br />
+.class private auto ansi ConsoleApplication1.MessageHolder2<br />
+       extends [mscorlib]System.Object<br />
+{<br />
+} // end of class ConsoleApplication1.MessageHolder2<br />
+[/sourcecode]</p>
+<p>Notice anything? The definition for the MessageHolder1 class contains an additional type attribute, “beforefieldinit”. To understand what impact this attribute has, we must first get one thing out of the way. As far as C# is concerned, both class definitions are equivalent. Each class has what is known as a “type initializer”, which is simply code that is executed to prepare the type for use. MessageHolder1’s type initializer is defined implicitly in the static “message” variable assignment, and MessageHolder2’s type initializer is defined explicitly as a static type constructor.<br />
+<a id="more"></a><a id="more-3312"></a><br />
+What the beforefieldinit attribute does is define under what conditions the CLR can and must execute the class’s type initializer. When beforefieldinit is <strong>not</strong> present, a type’s initializer method is triggered by any of the following events:</p>
+<ol>
+<li>First access to any static field of that type</li>
+<li>First invocation of any static method of that type</li>
+<li>First invocation of any instance or virtual method of that type if it is a value type</li>
+<li>First invocation of any constructor for that type.</li>
+</ol>
+<p>What this basically means is that before the type is used in any way, the type initializer method must be executed. It therefore makes good sense that this attribute is not applied to classes which contain an explicit type constructor. As the CLR doesn’t know what impact the type constructor may have on the class, or on any other component of the program for that matter, it must execute it right before the class is used in any way. This means that the type constructor’s execution is both reliable and predictable.</p>
+<p>However, if the only job of a type initializer is to assign values to static variables, then we don’t necessarily need to be as demanding as to when the assignment takes place. All we require from the CLR is that the variable is assigned before we access it for the first time. And indeed, this is the impact that beforefieldinit has on a class. To quote the CIL spec, beforefieldinit ensures that…</p>
+<blockquote><p>
+  …the type’s initializer method is executed at, or sometime before, first access to any static field defined for that type.
+</p></blockquote>
+<p>This gives the CLR significantly more freedom as to when it wishes to assign static fields. Although we cannot be 100% sure of when the assignment will take place, the assumption here is that the CLR will act when it feels the time is right, which should in theory improve application efficiency.</p>

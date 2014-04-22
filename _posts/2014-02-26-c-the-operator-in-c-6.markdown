@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: ! '[C#] The "?." operator in C# 6?'
+author: Levi
+author_login: levi_botelho@hotmail.com
+author_email: levi_botelho@hotmail.com
+wordpress_id: 4731
+wordpress_url: http://www.levibotelho.com/?p=4731
+date: !binary |-
+  MjAxNC0wMi0yNiAxOTo0MzoyMyArMDEwMA==
+date_gmt: !binary |-
+  MjAxNC0wMi0yNiAxODo0MzoyMyArMDEwMA==
+categories:
+- C#
+tags:
+- c#
+comments: []
+---
+<p><a href="http://visualstudio.uservoice.com/" title="Visual Studio User Voice">Visual Studio User Voice</a> is a great site. It lets the community at large propose and vote for features in upcoming Microsoft products.</p>
+<p>Some time ago I cast my vote for a feature which I felt has been lacking for a <em>long</em> time in C#: the <code>?.</code> operator.</p>
+<p><code>?.</code> would serve to eliminate chained null reference checks when accessing fields and properties on objects. The idea is that instead of writing this</p>
+<p><code>return obj != null ? obj.X : null;</code></p>
+<p>you could simply write this</p>
+<p><code>return obj?.X;</code></p>
+<p>Pretty useful eh? Especially when you are dealing with several layers of objects embedded in one another (I'm looking at you, <code>HttpContext</code>!).</p>
+<p>Well I was absolutely elated to receive an email in my inbox this morning from Visual Studio User Voice regarding this issue. C# language PM Mads Torgersen posted on the <code>?.</code> idea page stating the following.</p>
+<hr />
+<p><em>We are seriously considering this feature for C# and VB, and will be prototyping it in coming months. Syntax in C# would be</em></p>
+<ul>
+<li><code>e?.x // member access</code></li>
+<li><code>e?.M(…) // method invocation</code></li>
+<li><code>e?[…] // indexing</code></li>
+</ul>
+<p><em>Semantically this will be similar to</em></p>
+<p><code>(e == null) ? null : e.x</code></p>
+<p><em>etc., except that e will only be evaluated once of course.</em></p>
+<p><em>If the type of e.x (etc) is a non-nullable value type S, then the type of e?.x is S?. Otherwise the type of e?.x is the same as that of e.×. If we can’t tell whether the type is a non-nullable value type (because it is a type parameter without sufficient constraints) we’ll probably give a compile-time error.</em></p>
+<hr />
+<p>Let's hope it makes the final cut!</p>

@@ -1,0 +1,146 @@
+---
+layout: post
+status: publish
+published: true
+title: Write your own code snippets in Visual Studio
+author: Levi
+author_login: levi_botelho@hotmail.com
+author_email: levi_botelho@hotmail.com
+excerpt: ! "Code snippets are a great feature in Visual Studio that automate the writing
+  of oft-repeated code. By typing a special shortcut followed by two strokes of the
+  tab key, you get a preformatted template for a commonly-used code segment. (Try
+  it with <em>prop</em> if you don’t know what I’m talking about.)\r\nWhile there
+  are many snippets available in Visual Studio by default, it’s also easy to create
+  your own. Here’s how:\r\nDefine the code to template\r\nFor the purposes of this
+  demo, I’m going to create a template to return the result of a conditional ternary
+  operation. The first step is to define what the snippet is going to look like:\r\n"
+wordpress_id: 952
+wordpress_url: http://www.levibotelho.com/?p=952
+date: !binary |-
+  MjAxMy0wNi0wNCAxOTozNzo0NCArMDIwMA==
+date_gmt: !binary |-
+  MjAxMy0wNi0wNCAxNzozNzo0NCArMDIwMA==
+categories:
+- Visual Studio
+- C#
+tags:
+- visual studio
+- snippets
+comments: []
+---
+<p>Code snippets are a great feature in Visual Studio that automate the writing of oft-repeated code. By typing a special shortcut followed by two strokes of the tab key, you get a preformatted template for a commonly-used code segment. (Try it with <em>prop</em> if you don’t know what I’m talking about.)<br />
+While there are many snippets available in Visual Studio by default, it’s also easy to create your own. Here’s how:<br />
+Define the code to template<br />
+For the purposes of this demo, I’m going to create a template to return the result of a conditional ternary operation. The first step is to define what the snippet is going to look like:<br />
+<a id="more"></a><a id="more-952"></a><br />
+[csharp]<br />
+return ([something Boolean]) ? [if true] : [if false];<br />
+[/csharp]</p>
+<h1>Write the snippet</h1>
+<h2>The basics</h2>
+<p>Snippets are written in XML. The basic format is as follows:</p>
+<p>[xml]<br />
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />
+&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;<br />
+    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;<br />
+        &lt;Header&gt;<br />
+            &lt;Title&gt;&lt;/Title&gt;<br />
+            &lt;Author&gt;&lt;/Author&gt;<br />
+            &lt;Description&gt;&lt;/Description&gt;<br />
+            &lt;Shortcut&gt;&lt;/Shortcut&gt;<br />
+        &lt;/Header&gt;<br />
+        &lt;Snippet&gt;<br />
+            &lt;Declarations&gt;<br />
+                &lt;!-- This section is optional. --&gt;<br />
+            &lt;/Declarations&gt;<br />
+            &lt;Code Language=&quot;csharp&quot;&gt;<br />
+                &lt;![CDATA[ CODE GOES HERE ]]&gt;<br />
+            &lt;/Code&gt;<br />
+        &lt;/Snippet&gt;<br />
+    &lt;/CodeSnippet&gt;<br />
+&lt;/CodeSnippets&gt;<br />
+[/xml]</p>
+<p>This is all pretty self-explanatory. The “Declarations” section in this template isn’t strictly mandatory, but often required. It is there where you can define placeholders to replace in the template defined in the “code” section of the document. Let’s fill this in:</p>
+<p>[xml]<br />
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />
+&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;<br />
+    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;<br />
+        &lt;Header&gt;<br />
+            &lt;Title&gt;Return Ternary Conditional&lt;/Title&gt;<br />
+            &lt;Author&gt;Levi Botelho&lt;/Author&gt;<br />
+            &lt;Description&gt;<br />
+                Returns a value from the result of a given ternary conditional operation.<br />
+            &lt;/Description&gt;<br />
+            &lt;Shortcut&gt;rett&lt;/Shortcut&gt;<br />
+        &lt;/Header&gt;<br />
+        &lt;Snippet&gt;<br />
+            &lt;Declarations&gt;<br />
+                &lt;!-- This section is optional. --&gt;<br />
+            &lt;/Declarations&gt;<br />
+            &lt;Code Language=&quot;csharp&quot;&gt;<br />
+                &lt;![CDATA[return ([something Boolean]) ? [if true] : [if false];]]&gt;<br />
+            &lt;/Code&gt;<br />
+        &lt;/Snippet&gt;<br />
+    &lt;/CodeSnippet&gt;<br />
+&lt;/CodeSnippets&gt;<br />
+[/xml]</p>
+<h2>Variables</h2>
+<p>So far the snippet looks pretty good. The one thing that isn’t quite right though are the placeholders in the actual code. If we imported this snippet into VS right now it would indeed work, but would output exactly what is found in the CDATA tag onto the page. Instead, we want to make it easy for the end user (me!) to replace what is in the square brackets with real values. This is where that “Declarations” section comes in.<br />
+Two types of declarations can be made: literals and objects.<br />
+To declare a literal, insert the following code inside the declarations element of the document:</p>
+<p>[xml]<br />
+&lt;ID&gt;[Used to reference the literal in the snippet]&lt;/ID&gt;<br />
+&lt;ToolTip&gt;[Appears as a tooltip in the IDE]&lt;/ToolTip&gt;<br />
+&lt;Default&gt;[The default value that appears in the snippet.]&lt;/Default&gt;<br />
+[/xml]</p>
+<p>The syntax to declare an object is the same, but with an added “Type” tag, as follows:</p>
+<p>[xml]<br />
+&lt;ID&gt;[Used to reference the literal in the snippet]&lt;/ID&gt;<br />
+&lt;Type&gt;[The type (namespaces included) of the object to insert]&lt;/Type&gt;<br />
+&lt;ToolTip&gt;[Appears as a tooltip in the IDE]&lt;/ToolTip&gt;<br />
+&lt;Default&gt;[The default value that appears in the snippet.]&lt;/Default&gt;<br />
+[/xml]</p>
+<p>To reference a declaration, simply insert the ID anywhere in the snippet, surrounded by dollar signs. For our snippet we need to provide declarations for our three placeholders. I’ll go ahead and create the three literal placeholders.</p>
+<p>[xml]<br />
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;<br />
+&lt;CodeSnippets xmlns=&quot;http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet&quot;&gt;<br />
+    &lt;CodeSnippet Format=&quot;1.0.0&quot;&gt;<br />
+        &lt;Header&gt;<br />
+            &lt;Title&gt;Return Ternary Conditional&lt;/Title&gt;<br />
+            &lt;Author&gt;Levi Botelho&lt;/Author&gt;<br />
+            &lt;Description&gt;<br />
+                Returns a value from the result of a given ternary conditional operation.<br />
+            &lt;/Description&gt;<br />
+            &lt;Shortcut&gt;rett&lt;/Shortcut&gt;<br />
+        &lt;/Header&gt;<br />
+        &lt;Snippet&gt;<br />
+            &lt;Declarations&gt;<br />
+                &lt;Literal&gt;<br />
+                    &lt;ID&gt;Condition&lt;/ID&gt;<br />
+                    &lt;ToolTip&gt;The condition to validate.&lt;/ToolTip&gt;<br />
+                    &lt;Default&gt;Condition&lt;/Default&gt;<br />
+                &lt;/Literal&gt;<br />
+                &lt;Literal&gt;<br />
+                    &lt;ID&gt;True&lt;/ID&gt;<br />
+                    &lt;ToolTip&gt;The return value if true.&lt;/ToolTip&gt;<br />
+                    &lt;Default&gt;IfTrue&lt;/Default&gt;<br />
+                &lt;/Literal&gt;<br />
+                &lt;Literal&gt;<br />
+                    &lt;ID&gt;False&lt;/ID&gt;<br />
+                    &lt;ToolTip&gt;The return value if false.&lt;/ToolTip&gt;<br />
+                    &lt;Default&gt;IfFalse&lt;/Default&gt;<br />
+                &lt;/Literal&gt;<br />
+            &lt;/Declarations&gt;<br />
+            &lt;Code Language=&quot;csharp&quot;&gt;<br />
+                &lt;![CDATA[return ($Condition$) ? $True$ : $False$;]]&gt;<br />
+            &lt;/Code&gt;<br />
+        &lt;/Snippet&gt;<br />
+    &lt;/CodeSnippet&gt;<br />
+&lt;/CodeSnippets&gt;<br />
+[/xml]</p>
+<h1>Installation</h1>
+<p>Now that our snippet is written, we can go about importing it into Visual Studio. Save your snippet file with a .snippet extension, and then open the Code Snippets Manager in VS (<strong>TOOLS -> Code Snippets Manager</strong>). Click the <em>Import</em> button, locate your snippet and import it into the <em>My Code Snippets</em> folder. If you pass this step that means that your snippet is valid code, and will now appear in the list with all the others. Open a code page and type the shortcut followed by <strong>TAB TAB</strong>, and you should see your new snippet appear on the page:</p>
+<p>[csharp]<br />
+return (Condition) ? IfTrue : IfFalse;<br />
+[/csharp]</p>
+<p>You're done!</p>

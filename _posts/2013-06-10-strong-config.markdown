@@ -1,0 +1,39 @@
+---
+layout: page
+status: publish
+published: true
+title: strong.config
+author: Levi
+author_login: levi_botelho@hotmail.com
+author_email: levi_botelho@hotmail.com
+wordpress_id: 1432
+wordpress_url: http://www.levibotelho.com/?page_id=1432
+date: !binary |-
+  MjAxMy0wNi0xMCAyMjo1MDo0MSArMDIwMA==
+date_gmt: !binary |-
+  MjAxMy0wNi0xMCAyMDo1MDo0MSArMDIwMA==
+categories: []
+tags: []
+comments: []
+---
+<p>strong.config is a small open-source project of mine. It consists of a T4 file which automatically generates a strongly-typed façade in front of application configuration files. This serves to eliminate errors stemming from mistyped or outdated configuration keys by enforcing compile-time checking on your application configuration settings. It has automatic type detection, supports XML documentation tags, and best of all, is generated automatically so it is always up to date.</p>
+<p>strong.config takes code like this from your config file:</p>
+<p>[xml]<br />
+&lt;!-- The boolean key value. --&gt;<br />
+&lt;add key=&quot;BooleanKey&quot; value=&quot;true&quot;/&gt;<br />
+[/xml]</p>
+<p>and turns it into this:</p>
+<p>[csharp]<br />
+/// &lt;summary&gt;<br />
+/// The boolean key value.<br />
+/// &lt;/summary&gt;<br />
+public static bool BooleanKey<br />
+{<br />
+    get { return bool.Parse(ConfigurationManager.AppSettings[&quot;BooleanKey&quot;]); }<br />
+}<br />
+[/csharp]</p>
+<p>Feel free to stop by <a href="http://strongconfig.codeplex.com/" title="strong.config" target="_blank">the strong.config Codeplex page</a> to take a deeper look into the project. There you'll find a handy documentation page, the latest source code, an example project and the T4 up for download. Or, if you want to integrate strong.config into your solution you can get it straight from NuGet. Simply search "strong.config" in the package manager dialog, or enter the following command into the Package Manager Console:</p>
+<p>[code]<br />
+PM&gt; Install-Package strong.config<br />
+[/code]</p>
+<p>Enjoy!</p>
