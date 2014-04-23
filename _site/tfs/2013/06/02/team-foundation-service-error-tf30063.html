@@ -1,8 +1,0 @@
-<p><em>Preamble: For those not familiar with Team Foundation Service, it really is an exceptional product (TFS hosted in the cloud for free!). See <a href='http://tfs.visualstudio.com/'>http://tfs.visualstudio.com/</a> for more information.</em></p><p>I received this perplexing error message when opening a solution in a Visual Studio instance opened via the "Open a new instance of Visual Studio" link in a TF Service project:</p><blockquote><p>TF30063: You are not authorized to access [project]</p></blockquote><p>There are a good number proposed solutions out there for this error, which include clearing your internet browser's cookies, and reinitialising IE settings to their factory defaults. I had to try quite a few things until I stumbled upon this simple solution to the problem:<br />
-<a id='more' /><a id='more-672' /></p><ol>
-<li>Open Visual Studio.</li>
-<li>Open the integrated web browser (VIEW -&gt; Other Windows -&gt; Web Browser).</li>
-<li>Navigate to your project url (xxx.visualstudio.com).</li>
-<li>Log out (if necessary) and log in with the correct Microsoft account.</li>
-<li>Open the project you want to work with, and then click the "Open a new instance of Visual Studio" link</li>
-</ol><p>The error shouldn't appear in the new instance of Visual Studio that opens. Quick, easy, and no painful IE resets. Hope this can help somebody!</p>

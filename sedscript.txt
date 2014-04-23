@@ -1,0 +1,31 @@
+s:<p>::I
+s:</p>:\
+:I
+s:<br />::I
+s:<h1>\(.*\)</h1>:\# \1\
+:I
+s:<h2>\(.*\)</h2>:\#\# \1\
+:I
+s:<h3>\(.*\)</h3>:\#\#\# \1\
+:I
+s:<h4>\(.*\)</h4>:\#\#\#\# \1\
+:I
+s:<h5>\(.*\)</h5>:\#\#\#\#\# \1\
+:I
+s:<a id="more"></a><a id="more-\d*"></a>::I
+s:<code>\(.*\)</code>:`\1`:I
+s:<b>\(.*\)</b>:**\1**:I
+s:<strong>\(.*\)</strong>:**\1**:I
+s:<i>\(.*\)</i>:*\1*:I
+s:<em>\(.*\)</em>:*\1*:I
+s:<a.*href="\(\S*\)".*>\(.*\)</a>:[\2](\1):I
+
+s:&quot;:":I
+s:&gt;:>:I
+s:&lt;:<:I
+
+s:\[sourcecode language="\(\w*\)"\]:{% highlight \1 %}:I
+s:\[sourcecode]:{% highlight text %}:I
+s:\[/sourcecode\]:{% endhighlight %}:I
+s:^\[\(\w*\)\]$:{% highlight \1 %}:I
+s:^\[/\w*\]$:{% endhighlight %}:I
