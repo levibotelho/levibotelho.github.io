@@ -1,31 +1,31 @@
-s:<p>::I
+s:<p>::Ig
 s:</p>:\
-:I
-s:<br />::I
+:Ig
+s:<br />::Ig
 s:<h1>\(.*\)</h1>:\# \1\
-:I
+:Ig
 s:<h2>\(.*\)</h2>:\#\# \1\
-:I
+:Ig
 s:<h3>\(.*\)</h3>:\#\#\# \1\
-:I
+:Ig
 s:<h4>\(.*\)</h4>:\#\#\#\# \1\
-:I
+:Ig
 s:<h5>\(.*\)</h5>:\#\#\#\#\# \1\
-:I
-s:<a id="more"></a><a id="more-\d*"></a>::I
-s:<code>\(.*\)</code>:`\1`:I
-s:<b>\(.*\)</b>:**\1**:I
-s:<strong>\(.*\)</strong>:**\1**:I
-s:<i>\(.*\)</i>:*\1*:I
-s:<em>\(.*\)</em>:*\1*:I
-s:<a.*href="\(\S*\)".*>\(.*\)</a>:[\2](\1):I
+:Ig
+s:<a id="more"></a><a id="more-\d*"></a>::Ig
+s:<code>\(.*\)</code>:`\1`:Ig
+s:<b>\(.*\)</b>:**\1**:Ig
+s:<strong>\(.*\)</strong>:**\1**:Ig
+s:<i>\(.*\)</i>:*\1*:Ig
+s:<em>\(.*\)</em>:*\1*:Ig
+s:<a.*href="\(\S*\)".*>\(.*\)</a>:[\2](\1):Ig
 
-s:&quot;:":I
-s:&gt;:>:I
-s:&lt;:<:I
+s:&quot;:":Ig
+s:&gt;:>:Ig
+s:&lt;:<:Ig
 
-s:\[sourcecode language="\(\w*\)"\]:{% highlight \1 %}:I
-s:\[sourcecode]:{% highlight text %}:I
-s:\[/sourcecode\]:{% endhighlight %}:I
-s:^\[\(\w*\)\]$:{% highlight \1 %}:I
-s:^\[/\w*\]$:{% endhighlight %}:I
+s:\[sourcecode language="\(\w*\)"\]:{% highlight \1 %}:Ig
+s:\[sourcecode]:{% highlight text %}:Ig
+s:\[/sourcecode\]:{% endhighlight %}:Ig
+s:^\[\(\w*\)\]$:{% highlight \1 %}:Ig
+s:^\[/\w*\]$:{% endhighlight %}:Ig
