@@ -1,23 +1,10 @@
 ---
 layout: post
-status: publish
-published: true
 title: ! '[Visual Studio] A humble design request...'
-author: Levi
-author_login: levi_botelho@hotmail.com
-author_email: levi_botelho@hotmail.com
-wordpress_id: 5661
-wordpress_url: http://www.levibotelho.com/?p=5661
-date: !binary |-
-  MjAxNC0wNC0xNCAwOToyMjozNSArMDIwMA==
-date_gmt: !binary |-
-  MjAxNC0wNC0xNCAwNzoyMjozNSArMDIwMA==
-categories:
-- Visual Studio
-tags:
-- visual studio
-- design
-comments: []
+category: [Visual Studio]
+tags: [visual studio, design]
+comments: true
+share: true
 ---
 Today I made my first suggestion on Visual Studio User Voice. My request is simple. I would like the Visual Studio design team to change the Browser Link icon from a clockwise arrow to something else, such as a bidirectional horizontal arrow. Here's why.
 

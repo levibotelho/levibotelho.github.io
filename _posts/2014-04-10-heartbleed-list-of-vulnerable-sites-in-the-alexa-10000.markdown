@@ -1,45 +1,10 @@
 ---
 layout: post
-status: publish
-published: true
 title: Heartbleed - List of vulnerable sites in the Alexa 10000
-author: Levi
-author_login: levi_botelho@hotmail.com
-author_email: levi_botelho@hotmail.com
-excerpt: ! 'Let''s be clear from the start. I''m not going to provide yet another
-  explanation of what Heartbleed is. If you live in a cave and haven''t heard about
-  it yet then check out these links for an explanation.
-
-
-  <ul>
-
-  <li>[The layman''s explanation.](http://www.bbc.com/news/technology-26969629)</li>
-
-  <li>[A technical explanation.](http://heartbleed.com/)</li>
-
-  <li><a href="http://www.troyhunt.com/2014/04/everything-you-need-to-know-about.html">An
-  in-depth explanation.</a></li>
-
-  </ul>
-
-
-  What I am going to do, however, is post the list of the sites in the Alexa top 10000
-  that *have been* impacted.  There are 630 sites in this list out of the original
-  10000, meaning that 6.3% of the original list was detected as being vulnerable.
-
-'
-wordpress_id: 5591
-wordpress_url: http://www.levibotelho.com/?p=5591
-date: !binary |-
-  MjAxNC0wNC0xMCAxNjozMDo0MCArMDIwMA==
-date_gmt: !binary |-
-  MjAxNC0wNC0xMCAxNDozMDo0MCArMDIwMA==
-categories:
-- Security
-tags:
-- heartbleed
-- security
-comments: []
+category: [Security]
+tags: [heartbleed, security]
+comments: true
+share: true
 ---
 Let's be clear from the start. I'm not going to provide yet another explanation of what Heartbleed is. If you live in a cave and haven't heard about it yet then check out these links for an explanation.
 
@@ -49,13 +14,12 @@ Let's be clear from the start. I'm not going to provide yet another explanation 
 <li>[An in-depth explanation.](http://www.troyhunt.com/2014/04/everything-you-need-to-know-about.html)</li>
 </ul>
 What I am going to do, however, is post the list of the sites in the Alexa top 10000 that *have been* impacted.  There are 630 sites in this list out of the original 10000, meaning that 6.3% of the original list was detected as being vulnerable.
-<a id="more"></a><a id="more-5591"></a>
 
 ## Disclaimer
 
 This list is actually just a filtered version of Mustafa Al-Bassam's full list of both compromised and non-comprimised Alexa 10000 sites as detected on 08/04/2014. [That list can be found here](https://github.com/musalbas/heartbleed-masstest/blob/master/top10000.txt). As I did not compile the original list I cannot vouch for its or this list's accuracy. While I do have confidence in this data, it should only be used for informative purposes.
 
-I strongly recommend following the password changing advice found in the "layman's explanation" article above.
+I recommend following the password changing advice found in the "layman's explanation" article above.
 
 ## The list (in order of popularity)
 

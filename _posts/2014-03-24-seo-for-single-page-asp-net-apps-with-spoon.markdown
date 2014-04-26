@@ -1,59 +1,10 @@
 ---
 layout: post
-status: publish
-published: true
 title: SEO for Single Page ASP.NET Apps with Spoon
-author: Levi
-author_login: levi_botelho@hotmail.com
-author_email: levi_botelho@hotmail.com
-excerpt: ! 'Search engine optimisation is one of the most important aspects of any
-  public web application. However single page application developers face a significant
-  challenge in exposing their content to search engines and web crawlers.
-
-
-  The problem is that the concept of a web page is not necessarily the same for a
-  web server as it is for a user. While the user of an SPA could navigate through
-  an entire site and be convinced that it was made up of countless individual web
-  pages, a crawler attempting to crawl such a site would only ever end up downloading
-  and analysing a single HTML file. To make matters worse, this file would without
-  a doubt contain very little content, as most of the content that makes up an SPA
-  is injected at runtime using JavaScript.
-
-
-  The result of all this is that while SPAs provide users with an enjoyable user experience,
-  web crawlers aren''t adapted to understand how SPAs are built and what kinds of
-  content they contain.
-
-
-  ## Google''s solution
-
-
-
-  Luckily for us, Google has come up with a solution to this problem. The solution
-  consists of a protocol which allows sites to tell crawlers about their dynamic content.
-  <a href="https://developers.google.com/webmasters/ajax-crawling/docs/specification"
-  title="Ajax Crawling - Full Specification">The full text of the protocol can be
-  found here</a>, but the general idea is as follows. Normally SPAs use hash fragments
-  to denote different pages in an app, like this.
-
-'
-wordpress_id: 4941
-wordpress_url: http://www.levibotelho.com/?p=4941
-date: !binary |-
-  MjAxNC0wMy0yNCAyMzoyNjo0MCArMDEwMA==
-date_gmt: !binary |-
-  MjAxNC0wMy0yNCAyMjoyNjo0MCArMDEwMA==
-categories:
-- ASP.NET
-- Front-end Web
-- Open Source
-tags:
-- asp.net
-- angular.js
-- seo
-- google
-- spoon
-comments: []
+category: [Open Source]
+tags: [asp.net, angular.js, seo, google, spoon, open source]
+comments: true
+share: true
 ---
 Search engine optimisation is one of the most important aspects of any public web application. However single page application developers face a significant challenge in exposing their content to search engines and web crawlers.
 
@@ -64,7 +15,7 @@ The result of all this is that while SPAs provide users with an enjoyable user e
 ## Google's solution
 
 Luckily for us, Google has come up with a solution to this problem. The solution consists of a protocol which allows sites to tell crawlers about their dynamic content. [The full text of the protocol can be found here](https://developers.google.com/webmasters/ajax-crawling/docs/specification), but the general idea is as follows. Normally SPAs use hash fragments to denote different pages in an app, like this.
-<a id="more"></a><a id="more-4941"></a>
+
 `http://www.mysite.com/#/contact`
 
 The protocol states that a hashbang should be used instead of a hash, like so.
@@ -87,7 +38,7 @@ This is the problem that I have attempted to solve with Spoon. Spoon is a class 
 
 ## How to use Spoon
 
-Using Spoon is really easy. Get the NuGet package (`PM> Install-Package Spoon</code>) and hook the following code into to your site's <code>Application_Start()` method.
+Using Spoon is really easy. Get the NuGet package (`PM> Install-Package Spoon`) and hook the following code into to your site's `Application_Start()` method.
 
 {% highlight csharp %}
 // Dictionary mapping escaped fragments to page URLs.
@@ -107,9 +58,9 @@ foreach (var file in snapshotsDirectory.EnumerateFiles())
 SnapshotManager
 	.InitializeAsync(escapedFragmentUrlPairs, snapshotsPath)
 	.Wait();
-[/csharp]
+{% endhighlight %}
 
-In this example, `escapedFragmentUrlPairs</code> is a dictionary mapping escaped fragment values to URLs on your site. This essentially serves to tell Spoon that for a given hash fragment you want a snapshot of the corresponding page to be served to the web crawler. If you have a Sitemap defined for your site, this dictionary could easily be auto-generated from it. The other variable in the sample, <code>snapshotsPath`, is simply the path to the folder where Spoon will store the snapshots it creates.
+In this example, `escapedFragmentUrlPairs` is a dictionary mapping escaped fragment values to URLs on your site. This essentially serves to tell Spoon that for a given hash fragment you want a snapshot of the corresponding page to be served to the web crawler. If you have a Sitemap defined for your site, this dictionary could easily be auto-generated from it. The other variable in the sample, `snapshotsPath`, is simply the path to the folder where Spoon will store the snapshots it creates.
 
 To serve up snapshots you'll need to modify your main action method to handle the `_escaped_fragment_` parameter.
 
@@ -133,9 +84,9 @@ public async Task<ActionResult> Index(string _escaped_fragment_)
 
     return View();
 }
-[/csharp]
+{% endhighlight %}
 
-That's all there is to it. When an `_escaped_fragment_</code> is passed to the method, Spoon will look to see if that fragment has been registered. If it has, Spoon will return to you the path to the snapshot file that you can serve with ASP.NET's <code>File()</code> method. If the fragment hasn't been registered, an <code>ArgumentException</code> is thrown. It is up to you to catch this exception and do what you please. Be careful! If a snapshot cannot be served for a given page, then web crawlers won't be able to tell what that page contains and that page will risk not being indexed correctly. At the very least the <code>catch</code> should contain some form of logic to alert you, the developer, that a given <code>_escaped_fragment_` has gone unserved in your web app.
+That's all there is to it. When an `_escaped_fragment_` is passed to the method, Spoon will look to see if that fragment has been registered. If it has, Spoon will return to you the path to the snapshot file that you can serve with ASP.NET's `File()` method. If the fragment hasn't been registered, an `ArgumentException` is thrown. It is up to you to catch this exception and do what you please. Be careful! If a snapshot cannot be served for a given page, then web crawlers won't be able to tell what that page contains and that page will risk not being indexed correctly. At the very least the `catch` should contain some form of logic to alert you, the developer, that a given `_escaped_fragment_` has gone unserved in your web app.
 
 ## The code
 

@@ -1,23 +1,10 @@
 ---
 layout: post
-status: publish
-published: true
 title: AngularJS vs KnockoutJS
-author: Levi
-author_login: levi_botelho@hotmail.com
-author_email: levi_botelho@hotmail.com
-wordpress_id: 4841
-wordpress_url: http://www.levibotelho.com/?p=4841
-date: !binary |-
-  MjAxNC0wMy0xMSAyMToyMTowOSArMDEwMA==
-date_gmt: !binary |-
-  MjAxNC0wMy0xMSAyMDoyMTowOSArMDEwMA==
-categories:
-- Front-end Web
-tags:
-- knockout.js
-- angular.js
-comments: []
+category: [Front-end Web]
+tags: [knockout.js, angular.js]
+comments: true
+share: true
 ---
 Lately I’ve been spending a lot of time with AngularJS. Coming from a KnockoutJS background, one of the first questions I had when I first started out with Angular was how the two frameworks compare. Hopefully this article will provide some answers for those in the same situation that I was.
 
