@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sending Email From C# Via Hotmail/Outlook/Windows Live &#8211; </title>
+<meta name="description" content="">
+<meta name="keywords" content="c#, email">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sending Email From C# Via Hotmail/Outlook/Windows Live">
+<meta property="og:description" content="">
+<meta property="og:url" content="/c%23/2013/04/17/sending-email-from-c-via-hotmailoutlookwindows-live.html">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/">
+
+
+
+
+
+<link rel="canonical" href="/c%23/2013/04/17/sending-email-from-c-via-hotmailoutlookwindows-live.html">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom"  style="background-image: url(/images/)" itemscope itemtype="http://schema.org/Organization">
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="/" role="banner" itemprop="url">
+
+                
+
+            <h1 class="blog-title light" itemprop="name">
+                
+            </h1>
+                
+            </a>
+        </div>
+    </div>
+    
+    
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+
+        </svg>
+    </div>
+    
+</header>
+<div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+    <div class="container">
+        <div class="row">
+            <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+            
+            
+            
+                
+            
+             
+             
+                    <header class="post-header entry-header">
+                        
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">Sending Email From C# Via Hotmail/Outlook/Windows Live</h1>
+                        
+                        <div class="post-info text-center small">
+                            <span class="entry-date date published updated"><time datetime="2013-04-17T00:00:00+02:00" class="post-time" itemprop="datePublished">17 Apr 2013</time><span>
+                            in <span class="post-tags"><a href="/categories/index.html#c#" data-toggle="tooltip" title="Other posts from the C# category" rel="tag">C#</a></span>
+                        </div>
+                    </header>
+                    <div class="post-body bordered-bottom" itemprop="description">
+                        
+                        <p>I recently found myself wanting to send an email from an ASP.NET web application. I didn’t want to go to all the hassle of setting up an SMTP server just to test my code, so decided to do it through an outlook.com email account. Here’s how:</p>
+
+<h2 id="1_set_up_the_account">1. Set up the account</h2>
+
+<h2 id="2_log_out_and_then_back_into_the_account">2. Log out and then back into the account</h2>
+
+<p>This tripped me up for a good 20 minutes. Having already written my code I created my account and immediately tested it. I kept on running into this seemingly nonsensical error:</p>
+<blockquote>5.3.4 Requested action not taken; To continue sending messages, please sign in to your account.
+</blockquote>
+<p><a id='more' /><a id='more-32' /></p>
+
+<p>The reason is simple. Despite the fact that once you create your outlook.com account you are immediately logged in, your account is not verified. To avoid this error, once you create your account you need to log out and log back in, solving a captcha in the process. This will validate your account and allow the following code to work properly. You may be able to skip this step if you validate your account with a telephone number when you create it.</p>
+
+<h2 id="3_write_the_code">3. Write the code</h2>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>static</span> <span class='k'>class</span> <span class='nc'>Mailer</span>
+<span class='p'>{</span>
+    <span class='k'>const</span> <span class='kt'>string</span> <span class='n'>SmtpServer</span> <span class='p'>=</span> <span class='s'>&quot;smtp.live.com&quot;</span><span class='p'>;</span>
+    <span class='k'>const</span> <span class='kt'>int</span> <span class='n'>SmtpPort</span> <span class='p'>=</span> <span class='m'>587</span><span class='p'>;</span>
+    <span class='k'>const</span> <span class='kt'>string</span> <span class='n'>FromAddress</span> <span class='p'>=</span> <span class='s'>&quot;address@outlook.com&quot;</span><span class='p'>;</span>
+    <span class='k'>const</span> <span class='kt'>string</span> <span class='n'>Password</span> <span class='p'>=</span> <span class='s'>&quot;password&quot;</span><span class='p'>;</span>
+
+    <span class='k'>public</span> <span class='k'>static</span> <span class='k'>void</span> <span class='nf'>SendMail</span><span class='p'>(</span><span class='kt'>string</span> <span class='n'>toAddress</span><span class='p'>,</span> <span class='kt'>string</span> <span class='n'>subject</span><span class='p'>,</span> <span class='kt'>string</span> <span class='n'>body</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='kt'>var</span> <span class='n'>client</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>SmtpClient</span><span class='p'>(</span><span class='n'>SmtpServer</span><span class='p'>,</span> <span class='n'>SmtpPort</span><span class='p'>)</span>
+        <span class='p'>{</span>
+            <span class='n'>Credentials</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>NetworkCredential</span><span class='p'>(</span><span class='n'>FromAddress</span><span class='p'>,</span> <span class='n'>Password</span><span class='p'>),</span>
+            <span class='n'>EnableSsl</span> <span class='p'>=</span> <span class='k'>true</span>
+        <span class='p'>};</span>
+
+        <span class='n'>client</span><span class='p'>.</span><span class='n'>Send</span><span class='p'>(</span><span class='n'>FromAddress</span><span class='p'>,</span> <span class='n'>toAddress</span><span class='p'>,</span> <span class='n'>subject</span><span class='p'>,</span> <span class='n'>body</span><span class='p'>);</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>I’ve wrapped this in a static class in order to respect the <a href="http://en.wikipedia.org/wiki/Single_responsibility_principle">SRP</a>. Note that the email address and password should in practice be encrypted into a config file instead of being written directly into the source as I have done here for simplicity. The server settings should also be extracted out into a config file so that they can be changed later if need be. I’ll leave web.config encryption for another post.</p>
+                        <br>
+                    <span class="entry-tags">
+                    <p>
+                        <i class="icon-tags"></i>&nbsp;Tagged with <a href="/tags/index.html#c#" data-toggle="tooltip" title="Posts tagged with c#" rel="tag">c#</a>&nbsp;&bull;&nbsp;<a href="/tags/index.html#email" data-toggle="tooltip" title="Posts tagged with email" rel="tag">email</a>
+                    </p>
+                    </span>
+                    </div>
+        </div>
+                    <footer class="post-footer entry-meta">
+                        
+                        <div class="post-author text-center">                       
+	        <img src="/images/" alt="'s photo" itemprop="image" class="post-avatar img-circle img-responsive"/>    
+	    <h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">By <span itemprop="name" class="fn"><a href="/about" title="About " itemprop="url"></a></span></h4>
+	    <p></p>
+</div> 
+                        
+                    </footer>
+            </article>
+    </div>
+</div>
+
+<footer id="footer"  class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(/images/)" >
+
+
+    <div class="inner">
+        <div class="container">
+
+            <ul class="social-icons">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+            <p class="copy-text">
+                <a href="/about/"></a> &copy; 2014 &bull; All rights reserved.
+            </p>
+            <p class="copy-text">
+                Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <i class="icon-heart"></i> <a href="http://alum.mit.edu/www/hmfaysal/">HMFAYSAL OMEGA</a> theme.
+            </p>
+            <ul class="menu-items">
+            
+            <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+            
+        </ul>
+        </div>
+    </div>
+    
+        <div class="decor-wrapper">
+            <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+
+                <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>
+
+            </svg>
+        </div>
+    
+</footer>
+
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+    
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</body>
+</html>

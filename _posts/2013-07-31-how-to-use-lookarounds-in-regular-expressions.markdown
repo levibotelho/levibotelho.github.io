@@ -19,7 +19,7 @@ Now, let’s turn this into a condition by wrapping it in a positive lookahead.
 {% endhighlight %}
 
 Translated into plain English, this means “When we find a w at the beginning of a word, execute what comes next.” To finish our expression, we’ll now write the “what comes next” bit. That is, a statement to capture the entire word in question.
-<a id="more"></a><a id="more-1942"></a>
+
 {% highlight perl %}
 \w*
 {% endhighlight %}

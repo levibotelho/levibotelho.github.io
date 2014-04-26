@@ -58,7 +58,7 @@ To understand how this can be, we need to look at the IL for the Main method in 
 } // end of method Program::Main
 {% endhighlight %}
 
-Notice how “Hello World” is embedded directly in the IL. *When calling a method in another module (as we are doing here) the default values for parameters are embedded in the calling code.* This means that if we go back and modify the method’s default value without recompiling the calling application, the value change will not be taken into account.* ** While this scenario is rarely encountered during the development phase of an application, it has the potential to occur frequently in production environments where it is common to upgrade a single DLL without redelivering an entire solution. The fact that you will only run into this issue in very rare cases during development makes it all the more dangerous, as relatively few developers become aware of the problem to begin with.
+Notice how “Hello World” is embedded directly in the IL. *When calling a method in another module (as we are doing here) the default values for parameters are embedded in the calling code.* This means that if we go back and modify the method’s default value without recompiling the calling application, the value change will not be taken into account.\* \*\* While this scenario is rarely encountered during the development phase of an application, it has the potential to occur frequently in production environments where it is common to upgrade a single DLL without redelivering an entire solution. The fact that you will only run into this issue in very rare cases during development makes it all the more dangerous, as relatively few developers become aware of the problem to begin with.
 There is however, a simple way to avoid it. In our case, all we need to do to fix our WriteMessage code is by doing the following.
 
 {% highlight csharp %}
@@ -74,7 +74,7 @@ public static void WriteMessage(string message = null)
 Now, while null will still be embedded in calling modules as a default value, the real default value of the method (which in this case is “Goodbye World”) will not be. If we later want to change “Goodbye World” to something else, we can do so and redeliver our ConsoleWriter DLL without having to worry that a “Goodbye World” is still lurking somewhere in a calling module.
 
 <hr />
-** If you followed along with this demonstration but got lazy and threw both projects in a single solution, or launched the console application via the VS debugger, it would have been recompiled and you would not have arrived at the same result as I have here.*
+\* If you followed along with this demonstration but got lazy and threw both projects in a single solution, or launched the console application via the VS debugger, it would have been recompiled and you would not have arrived at the same result as I have here.
 
-** This might remind you of [a similar topic that I wrote about last month](http://www.levibotelho.com/the-difference-between-const-and-readonly-in-c/).
+\*\* This might remind you of [a similar topic that I wrote about last month](http://www.levibotelho.com/the-difference-between-const-and-readonly-in-c/).
 

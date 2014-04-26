@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The ins and outs of generic interface variance &#8211; </title>
+<meta name="description" content="">
+<meta name="keywords" content="c#, clr">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The ins and outs of generic interface variance">
+<meta property="og:description" content="">
+<meta property="og:url" content="/c%23/2013/08/09/the-ins-and-outs-of-generic-interface-variance.html">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/">
+
+
+
+
+
+<link rel="canonical" href="/c%23/2013/08/09/the-ins-and-outs-of-generic-interface-variance.html">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom"  style="background-image: url(/images/)" itemscope itemtype="http://schema.org/Organization">
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="/" role="banner" itemprop="url">
+
+                
+
+            <h1 class="blog-title light" itemprop="name">
+                
+            </h1>
+                
+            </a>
+        </div>
+    </div>
+    
+    
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+
+        </svg>
+    </div>
+    
+</header>
+<div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+    <div class="container">
+        <div class="row">
+            <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+            
+            
+            
+                
+            
+             
+             
+                    <header class="post-header entry-header">
+                        
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">The ins and outs of generic interface variance</h1>
+                        
+                        <div class="post-info text-center small">
+                            <span class="entry-date date published updated"><time datetime="2013-08-09T00:00:00+02:00" class="post-time" itemprop="datePublished">09 Aug 2013</time><span>
+                            in <span class="post-tags"><a href="/categories/index.html#c#" data-toggle="tooltip" title="Other posts from the C# category" rel="tag">C#</a></span>
+                        </div>
+                    </header>
+                    <div class="post-body bordered-bottom" itemprop="description">
+                        
+                        <p>In this post we’re going to look at generic interface polymorphism in C#. Let’s start by defining a couple of example classes.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>class</span> <span class='nc'>Message</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>virtual</span> <span class='kt'>string</span> <span class='n'>Text</span> <span class='p'>{</span> <span class='k'>get</span><span class='p'>;</span> <span class='k'>set</span><span class='p'>;</span> <span class='p'>}</span>
+<span class='p'>}</span>
+
+<span class='k'>public</span> <span class='k'>class</span> <span class='nc'>DatedMessage</span> <span class='p'>:</span> <span class='n'>Message</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='n'>DateTime</span> <span class='n'>DateReceived</span> <span class='p'>{</span> <span class='k'>get</span><span class='p'>;</span> <span class='k'>set</span><span class='p'>;</span> <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>We’ll also define an interface that serves as a queue to hold messages.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>interface</span> <span class='n'>IMessageQueue</span><span class='p'>&lt;</span><span class='n'>T</span><span class='p'>&gt;</span>
+<span class='p'>{</span>
+    <span class='k'>void</span> <span class='nf'>Add</span><span class='p'>(</span><span class='n'>T</span> <span class='n'>message</span><span class='p'>);</span>
+    <span class='n'>T</span> <span class='nf'>Read</span><span class='p'>();</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>And finally we’ll write two implementations of <code>IMessageQueue</code>. One for <code>Message</code> objects and one specifically for <code>DatedMessage</code> objects.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>class</span> <span class='nc'>MessageQueue</span> <span class='p'>:</span> <span class='n'>IMessageQueue</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;</span>
+<span class='p'>{</span>
+    <span class='k'>readonly</span> <span class='n'>Queue</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;</span> <span class='n'>messages</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>Queue</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;();</span>
+
+    <span class='k'>public</span> <span class='k'>void</span> <span class='nf'>Add</span><span class='p'>(</span><span class='n'>Message</span> <span class='n'>message</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='n'>messages</span><span class='p'>.</span><span class='n'>Enqueue</span><span class='p'>(</span><span class='n'>message</span><span class='p'>);</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='n'>Message</span> <span class='nf'>Read</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='n'>messages</span><span class='p'>.</span><span class='n'>Dequeue</span><span class='p'>();</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+
+<span class='k'>public</span> <span class='k'>class</span> <span class='nc'>DatedMessageQueue</span> <span class='p'>:</span> <span class='n'>IMessageQueue</span><span class='p'>&lt;</span><span class='n'>DatedMessage</span><span class='p'>&gt;</span>
+<span class='p'>{</span>
+    <span class='k'>readonly</span> <span class='n'>Queue</span><span class='p'>&lt;</span><span class='n'>DatedMessage</span><span class='p'>&gt;</span> <span class='n'>messages</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>Queue</span><span class='p'>&lt;</span><span class='n'>DatedMessage</span><span class='p'>&gt;();</span>
+
+    <span class='k'>public</span> <span class='k'>void</span> <span class='nf'>Add</span><span class='p'>(</span><span class='n'>DatedMessage</span> <span class='n'>message</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='n'>messages</span><span class='p'>.</span><span class='n'>Enqueue</span><span class='p'>(</span><span class='n'>message</span><span class='p'>);</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='n'>DatedMessage</span> <span class='nf'>Read</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='n'>messages</span><span class='p'>.</span><span class='n'>Dequeue</span><span class='p'>();</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>Enough preparation, let’s get going. If we take a look at our <code>MessageQueue</code> class, we can easily see that it can hold both <code>Message</code> and <code>DatedMessage</code> objects. This makes perfect sense, because all <code>DatedMessages</code> are by definition <code>Messages</code>. Taking this one step further, we should therefore be allowed to do the following.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>static</span> <span class='k'>void</span> <span class='nf'>Main</span><span class='p'>(</span><span class='kt'>string</span><span class='p'>[]</span> <span class='n'>args</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='kt'>var</span> <span class='n'>datedMessages</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>DatedMessageQueue</span><span class='p'>();</span>
+    <span class='n'>datedMessages</span><span class='p'>.</span><span class='n'>Add</span><span class='p'>(</span><span class='k'>new</span> <span class='n'>DatedMessage</span><span class='p'>(</span><span class='s'>&quot;Hello world&quot;</span><span class='p'>,</span> <span class='n'>DateTime</span><span class='p'>.</span><span class='n'>Now</span><span class='p'>));</span>
+    <span class='kt'>var</span> <span class='n'>messages</span> <span class='p'>=</span> <span class='p'>(</span><span class='n'>IMessageQueue</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;)</span><span class='n'>datedMessages</span><span class='p'>;</span>
+    <span class='c1'>// ...</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>However, while this code compiles, an invalid cast exception is thrown when we attempt to make our cast. But why? As all <code>DatedMessages</code> are <code>Messages</code>, an implementation of <code>IMessageQueue&lt;DatedMessage&gt;</code> should equally be treatable as an implementation of <code>IMessageQueue&lt;Message&gt;</code>, shouldn’t it?</p>
+
+<p>In fact the answer to this question is no, and it’s not terribly difficult to see why. If this cast were legal, then nothing would prevent us from doing the following.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>static</span> <span class='k'>void</span> <span class='nf'>Main</span><span class='p'>(</span><span class='kt'>string</span><span class='p'>[]</span> <span class='n'>args</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='kt'>var</span> <span class='n'>datedMessages</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>DatedMessageQueue</span><span class='p'>();</span>
+    <span class='n'>datedMessages</span><span class='p'>.</span><span class='n'>Add</span><span class='p'>(</span><span class='k'>new</span> <span class='n'>DatedMessage</span><span class='p'>(</span><span class='s'>&quot;Hello world&quot;</span><span class='p'>,</span> <span class='n'>DateTime</span><span class='p'>.</span><span class='n'>Now</span><span class='p'>));</span>
+    <span class='kt'>var</span> <span class='n'>messages</span> <span class='p'>=</span> <span class='p'>(</span><span class='n'>IMessageQueue</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;)</span><span class='n'>datedMessages</span><span class='p'>;</span>
+    <span class='n'>messages</span><span class='p'>.</span><span class='n'>Add</span><span class='p'>(</span><span class='k'>new</span> <span class='n'>Message</span><span class='p'>(</span><span class='s'>&quot;Hello Message&quot;</span><span class='p'>));</span>
+    <span class='c1'>//...</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>While all <code>DatedMessages</code> are also <code>Messages</code>, not all <code>Messages</code> are <code>DatedMessages</code>. If the above code were allowed to execute, we would be attempting to add a Message to what is in reality a <code>DatedMessage</code>-typed backing store—that is, a <code>DatedMessageQueue</code> that uses a <code>Queue&lt;DatedMessage&gt;</code> to internally hold its messages.</p>
+
+<p>But what if you really do want to be able to perform this cast? Well, there is indeed a way to allow it. We simply need to guarantee that we will never add any additional elements to an <code>IMessageQueue</code>. We do this by removing our <code>Add</code> method, and by applying the <code>out</code> keyword to our generic parameter.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>interface</span> <span class='n'>IMessageQueue</span><span class='p'>&lt;</span><span class='k'>out</span> <span class='n'>T</span><span class='p'>&gt;</span>
+<span class='p'>{</span>
+    <span class='n'>T</span> <span class='nf'>Read</span><span class='p'>();</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>The out keyword indicates that objects of type T will only ever come out of an instance of the interface. More specifically, it prohibits us from implementing any methods which take an instance of <code>T</code> as an input parameter. Note that nothing prevents us from adding a message to an instance of our <code>MessageQueue</code> or <code>DatedMessageQueue</code> classes (which is why logically we cannot by default cast a <code>DatedMessageQueue</code> to a <code>MessageQueue</code>). We simply cannot add a message to an instance of <code>IMessageQueue</code> itself.</p>
+
+<p>So, what have we seen so far? Well, we’ve seen that by default a generic interface cannot be downcast to less-specific versions of itself due to the risk of an incompatible type being added to an internal backing store. However we’ve also seen that by forbidding any such addition by way of the out keyword we can allow such downcasting to occur.</p>
+
+<p>This concept of downcasting is called <em>covariance</em>, as the direction of the cast goes along with the standard inheritance flow of more specific objects being treated as more general objects. To be precise, we say that the <code>out</code> keyword makes <code>IMessageQueue</code> <em>covariant in T</em>.</p>
+
+<p>Now, let’s code a new interface, this time for a class which will write the same text to a bunch of message objects.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>interface</span> <span class='n'>IBatchMessageWriter</span><span class='p'>&lt;</span><span class='n'>T</span><span class='p'>&gt;</span>
+<span class='p'>{</span>
+    <span class='k'>void</span> <span class='nf'>AddToBatch</span><span class='p'>(</span><span class='n'>T</span> <span class='n'>message</span><span class='p'>);</span>
+    <span class='k'>void</span> <span class='nf'>Write</span><span class='p'>(</span><span class='kt'>string</span> <span class='n'>text</span><span class='p'>);</span>
+    <span class='n'>List</span><span class='p'>&lt;</span><span class='n'>T</span><span class='p'>&gt;</span> <span class='n'>GetMessages</span><span class='p'>();</span>
+<span class='p'>}</span>
+
+<span class='k'>public</span> <span class='k'>class</span> <span class='nc'>BatchMessageWriter</span> <span class='p'>:</span> <span class='n'>IBatchMessageWriter</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;</span>
+<span class='p'>{</span>
+    <span class='k'>readonly</span> <span class='n'>List</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;</span> <span class='n'>messages</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>List</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;();</span>
+
+    <span class='k'>public</span> <span class='k'>void</span> <span class='nf'>AddToBatch</span><span class='p'>(</span><span class='n'>Message</span> <span class='n'>message</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='n'>messages</span><span class='p'>.</span><span class='n'>Add</span><span class='p'>(</span><span class='n'>message</span><span class='p'>);</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='k'>void</span> <span class='nf'>Write</span><span class='p'>(</span><span class='kt'>string</span> <span class='n'>text</span><span class='p'>)</span>
+    <span class='p'>{</span>
+        <span class='k'>foreach</span> <span class='p'>(</span><span class='kt'>var</span> <span class='n'>message</span> <span class='k'>in</span> <span class='n'>messages</span><span class='p'>)</span>
+        <span class='p'>{</span>
+            <span class='n'>message</span><span class='p'>.</span><span class='n'>Text</span> <span class='p'>=</span> <span class='n'>text</span><span class='p'>;</span>
+        <span class='p'>}</span>
+    <span class='p'>}</span>
+
+    <span class='k'>public</span> <span class='n'>List</span><span class='p'>&lt;</span><span class='n'>Message</span><span class='p'>&gt;</span> <span class='n'>GetMessages</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='n'>messages</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>Now, because we can add any <code>Message</code> object to our Batch Message Writer, it logically follows that we can equally add any object whose class derives from <code>Message</code>. After all, a <code>Message</code> derivative is still a <code>Message</code> at its core. Going one step further with this logic, we should then therefore be able to do the following.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>static</span> <span class='k'>void</span> <span class='nf'>Main</span><span class='p'>(</span><span class='kt'>string</span><span class='p'>[]</span> <span class='n'>args</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='kt'>var</span> <span class='n'>writer</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>BatchMessageWriter</span><span class='p'>();</span>
+    <span class='kt'>var</span> <span class='n'>datedMessageWriter</span> <span class='p'>=</span> <span class='p'>(</span><span class='n'>IBatchMessageWriter</span><span class='p'>&lt;</span><span class='n'>DatedMessage</span><span class='p'>&gt;)</span><span class='n'>writer</span><span class='p'>;</span>
+    <span class='c1'>// ...</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>But just as in our first example, this code throws an invalid cast exception—and for a similar reason. If this cast were allowed, nothing would prevent us from calling <code>GetMessages</code>, which would return a list of <code>DatedMessage</code> objects. If we had previously added any plain <code>Message</code> objects to the interface implementation by way of the <code>Add</code> method, we would be attempting to cast these <code>Message</code> objects to <code>DatedMessage</code> objects, which is not allowed.</p>
+
+<p>However once again, there is a way to permit this cast. We simply need add the <code>in</code> keyword to the generic type argument <code>T </code>in the interface definition. <code>in</code> is the opposite of <code>out</code>, in as much as it indicates that objects of type <code>T</code> can only be used as input parameters to the interface. It therefore prohibits us from defining any method on the interface which returns <code>T</code>. So if we want the above cast to be legal, we need to modify our <code>IBatchMessageWriter</code> interface as follows.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>interface</span> <span class='n'>IBatchMessageWriter</span><span class='p'>&lt;</span><span class='k'>in</span> <span class='n'>T</span><span class='p'>&gt;</span>
+<span class='p'>{</span>
+    <span class='k'>void</span> <span class='nf'>AddToBatch</span><span class='p'>(</span><span class='n'>T</span> <span class='n'>message</span><span class='p'>);</span>
+    <span class='k'>void</span> <span class='nf'>Write</span><span class='p'>(</span><span class='kt'>string</span> <span class='n'>text</span><span class='p'>);</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>It is important to note that, as with <code>out</code>, <code>in</code> doesn’t prevent us from adding a method to any class which implements <code>IBatchMessageWriter</code> that returns an object of type <code>T</code>. It simply prevents us from defining such a method on the interface itself.</p>
+
+<p>So, to summarise, we’ve seen that applying the <code>in</code> keyword to a generic type parameter on an interface allows the interface to be upcast to a more-specific version of itself. This makes sense, because a function that takes type T as input should also be able to take an object of any type that inherits from <code>T</code>. The concept of a type being treatable as a more specific version of itself is known as <em>contravariance</em>, because it goes <em>counter</em> to the traditional inheritance flow where objects are treated as less-specific versions of themselves.</p>
+                        <br>
+                    <span class="entry-tags">
+                    <p>
+                        <i class="icon-tags"></i>&nbsp;Tagged with <a href="/tags/index.html#c#" data-toggle="tooltip" title="Posts tagged with c#" rel="tag">c#</a>&nbsp;&bull;&nbsp;<a href="/tags/index.html#clr" data-toggle="tooltip" title="Posts tagged with clr" rel="tag">clr</a>
+                    </p>
+                    </span>
+                    </div>
+        </div>
+                    <footer class="post-footer entry-meta">
+                        
+                        <div class="post-author text-center">                       
+	        <img src="/images/" alt="'s photo" itemprop="image" class="post-avatar img-circle img-responsive"/>    
+	    <h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">By <span itemprop="name" class="fn"><a href="/about" title="About " itemprop="url"></a></span></h4>
+	    <p></p>
+</div> 
+                        
+                    </footer>
+            </article>
+    </div>
+</div>
+
+<footer id="footer"  class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(/images/)" >
+
+
+    <div class="inner">
+        <div class="container">
+
+            <ul class="social-icons">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+            <p class="copy-text">
+                <a href="/about/"></a> &copy; 2014 &bull; All rights reserved.
+            </p>
+            <p class="copy-text">
+                Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <i class="icon-heart"></i> <a href="http://alum.mit.edu/www/hmfaysal/">HMFAYSAL OMEGA</a> theme.
+            </p>
+            <ul class="menu-items">
+            
+            <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+            
+        </ul>
+        </div>
+    </div>
+    
+        <div class="decor-wrapper">
+            <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+
+                <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>
+
+            </svg>
+        </div>
+    
+</footer>
+
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+    
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</body>
+</html>

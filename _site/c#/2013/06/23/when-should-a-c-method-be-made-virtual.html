@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>When should a C# method be made virtual? &#8211; </title>
+<meta name="description" content="">
+<meta name="keywords" content="c#">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="When should a C# method be made virtual?">
+<meta property="og:description" content="">
+<meta property="og:url" content="/c%23/2013/06/23/when-should-a-c-method-be-made-virtual.html">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/">
+
+
+
+
+
+<link rel="canonical" href="/c%23/2013/06/23/when-should-a-c-method-be-made-virtual.html">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom"  style="background-image: url(/images/)" itemscope itemtype="http://schema.org/Organization">
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="/" role="banner" itemprop="url">
+
+                
+
+            <h1 class="blog-title light" itemprop="name">
+                
+            </h1>
+                
+            </a>
+        </div>
+    </div>
+    
+    
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+
+        </svg>
+    </div>
+    
+</header>
+<div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+    <div class="container">
+        <div class="row">
+            <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+            
+            
+            
+                
+            
+             
+             
+                    <header class="post-header entry-header">
+                        
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">When should a C# method be made virtual?</h1>
+                        
+                        <div class="post-info text-center small">
+                            <span class="entry-date date published updated"><time datetime="2013-06-23T00:00:00+02:00" class="post-time" itemprop="datePublished">23 Jun 2013</time><span>
+                            in <span class="post-tags"><a href="/categories/index.html#c#" data-toggle="tooltip" title="Other posts from the C# category" rel="tag">C#</a></span>
+                        </div>
+                    </header>
+                    <div class="post-body bordered-bottom" itemprop="description">
+                        
+                        <p><a href="http://www.levibotelho.com/polymorphism-with-new-and-override/">In the last post</a> we saw how the behaviour of base and derived classes changes with the presence of the new or override keyword on inherited methods. In this post we’re going to see the impact that this has on class design. Let’s start with some code:</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>static</span> <span class='k'>void</span> <span class='nf'>Main</span><span class='p'>(</span><span class='kt'>string</span><span class='p'>[]</span> <span class='n'>args</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='kt'>var</span> <span class='n'>input</span> <span class='p'>=</span> <span class='k'>new</span> <span class='n'>DerivedClass</span><span class='p'>();</span>
+    <span class='n'>WriteClassName</span><span class='p'>(</span><span class='n'>input</span><span class='p'>);</span> <span class='c1'>// Outputs BaseClass</span>
+    <span class='n'>Console</span><span class='p'>.</span><span class='n'>ReadLine</span><span class='p'>();</span>
+<span class='p'>}</span>
+
+<span class='k'>static</span> <span class='k'>void</span> <span class='nf'>WriteClassName</span><span class='p'>(</span><span class='n'>BaseClass</span> <span class='n'>input</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='n'>input</span><span class='p'>.</span><span class='n'>WriteName</span><span class='p'>();</span>
+<span class='p'>}</span>
+
+<span class='k'>class</span> <span class='nc'>BaseClass</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>void</span> <span class='nf'>WriteName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='n'>Console</span><span class='p'>.</span><span class='n'>WriteLine</span><span class='p'>(</span><span class='n'>GetName</span><span class='p'>());</span>
+    <span class='p'>}</span>
+
+    <span class='k'>protected</span> <span class='kt'>string</span> <span class='nf'>GetName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='s'>&quot;BaseClass&quot;</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+
+<span class='k'>class</span> <span class='nc'>DerivedClass</span> <span class='p'>:</span> <span class='n'>BaseClass</span>
+<span class='p'>{</span>
+    <span class='k'>protected</span> <span class='k'>new</span> <span class='kt'>string</span> <span class='nf'>GetName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='s'>&quot;DerivedClass&quot;</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>This is a lot like the code we saw last week. The main difference is that here the exposed method is “WriteName”, which calls the class’s “GetName” method to get the class name. When run, this program outputs “BaseClass”, which is to be expected given what we learned last time around.<a id='more' /><a id='more-1632' /> Similarly, if we modify our classes as such:</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>class</span> <span class='nc'>BaseClass</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='k'>void</span> <span class='nf'>WriteName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='n'>Console</span><span class='p'>.</span><span class='n'>WriteLine</span><span class='p'>(</span><span class='n'>GetName</span><span class='p'>());</span>
+    <span class='p'>}</span>
+
+    <span class='k'>protected</span> <span class='k'>virtual</span> <span class='kt'>string</span> <span class='nf'>GetName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='s'>&quot;BaseClass&quot;</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+
+<span class='k'>class</span> <span class='nc'>DerivedClass</span> <span class='p'>:</span> <span class='n'>BaseClass</span>
+<span class='p'>{</span>
+    <span class='k'>protected</span> <span class='k'>override</span> <span class='kt'>string</span> <span class='nf'>GetName</span><span class='p'>()</span>
+    <span class='p'>{</span>
+        <span class='k'>return</span> <span class='s'>&quot;DerivedClass&quot;</span><span class='p'>;</span>
+    <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>It should be equally unsurprising that this outputs “DerivedClass”.</p>
+
+<p>But let’s take a moment to think about what has happened here. In both cases, BaseClass.WriteName() is called, which then goes on to call the GetName() method. However while BaseClass.GetName() is called when GetName() is nonvirtual, DerivedClass.GetName() is called when it is. What this shows us is that <em>making a method virtual allows the functionality of the base class to be altered in a derivation of the class.</em></p>
+
+<p>The impact of this is far-reaching and shouldn’t be underestimated. While it can be very useful to override base class logic (think Object.ToString()), in many cases base classes encapsulate functionality that shouldn’t be modifiable. A good example of this is <code>ClientBase&lt;T&gt;</code>, which serves as the base class for WCF client classes. While <code>ClientBase&lt;T&gt;</code> is designed to be inherited in order to generate clients for various WCF services, derived classes should not be able to impact the core logic required to construct (or teardown) a WCF client altogether. It is the responsibility of the developer of a class to ensure that a it remains functionally robust when it is used in the future. The developer writing an inheriting class should only be concerned about correctly implementing their own functionality, and should not have to concern themselves with potentially breaking the base class when they implement their own methods.*</p>
+
+<p>So, while virtual methods are a key ingredient in extensible class design, one has to keep in mind that they open base class functionality up to modification**. If this is not explicitly desired, then a method should not be made virtual. Non-virtual methods can still be hidden by use of the new keyword, which exists specifically to allow a method to be replaced in a derived class, while keeping the base class functionality intact.</p>
+<hr />
+<p>* This is the exact same concept as that which applies to access modifiers.</p>
+
+<p>** Virtual methods also tend to slightly underperform nonvirtual methods for several reasons which are beyond the scope of this post. While this performance impact is trivial in many cases, in high-performance scenarios it may be worthy of consideration.</p>
+                        <br>
+                    <span class="entry-tags">
+                    <p>
+                        <i class="icon-tags"></i>&nbsp;Tagged with <a href="/tags/index.html#c#" data-toggle="tooltip" title="Posts tagged with c#" rel="tag">c#</a>
+                    </p>
+                    </span>
+                    </div>
+        </div>
+                    <footer class="post-footer entry-meta">
+                        
+                        <div class="post-author text-center">                       
+	        <img src="/images/" alt="'s photo" itemprop="image" class="post-avatar img-circle img-responsive"/>    
+	    <h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">By <span itemprop="name" class="fn"><a href="/about" title="About " itemprop="url"></a></span></h4>
+	    <p></p>
+</div> 
+                        
+                    </footer>
+            </article>
+    </div>
+</div>
+
+<footer id="footer"  class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(/images/)" >
+
+
+    <div class="inner">
+        <div class="container">
+
+            <ul class="social-icons">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+            <p class="copy-text">
+                <a href="/about/"></a> &copy; 2014 &bull; All rights reserved.
+            </p>
+            <p class="copy-text">
+                Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <i class="icon-heart"></i> <a href="http://alum.mit.edu/www/hmfaysal/">HMFAYSAL OMEGA</a> theme.
+            </p>
+            <ul class="menu-items">
+            
+            <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+            
+        </ul>
+        </div>
+    </div>
+    
+        <div class="decor-wrapper">
+            <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+
+                <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>
+
+            </svg>
+        </div>
+    
+</footer>
+
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+    
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</body>
+</html>

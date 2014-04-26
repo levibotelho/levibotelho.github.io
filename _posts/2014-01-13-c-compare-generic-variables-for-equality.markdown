@@ -27,7 +27,7 @@ class GenericContainer<T>
 }
 {% endhighlight %}
 
-Now the knee-jerk reaction to compare `_variable</code> and <code>value` in this case is to do this.
+Now the knee-jerk reaction to compare `_variable` and `value` in this case is to do this.
 
 {% highlight csharp %}
 set
@@ -53,7 +53,7 @@ set
 }
 {% endhighlight %}
 
-However this poses a different problem. If `_variable</code> is ever null, your program will throw a null reference exception. But there is a way around this. Simply use the static implementation of <code>Equals()</code> on <code>System.Object` as follows.
+However this poses a different problem. If `_variable` is ever null, your program will throw a null reference exception. But there is a way around this. Simply use the static implementation of `Equals()` on `System.Object` as follows.
 
 {% highlight csharp %}
 set

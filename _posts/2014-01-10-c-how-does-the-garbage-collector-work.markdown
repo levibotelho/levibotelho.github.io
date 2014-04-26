@@ -67,7 +67,7 @@ When a garbage collection begins, the garbage collector can pick and choose whic
 
 ### Compacting
 
-When the runtime allocates heap memory, it attempts to do so in a linear fashion. Objects are created one after another on the heap, and the runtime makes use of what is called the “next object pointer” to know where to place the next object. As you can imagine, however, once a garbage collection has taken place, the once smooth, contiguous block of memory that made up the heap is left full of holes. However, the garbage collector doesn’t leave the heap in this state*. Instead, it embarks on a compacting phase, whereby it moves objects back towards the beginning of the heap, filling the reclaimed memory spaces in the process.
+When the runtime allocates heap memory, it attempts to do so in a linear fashion. Objects are created one after another on the heap, and the runtime makes use of what is called the “next object pointer” to know where to place the next object. As you can imagine, however, once a garbage collection has taken place, the once smooth, contiguous block of memory that made up the heap is left full of holes. However, the garbage collector doesn’t leave the heap in this state\*. Instead, it embarks on a compacting phase, whereby it moves objects back towards the beginning of the heap, filling the reclaimed memory spaces in the process.
 
 As you can imagine, moving objects around is no trivial matter. When an object is moved in memory, existing references to it need to be updated. This understandably requires that program execution be suspended, as to ensure that all references to a given object are valid at all times during program execution. The CLR attempts to make this suspension as painless as possible by fine-tuning how and when garbage collection executes. Details of these techniques go beyond the scope of this article, but can be found [here on the MSDN website](http://msdn.microsoft.com/en-us/library/ee851764(v=vs.110).aspx).
 
@@ -75,14 +75,13 @@ As you can imagine, moving objects around is no trivial matter. When an object i
 
 The garbage collector ensures that it only collects garbage when it really needs to by setting out a memory budget for each of its three generations. These budgets can be modified by the CLR throughout program execution in order to be as well-adapted as possible to the execution conditions of a given program. When generation 0 of the managed heap surpasses its budget, the garbage collection process begins. The garbage collector checks to see if any other generations have surpassed their budgets, and then decides which generations to actually collect. This often means that garbage collection is only performed on a portion of the objects living on the managed heap, which makes the process significantly more efficient.
 
-It is important to note that while the majority of garbage collections in an average program are invoked when generation 0 exceeds its memory budget, garbage collections can also be triggered by other events. These include the system reporting low memory conditions, the unloading of an AppDomain, the shutting down of the CLR, or a manual call to the GC.Collect method**.
+It is important to note that while the majority of garbage collections in an average program are invoked when generation 0 exceeds its memory budget, garbage collections can also be triggered by other events. These include the system reporting low memory conditions, the unloading of an AppDomain, the shutting down of the CLR, or a manual call to the GC.Collect method\*\*.
 
 ## Final word
 
 Hopefully this article will have given you a broad idea of how the garbage collector works in Microsoft’s implementation of the .NET Framework. The garbage collector is a very, very complex mechanism which could merit its own book, and this article by no means constitutes a deep dive into its inner workings. Instead, I’ve attempted to provide a simple and concise explanation of the key talking points, with hopes that it will give you a basic understanding of what goes on behind the scenes in your .NET programs.
 
 <hr />
-**Actually, it does leave the large object heap in this state. The large object heap is beyond the scope of this article, however so you won’t hear any more about it for the time being.*
+\* Actually, it does leave the large object heap in this state. The large object heap is beyond the scope of this article, however so you won’t hear any more about it for the time being.
 
-_**Calling GC.Collect is discouraged by Microsoft and is generally to be avoided. The garbage collector is a very intelligent mechanism, and has much more information at its disposal than you do when it evaluates whether or not a collection is needed._
-
+\*\* Calling GC.Collect is discouraged by Microsoft and is generally to be avoided. The garbage collector is a very intelligent mechanism, and has much more information at its disposal than you do when it evaluates whether or not a collection is needed.

@@ -132,7 +132,7 @@ To reference a declaration, simply insert the ID anywhere in the snippet, surrou
 
 # Installation
 
-Now that our snippet is written, we can go about importing it into Visual Studio. Save your snippet file with a .snippet extension, and then open the Code Snippets Manager in VS (**TOOLS -> Code Snippets Manager</strong>). Click the *Import</em> button, locate your snippet and import it into the <em>My Code Snippets* folder. If you pass this step that means that your snippet is valid code, and will now appear in the list with all the others. Open a code page and type the shortcut followed by <strong>TAB TAB**, and you should see your new snippet appear on the page:
+Now that our snippet is written, we can go about importing it into Visual Studio. Save your snippet file with a .snippet extension, and then open the Code Snippets Manager in VS (**TOOLS -> Code Snippets Manager**). Click the **Import** button, locate your snippet and import it into the `My Code Snippets` folder. If you pass this step that means that your snippet is valid code, and will now appear in the list with all the others. Open a code page and type the shortcut followed by <kbd>tab</kbd> <kbd>tab</kbd>, and you should see your new snippet appear on the page.
 
 {% highlight csharp %}
 return (Condition) ? IfTrue : IfFalse;

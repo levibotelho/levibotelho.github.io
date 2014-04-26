@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Posting JavaScript objects with Ajax and ASP.NET MVC &#8211; </title>
+<meta name="description" content="">
+<meta name="keywords" content="c#, asp.net, ajax, javascript">
+
+
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Posting JavaScript objects with Ajax and ASP.NET MVC">
+<meta property="og:description" content="">
+<meta property="og:url" content="/asp.net/2013/11/24/posting-javascript-objects-with-ajax-and-asp-net-mvc.html">
+<meta property="og:site_name" content="">
+<meta property="og:image" content="/images/">
+
+
+
+
+
+<link rel="canonical" href="/asp.net/2013/11/24/posting-javascript-objects-with-ajax-and-asp-net-mvc.html">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+<header id="masthead" class="blog-background overlay align-center align-middle animated from-bottom"  style="background-image: url(/images/)" itemscope itemtype="http://schema.org/Organization">
+
+
+    <div class="inner">
+        <div class="container">
+            <a class="brand" href="/" role="banner" itemprop="url">
+
+                
+
+            <h1 class="blog-title light" itemprop="name">
+                
+            </h1>
+                
+            </a>
+        </div>
+    </div>
+    
+    
+    <div class="decor-wrapper">
+        <svg id="header-decor" class="decor bottom" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0 99.9 L50 49.9 L100 99.9 L0 99.9" fill="rgba(255,255,255, 1)"></path>
+
+            <path d="M48 52 L50 49 L52 52 L48 52" fill="rgba(255,255,255, 1)"></path>
+
+        </svg>
+    </div>
+    
+</header>
+<div id="main" class="content" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+    <div class="container">
+        <div class="row">
+            <article class="post col-md-8 col-md-offset-2 hentry" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+            
+            
+            
+                
+            
+             
+             
+                    <header class="post-header entry-header">
+                        
+                        <h1 class="post-title text-center hyper lighter bordered-bottom entry-title" itemprop="headline">Posting JavaScript objects with Ajax and ASP.NET MVC</h1>
+                        
+                        <div class="post-info text-center small">
+                            <span class="entry-date date published updated"><time datetime="2013-11-24T00:00:00+01:00" class="post-time" itemprop="datePublished">24 Nov 2013</time><span>
+                            in <span class="post-tags"><a href="/categories/index.html#asp.net" data-toggle="tooltip" title="Other posts from the Asp.net category" rel="tag">Asp.net</a></span>
+                        </div>
+                    </header>
+                    <div class="post-body bordered-bottom" itemprop="description">
+                        
+                        <p>As websites become more and more interactive the need frequently arises to send data back and forth between web clients and servers using Ajax. ASP.NET combined with jQuery makes this process simple to implement for web developers.</p>
+
+<p>For this example, we’re going to POST the following JavaScript object to our server, and return a Boolean value indicating if the data was correctly received.</p>
+<div class='highlight'><pre><code class='javascript'><span class='kd'>var</span> <span class='nx'>tommy</span> <span class='o'>=</span> <span class='p'>{</span>
+    <span class='nx'>name</span><span class='o'>:</span> <span class='s2'>&quot;Tommy&quot;</span><span class='p'>,</span>
+    <span class='nx'>birthday</span><span class='o'>:</span> <span class='k'>new</span> <span class='nb'>Date</span><span class='p'>(</span><span class='mi'>1921</span><span class='p'>,</span> <span class='mi'>0</span><span class='p'>,</span> <span class='mi'>1</span><span class='p'>),</span>
+    <span class='nx'>hobbies</span><span class='o'>:</span> <span class='p'>[</span><span class='s2'>&quot;Pinball&quot;</span><span class='p'>,</span> <span class='s2'>&quot;Holiday camp&quot;</span><span class='p'>]</span>
+<span class='p'>};</span>
+</code></pre></div>
+<h2 id="the_server_side">The server side</h2>
+
+<p>The first thing we need to do on the server side is define a data structure corresponding to the JavaScript object we wish to send.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='k'>class</span> <span class='nc'>Person</span>
+<span class='p'>{</span>
+    <span class='k'>public</span> <span class='kt'>string</span> <span class='n'>Name</span> <span class='p'>{</span> <span class='k'>get</span><span class='p'>;</span> <span class='k'>set</span><span class='p'>;</span> <span class='p'>}</span>
+    <span class='k'>public</span> <span class='n'>DateTime</span> <span class='n'>Birthday</span> <span class='p'>{</span> <span class='k'>get</span><span class='p'>;</span> <span class='k'>set</span><span class='p'>;</span> <span class='p'>}</span>
+    <span class='k'>public</span> <span class='kt'>string</span><span class='p'>[]</span> <span class='n'>Hobbies</span> <span class='p'>{</span> <span class='k'>get</span><span class='p'>;</span> <span class='k'>set</span><span class='p'>;</span> <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>Notice how the casing of the variable names in the JavaScript and C# objects doesn’t have to match. We can declare our JavaScript object properties in camel case and our C# properties in Pascal case and the model binder will work just fine.</p>
+
+<p>Now let’s write our method. All we need to do is create a standard ASP.NET MVC controller method which takes a single parameter of the Person type, like so.</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='kt'>bool</span> <span class='nf'>ProcessData</span><span class='p'>(</span><span class='n'>Person</span> <span class='n'>person</span><span class='p'>)</span>
+<span class='p'>{</span>
+    <span class='k'>return</span> <span class='n'>person</span> <span class='p'>!=</span> <span class='k'>null</span><span class='p'>;</span>
+<span class='p'>}</span>
+</code></pre></div>
+<p>As mentioned, I’m returning a Boolean value indicating whether the person object was successfully received.</p>
+
+<p>That’s all we need to do on the server side. Let’s writ the client-side code.</p>
+
+<h2 id="the_client_side">The client side</h2>
+
+<p>The first thing we’ll do is use jQuery to write the Ajax call.</p>
+<div class='highlight'><pre><code class='javascript'><span class='nx'>$</span><span class='p'>.</span><span class='nx'>ajax</span><span class='p'>({</span>
+    <span class='nx'>url</span><span class='o'>:</span> <span class='s2'>&quot;@Url.Action(&quot;</span><span class='nx'>ProcessData</span><span class='s2'>&quot;, &quot;</span><span class='nx'>Home</span><span class='s2'>&quot;)&quot;</span><span class='p'>,</span>
+    <span class='nx'>type</span><span class='o'>:</span> <span class='s2'>&quot;POST&quot;</span><span class='p'>,</span>
+    <span class='nx'>contentType</span><span class='o'>:</span> <span class='s2'>&quot;application/json&quot;</span><span class='p'>,</span>
+    <span class='nx'>data</span><span class='o'>:</span> <span class='nx'>JSON</span><span class='p'>.</span><span class='nx'>stringify</span><span class='p'>({</span> <span class='nx'>person</span><span class='o'>:</span> <span class='nx'>tommy</span> <span class='p'>}),</span>
+    <span class='nx'>success</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>response</span><span class='p'>)</span> <span class='p'>{</span>
+        <span class='nx'>response</span> <span class='o'>?</span> <span class='nx'>alert</span><span class='p'>(</span><span class='s2'>&quot;It worked!&quot;</span><span class='p'>)</span> <span class='o'>:</span> <span class='nx'>alert</span><span class='p'>(</span><span class='s2'>&quot;It didn&#39;t work.&quot;</span><span class='p'>);</span>
+    <span class='p'>}</span>
+<span class='p'>});</span>
+</code></pre></div>
+<p>Here we’re invoking the ubiquitous “ajax” method, passing it an object containing all the information it needs to get the job done in the form of field values. Let’s take a brief look at each one.</p>
+
+<h3 id="url">url</h3>
+
+<p>The url field contains the dynamically-calculated address of our target method.</p>
+
+<h3 id="type">type</h3>
+
+<p>The type field indicates the type of HTTP request we wish to send. In this case it is a POST request.</p>
+
+<h3 id="contenttype">contentType</h3>
+
+<p>Here we are specifying that the data is of the JSON format. This is important as it provides the server with the knowledge it needs to be able to deserialise our data into a POCO object.</p>
+
+<h3 id="data">data</h3>
+
+<p>The data field contains the actual data that we want to send in the POST request. There are two things of note here. The first is that we have assigned our “tommy” object to a field named “person” in a new anonymous object. Why is this? Well, the JSON object that we send to the server needs to correspond to the signature of the method that will receive the request. As our method looks like this:</p>
+<div class='highlight'><pre><code class='csharp'><span class='k'>public</span> <span class='kt'>bool</span> <span class='nf'>ProcessData</span><span class='p'>(</span><span class='n'>Person</span> <span class='n'>person</span><span class='p'>)</span>
+</code></pre></div>
+<p>We need to send it an object that looks like this:</p>
+<div class='highlight'><pre><code class='javascript'><span class='p'>{</span> <span class='nx'>person</span><span class='o'>:</span> <span class='p'>[</span><span class='nx'>our</span> <span class='nx'>person</span> <span class='nx'>object</span><span class='p'>]</span> <span class='p'>}</span>
+</code></pre></div>
+<p>The second thing to note is that we invoke the JSON.stringify method in order to serialise the whole thing into a JSON string. This JSON string is what the server will receive and attempt to deserialise when we make the Ajax call from a web browser. We need to do this because “person” is a complex object and not a primitive JavaScript value, such as a string. Were we to send an object to the server consisting entirely of primitive values, this stringify call would not be necessary.</p>
+
+<h3 id="success">success</h3>
+
+<p>This function executes if the request succeeds. While in this case I’ve used an anonymous function, I could also have externalised this method and set “success” to a function pointer instead.</p>
+
+<p>This is all the server side code we need. Let’s fire up our website and run the code to see what happens.</p>
+
+<h2 id="making_the_call">Making the call</h2>
+
+<p>If we insert a breakpoint in our ProcessData method and execute our JavaScript, this the result we get in Visual Studio.</p>
+
+<p><a href="http://www.levibotelho.com/wp-content/uploads/2013/11/ajax0.png"></a></p>
+
+<p>As you can see, the model binder has done a wonderful job. Not only has it instantiated our object and mapped the simple Name property, but it has also translated the JavaScript Date value into a valid C# DateTime object, and mapped out our string array perfectly. We can now go ahead and do what we like with the data.</p>
+                        <br>
+                    <span class="entry-tags">
+                    <p>
+                        <i class="icon-tags"></i>&nbsp;Tagged with <a href="/tags/index.html#c#" data-toggle="tooltip" title="Posts tagged with c#" rel="tag">c#</a>&nbsp;&bull;&nbsp;<a href="/tags/index.html#asp.net" data-toggle="tooltip" title="Posts tagged with asp.net" rel="tag">asp.net</a>&nbsp;&bull;&nbsp;<a href="/tags/index.html#ajax" data-toggle="tooltip" title="Posts tagged with ajax" rel="tag">ajax</a>&nbsp;&bull;&nbsp;<a href="/tags/index.html#javascript" data-toggle="tooltip" title="Posts tagged with javascript" rel="tag">javascript</a>
+                    </p>
+                    </span>
+                    </div>
+        </div>
+                    <footer class="post-footer entry-meta">
+                        
+                        <div class="post-author text-center">                       
+	        <img src="/images/" alt="'s photo" itemprop="image" class="post-avatar img-circle img-responsive"/>    
+	    <h4 class="bordered-bottom vcard author" itemprop="author" itemscope itemtype="http://schema.org/Person">By <span itemprop="name" class="fn"><a href="/about" title="About " itemprop="url"></a></span></h4>
+	    <p></p>
+</div> 
+                        
+                    </footer>
+            </article>
+    </div>
+</div>
+
+<footer id="footer"  class="blog-background overlay text-center align-middle animated from-top" style="background-image: url(/images/)" >
+
+
+    <div class="inner">
+        <div class="container">
+
+            <ul class="social-icons">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </ul>
+            <p class="copy-text">
+                <a href="/about/"></a> &copy; 2014 &bull; All rights reserved.
+            </p>
+            <p class="copy-text">
+                Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <i class="icon-heart"></i> <a href="http://alum.mit.edu/www/hmfaysal/">HMFAYSAL OMEGA</a> theme.
+            </p>
+            <ul class="menu-items">
+            
+            <li><a href="/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+            
+        </ul>
+        </div>
+    </div>
+    
+        <div class="decor-wrapper">
+            <svg id="footer-decor" class="decor top" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 0 L50 50 L100 0 L0 0" fill="rgba(255,255,255, 1)"></path>
+
+                <path d="M48 48 L50 51 L52 48 L48 48" fill="rgba(255,255,255, 1)"></path>
+
+            </svg>
+        </div>
+    
+</footer>
+
+    
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+    
+    <script type="text/javascript" src="/assets/js/script.js"></script>
+
+
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = ''; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> 
+</body>
+</html>

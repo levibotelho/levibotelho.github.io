@@ -24,7 +24,7 @@ I like to think of Angular as a full-featured front-end web application framewor
 
 The biggest difference between the two frameworks boils down essentially to the choice between a simple framework that has useful, but limited features, and a complex framework that can do it all.
 
-Angular takes more work to set up than Knockout. Its architecture can seem a bit "elitist" in comparison, requiring more structure than a simple view model object to store values in. And it also takes considerably more time to get comfortable with if you're using the framework for the first time.*
+Angular takes more work to set up than Knockout. Its architecture can seem a bit "elitist" in comparison, requiring more structure than a simple view model object to store values in. And it also takes considerably more time to get comfortable with if you're using the framework for the first time.
 
 Furthermore, if you are trying to integrate Angular into an existing site or are trying to use it alongside other frameworks, you'll usually find points of overlap between Angular and everything else. To give you an idea of what I mean, here are two examples of this that come to mind.
 
@@ -39,7 +39,4 @@ I'm not going to go so far as to tell you which framework to choose for your pro
 If the project is new and I have free-reign over the architecture, then I'll pretty much choose Angular every single time. It has just too many killer features to pass up, and I love having one framework that lets me do whatever I want to, as opposed to a collection of frameworks that I need to fuse together into one coherent app. Plus, the support for single page apps is just fantastic.
 
 If the project is not new, or if I don't have free reign over the architecture, then I'll tend towards Knockout. Speaking from experience, it isn't too difficult to integrate Knockout into existing projects provided that the code is clean. And because Knockout is simple, you'll get the data binding you want in a simple, easy to use package, which can be just what you need when doing brownfield web development.
-
-<hr />
-**I'm currently trying to solve this problem with [learn-angular.org](http://www.learn-angular.org), which is a free, interactive AngularJS course that I am working on at the time of writing.*
 

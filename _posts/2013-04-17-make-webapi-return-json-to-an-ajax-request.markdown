@@ -9,10 +9,10 @@ share: true
 If you make an AJAX call to a WebAPI service using an XmlHttpRequest object, you’ll notice that the data returned to you is formatted as XML. This is because the “Accept” header in a typical XmlHttpRequest call looks something like this:
 
 {% highlight text %}
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,\*/\*;q=0.8
 {% endhighlight %}
 
-The Accept header plays a key role in a procedure known as “content negotiation”. Content negotiation is the process by which a client and a server decide in which media type to transmit information. The “Accept” header, sent to the server from the client, indicates the types in which it is willing to receive data. This particular header states that HTML or XHTML is preferred, followed by XML, followed by anything else*. As WebAPI supports XML and JSON out of the box, it will by default return data to this request in XML, which is the preferred format of the two.
+The Accept header plays a key role in a procedure known as “content negotiation”. Content negotiation is the process by which a client and a server decide in which media type to transmit information. The “Accept” header, sent to the server from the client, indicates the types in which it is willing to receive data. This particular header states that HTML or XHTML is preferred, followed by XML, followed by anything else. As WebAPI supports XML and JSON out of the box, it will by default return data to this request in XML, which is the preferred format of the two.
 
 But what if we want JSON?
 <a id="more"></a><a id="more-172"></a>
