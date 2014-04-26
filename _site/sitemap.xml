@@ -1,194 +1,209 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    
+     
+    <url>
+        <loc>http://localhost:4000/</loc>
+    </url> 
+    <url>
+        <loc>http://localhost:4000/documentation</loc>
+    </url> 
+    <url>
+        <loc>http://localhost:4000/categories</loc>
+    </url> 
+    <url>
+        <loc>http://localhost:4000/tags</loc>
+    </url> 
+    <url>
+        <loc>http://localhost:4000/hossain-mohd-faysal</loc>
+    </url>
     
     
     <url>
-        <loc>/visual%20studio/2014/04/14/visual-studio-a-humble-design-request.html</loc>
+        <loc>http://localhost:4000/visual%20studio/visual-studio-a-humble-design-request</loc>
     </url>
     
     <url>
-        <loc>/security/2014/04/10/heartbleed-list-of-vulnerable-sites-in-the-alexa-10000.html</loc>
+        <loc>http://localhost:4000/security/heartbleed-list-of-vulnerable-sites-in-the-alexa-10000</loc>
     </url>
     
     <url>
-        <loc>/node.js/2014/03/29/node-js-the-build-tools-for-visual-studio-xxxx-cannot-be-found.html</loc>
+        <loc>http://localhost:4000/node.js/node-js-the-build-tools-for-visual-studio-xxxx-cannot-be-found</loc>
     </url>
     
     <url>
-        <loc>/open%20source/2014/03/24/seo-for-single-page-asp-net-apps-with-spoon.html</loc>
+        <loc>http://localhost:4000/open%20source/seo-for-single-page-asp-net-apps-with-spoon</loc>
     </url>
     
     <url>
-        <loc>/front-end%20web/2014/03/11/angularjs-vs-knockoutjs.html</loc>
+        <loc>http://localhost:4000/front-end%20web/angularjs-vs-knockoutjs</loc>
     </url>
     
     <url>
-        <loc>/c%23/2014/02/26/c-the-operator-in-c-6.html</loc>
+        <loc>http://localhost:4000/c%23/c-the-operator-in-c-6</loc>
     </url>
     
     <url>
-        <loc>/windows%20azure/2014/02/14/azurecleardb-migrating-a-mysql-database.html</loc>
+        <loc>http://localhost:4000/windows%20azure/azurecleardb-migrating-a-mysql-database</loc>
     </url>
     
     <url>
-        <loc>/miscellaneous/2014/02/10/xml-schema-allow-elements-to-appear-any-number-of-times-in-any-order.html</loc>
+        <loc>http://localhost:4000/miscellaneous/xml-schema-allow-elements-to-appear-any-number-of-times-in-any-order</loc>
     </url>
     
     <url>
-        <loc>/front-end%20web/2014/01/29/knockout-js-foreach-binding-to-an-array-of-strings-or-numbers-or-bools.html</loc>
+        <loc>http://localhost:4000/front-end%20web/knockout-js-foreach-binding-to-an-array-of-strings-or-numbers-or-bools</loc>
     </url>
     
     <url>
-        <loc>/front-end%20web/2014/01/28/knockout-js-boolean-binding-not-working.html</loc>
+        <loc>http://localhost:4000/front-end%20web/knockout-js-boolean-binding-not-working</loc>
     </url>
     
     <url>
-        <loc>/c%23/2014/01/26/c-how-can-is-outperform-as.html</loc>
+        <loc>http://localhost:4000/c%23/c-how-can-is-outperform-as</loc>
     </url>
     
     <url>
-        <loc>/c%23/2014/01/13/c-compare-generic-variables-for-equality.html</loc>
+        <loc>http://localhost:4000/c%23/c-compare-generic-variables-for-equality</loc>
     </url>
     
     <url>
-        <loc>/c%23/2014/01/10/c-how-does-the-garbage-collector-work.html</loc>
+        <loc>http://localhost:4000/c%23/c-how-does-the-garbage-collector-work</loc>
     </url>
     
     <url>
-        <loc>/c%23/2014/01/04/c-static-type-constructors-and-beforefieldinit.html</loc>
+        <loc>http://localhost:4000/c%23/c-static-type-constructors-and-beforefieldinit</loc>
     </url>
     
     <url>
-        <loc>/visual%20studio/2013/12/17/c-how-to-view-jitted-code.html</loc>
+        <loc>http://localhost:4000/visual%20studio/c-how-to-view-jitted-code</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/12/15/c-how-method-calling-works.html</loc>
+        <loc>http://localhost:4000/c%23/c-how-method-calling-works</loc>
     </url>
     
     <url>
-        <loc>/asp.net/2013/11/24/posting-javascript-objects-with-ajax-and-asp-net-mvc.html</loc>
+        <loc>http://localhost:4000/asp.net/posting-javascript-objects-with-ajax-and-asp-net-mvc</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/11/18/call-and-callvirt-in-cil.html</loc>
+        <loc>http://localhost:4000/c%23/call-and-callvirt-in-cil</loc>
     </url>
     
     <url>
-        <loc>/windows%20azure/2013/11/07/create-a-wordpress-blog-on-windows-azure-in-five-minutes.html</loc>
+        <loc>http://localhost:4000/windows%20azure/create-a-wordpress-blog-on-windows-azure-in-five-minutes</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/10/16/what-is-the-difference-between-if-and-switch.html</loc>
+        <loc>http://localhost:4000/c%23/what-is-the-difference-between-if-and-switch</loc>
     </url>
     
     <url>
-        <loc>/front-end%20web/2013/10/02/dragging-and-dropping-files-not-working-with-knockout-js.html</loc>
+        <loc>http://localhost:4000/front-end%20web/dragging-and-dropping-files-not-working-with-knockout-js</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/09/05/the-performance-advantage-of-generic-type-constraints.html</loc>
+        <loc>http://localhost:4000/c%23/the-performance-advantage-of-generic-type-constraints</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/09/01/different-uri-encoding-formats-in-c.html</loc>
+        <loc>http://localhost:4000/c%23/different-uri-encoding-formats-in-c</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/08/30/the-danger-of-default-method-values-in-c.html</loc>
+        <loc>http://localhost:4000/c%23/the-danger-of-default-method-values-in-c</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/08/09/the-ins-and-outs-of-generic-interface-variance.html</loc>
+        <loc>http://localhost:4000/c%23/the-ins-and-outs-of-generic-interface-variance</loc>
     </url>
     
     <url>
-        <loc>/miscellaneous/2013/07/31/how-to-use-lookarounds-in-regular-expressions.html</loc>
+        <loc>http://localhost:4000/miscellaneous/how-to-use-lookarounds-in-regular-expressions</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/07/11/the-difference-between-const-and-readonly-in-c.html</loc>
+        <loc>http://localhost:4000/c%23/the-difference-between-const-and-readonly-in-c</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/06/29/referencing-project-elements-in-a-t4-file.html</loc>
+        <loc>http://localhost:4000/c%23/referencing-project-elements-in-a-t4-file</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/06/23/when-should-a-c-method-be-made-virtual.html</loc>
+        <loc>http://localhost:4000/c%23/when-should-a-c-method-be-made-virtual</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/06/15/polymorphism-with-new-and-override.html</loc>
+        <loc>http://localhost:4000/c%23/polymorphism-with-new-and-override</loc>
     </url>
     
     <url>
-        <loc>/open%20source/2013/06/07/strong-config-is-now-available-on-nuget.html</loc>
+        <loc>http://localhost:4000/open%20source/strong-config-is-now-available-on-nuget</loc>
     </url>
     
     <url>
-        <loc>/visual%20studio/2013/06/04/write-your-own-code-snippets-in-visual-studio.html</loc>
+        <loc>http://localhost:4000/visual%20studio/write-your-own-code-snippets-in-visual-studio</loc>
     </url>
     
     <url>
-        <loc>/visual%20studio/2013/06/02/team-foundation-service-error-tf30063.html</loc>
+        <loc>http://localhost:4000/visual%20studio/team-foundation-service-error-tf30063</loc>
     </url>
     
     <url>
-        <loc>/open%20source/2013/06/02/introducing-strongconfig.html</loc>
+        <loc>http://localhost:4000/open%20source/introducing-strongconfig</loc>
     </url>
     
     <url>
-        <loc>/visual%20studio/2013/06/02/changing-tfs-servers-for-a-visual-studio-project.html</loc>
+        <loc>http://localhost:4000/visual%20studio/changing-tfs-servers-for-a-visual-studio-project</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/05/24/what-is-string-interning.html</loc>
+        <loc>http://localhost:4000/c%23/what-is-string-interning</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/05/01/reference-windows-assembly.html</loc>
+        <loc>http://localhost:4000/c%23/reference-windows-assembly</loc>
     </url>
     
     <url>
-        <loc>/learning/2013/04/20/the-great-big-microsoft-certification-70-487-study-guide-materials.html</loc>
+        <loc>http://localhost:4000/learning/the-great-big-microsoft-certification-70-487-study-guide-materials</loc>
     </url>
     
     <url>
-        <loc>/learning/2013/04/17/the-great-big-microsoft-certification-70-487-study-guide.html</loc>
+        <loc>http://localhost:4000/learning/the-great-big-microsoft-certification-70-487-study-guide</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/04/17/sending-email-from-c-via-hotmailoutlookwindows-live.html</loc>
+        <loc>http://localhost:4000/c%23/sending-email-from-c-via-hotmailoutlookwindows-live</loc>
     </url>
     
     <url>
-        <loc>/asp.net/2013/04/17/make-webapi-return-json-to-an-ajax-request.html</loc>
+        <loc>http://localhost:4000/asp.net/make-webapi-return-json-to-an-ajax-request</loc>
     </url>
     
     <url>
-        <loc>/metaprogramming/2013/04/17/introduction-to-design-time-templating-in-c.html</loc>
+        <loc>http://localhost:4000/metaprogramming/introduction-to-design-time-templating-in-c</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/04/17/get-the-length-of-a-video-in-c.html</loc>
+        <loc>http://localhost:4000/c%23/get-the-length-of-a-video-in-c</loc>
     </url>
     
     <url>
-        <loc>/deployment/2013/04/17/encrypting-a-web-config-file.html</loc>
+        <loc>http://localhost:4000/deployment/encrypting-a-web-config-file</loc>
     </url>
     
     <url>
-        <loc>/database/2013/04/17/eager-and-lazy-loading-in-entity-framework.html</loc>
+        <loc>http://localhost:4000/database/eager-and-lazy-loading-in-entity-framework</loc>
     </url>
     
     <url>
-        <loc>/front-end%20web/2013/04/17/calculating-distances-in-css.html</loc>
+        <loc>http://localhost:4000/front-end%20web/calculating-distances-in-css</loc>
     </url>
     
     <url>
-        <loc>/c%23/2013/04/17/aggregate-explained.html</loc>
+        <loc>http://localhost:4000/c%23/aggregate-explained</loc>
     </url>
     
 </urlset>

@@ -13,7 +13,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Latest Posts">
 <meta property="og:description" content="The personal blog of Hossain Mohd. Faysal, a doctoral candidate in Electrical Engineering at University of Pennsylvania.">
-<meta property="og:url" content="http://localhost:4000/index.html">
+<meta property="og:url" content="http://localhost:4000/page2/index.html">
 <meta property="og:site_name" content="Site Title">
 <meta property="og:image" content="http://localhost:4000/images/some-image.jpg">
 
@@ -21,7 +21,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/page2/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Site Title Feed">
 <link rel="author" href="http://plus.google.com/123123123123132123?rel=author">
 
@@ -128,26 +128,20 @@
 	               <header class="post-header">
 	                    
 	                    <h2 class="post-title text-center super lighter bordered-bottom">
-	                        <a href="http://localhost:4000/visual%20studio/visual-studio-a-humble-design-request">[Visual Studio] A humble design request...</a>
+	                        <a href="http://localhost:4000/windows%20azure/azurecleardb-migrating-a-mysql-database">[Azure/ClearDB] Migrating a MySQL database</a>
 	                    
 	                    </h2>
 	                    <div class="post-info text-center small">
-	                        <time datetime="2014-04-14T00:00:00+01:00" class="post-time">14 Apr 2014</time>
-	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#visual studio" data-toggle="tooltip" title="Other posts from the Visual studio category" rel="tag">Visual studio</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;Less than 1 minute read</span>
+	                        <time datetime="2014-02-14T00:00:00+00:00" class="post-time">14 Feb 2014</time>
+	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#windows azure" data-toggle="tooltip" title="Other posts from the Windows azure category" rel="tag">Windows azure</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;4 minutes read</span>
 	                    </div>
 	                </header>
 	                <div class="post-body bordered-bottom">
 	                
 	                
-	                    <p>Today I made my first suggestion on Visual Studio User Voice. My request is simple. I would like the Visual Studio design team to change the Browser Link icon from a clockwise arrow to something else, such as a bidirectional horizontal arrow. Here’s why.
-
-[](http://www.levibotelho.com/wp-content/uploads/2014/04/Browser-Link-Button.png)
-
-I am constantly getting these buttons mixed up, which is not helped by the fact that the browser link button is right beside the Start Debugging button. If you agree, then do feel free to vote on Visual Studio User Voice for this issue.
-
-&hellip;</p>
+	                    <p>Disclaimer I make no guarantees about the reliability of this migration procedure. This is the process that I followed, and while it did work for me that does not in any way mean that you will obtain the same results. In short, use at your own risk. The strategy I recently had to migrate this blog from one Azure account to another. While the site migration wasn’t terribly fascinating, the database migration was a task unto itself. Because Microsoft provides MySQL databases to Azure users via a third party (ClearDB), they do not support migrating MySQL databases like they do...&hellip;</p>
 	                    
-		                <a href="http://localhost:4000/visual%20studio/visual-studio-a-humble-design-request" data-toggle="tooltip" title="Read more about [Visual Studio] A humble design request..." class="more-link">>
+		                <a href="http://localhost:4000/windows%20azure/azurecleardb-migrating-a-mysql-database" data-toggle="tooltip" title="Read more about [Azure/ClearDB] Migrating a MySQL database" class="more-link">>
 		                    <i class="icon-link"></i> read more...
 		                </a>
 		                
@@ -173,20 +167,20 @@ I am constantly getting these buttons mixed up, which is not helped by the fact 
 	               <header class="post-header">
 	                    
 	                    <h2 class="post-title text-center super lighter bordered-bottom">
-	                        <a href="http://localhost:4000/security/heartbleed-list-of-vulnerable-sites-in-the-alexa-10000">Heartbleed - List of vulnerable sites in the Alexa 10000</a>
+	                        <a href="http://localhost:4000/miscellaneous/xml-schema-allow-elements-to-appear-any-number-of-times-in-any-order">[XML Schema] Allow elements to appear any number of times, in any order</a>
 	                    
 	                    </h2>
 	                    <div class="post-info text-center small">
-	                        <time datetime="2014-04-10T00:00:00+01:00" class="post-time">10 Apr 2014</time>
-	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#security" data-toggle="tooltip" title="Other posts from the Security category" rel="tag">Security</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;4 minutes read</span>
+	                        <time datetime="2014-02-10T00:00:00+00:00" class="post-time">10 Feb 2014</time>
+	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#miscellaneous" data-toggle="tooltip" title="Other posts from the Miscellaneous category" rel="tag">Miscellaneous</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;1 minute read</span>
 	                    </div>
 	                </header>
 	                <div class="post-body bordered-bottom">
 	                
 	                
-	                    <p>Let’s be clear from the start. I’m not going to provide yet another explanation of what Heartbleed is. If you live in a cave and haven’t heard about it yet then check out these links for an explanation. The layman’s explanation. A technical explanation. An in-depth explanation. What I am going to do, however, is post the list of the sites in the Alexa top 10000 that have been impacted. There are 630 sites in this list out of the original 10000, meaning that 6.3% of the original list was detected as being vulnerable. Disclaimer This list is actually just...&hellip;</p>
+	                    <p>It’s not every day that I write XML schema files, but when I do I often have to remind myself of how to perform this simple task. For our example we’ll write a schema to describe the following document. &lt;inventory&gt; &lt;Desk&gt;&lt;/Desk&gt; &lt;Chair&gt;&lt;/Chair&gt; &lt;Chair&gt;&lt;/Chair&gt; &lt;!-- and so on… --&gt; &lt;/inventory&gt; Our inventory can contain any number of desks and chairs, and there is no restriction on the order of the elements in our document. Now if you’re like me and have to write a schema for this, you’ll be tempted to use an all element like so. &lt;xs:element name=&quot;Inventory&quot;&gt; &lt;xs:complexType&gt; &lt;xs:all&gt;...&hellip;</p>
 	                    
-		                <a href="http://localhost:4000/security/heartbleed-list-of-vulnerable-sites-in-the-alexa-10000" data-toggle="tooltip" title="Read more about Heartbleed - List of vulnerable sites in the Alexa 10000" class="more-link">>
+		                <a href="http://localhost:4000/miscellaneous/xml-schema-allow-elements-to-appear-any-number-of-times-in-any-order" data-toggle="tooltip" title="Read more about [XML Schema] Allow elements to appear any number of times, in any order" class="more-link">>
 		                    <i class="icon-link"></i> read more...
 		                </a>
 		                
@@ -212,21 +206,20 @@ I am constantly getting these buttons mixed up, which is not helped by the fact 
 	               <header class="post-header">
 	                    
 	                    <h2 class="post-title text-center super lighter bordered-bottom">
-	                        <a href="http://localhost:4000/node.js/node-js-the-build-tools-for-visual-studio-xxxx-cannot-be-found">[Node.js] The build tools for Visual Studio XXXX cannot be found</a>
+	                        <a href="http://localhost:4000/front-end%20web/knockout-js-foreach-binding-to-an-array-of-strings-or-numbers-or-bools">[knockout.js] Foreach binding to an array of strings (or numbers, or bools…)</a>
 	                    
 	                    </h2>
 	                    <div class="post-info text-center small">
-	                        <time datetime="2014-03-29T00:00:00+01:00" class="post-time">29 Mar 2014</time>
-	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#node.js" data-toggle="tooltip" title="Other posts from the Node.js category" rel="tag">Node.js</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;Less than 1 minute read</span>
+	                        <time datetime="2014-01-29T00:00:00+00:00" class="post-time">29 Jan 2014</time>
+	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#front-end web" data-toggle="tooltip" title="Other posts from the Front-end web category" rel="tag">Front-end web</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;3 minutes read</span>
 	                    </div>
 	                </header>
 	                <div class="post-body bordered-bottom">
 	                
-	                <p class = "lead">I got this error when trying to install a node.js package that wanted to build some associated .cc files with the Visual Studio 2010 compiler (v100 build tools). I haven&#8217;t had Visual Studio 2010 installed on my machine since Visual Studio 2012 came out, and really didn&#8217;t want to reinstall it.
-
-</p>&hellip;
+	                
+	                    <p>I’m currently working on a web application where I have to write an interface that allows users to delete photos that they have uploaded to the site. The user interface and corresponding view model are based on the following design. &lt;button data-bind=&quot;click: delete&quot;&gt;Delete Photo&lt;/button&gt; &lt;div data-bind=&quot;foreach: photos&quot;&gt; &lt;div&gt; &lt;span data-bind=&quot;text: $data&quot;&gt;&lt;/span&gt; &lt;img data-bind=&quot;attr: {src: $data}, click: $root.select&quot; /&gt; &lt;/div&gt; &lt;/div&gt; function ViewModel() { var self = this; self.selected = ko.observable(&quot;&quot;); self.photos = ko.observableArray([&quot;url0&quot;, &quot;url1&quot;, &quot;url2&quot;]); self.select = function() { self.selected(this); } self.delete = function() { self.photos.remove(self.selected()); self.selected(undefined); } }; So, we have a collection of photo urls stored in an...&hellip;</p>
 	                    
-		                <a href="http://localhost:4000/node.js/node-js-the-build-tools-for-visual-studio-xxxx-cannot-be-found" data-toggle="tooltip" title="Read more about [Node.js] The build tools for Visual Studio XXXX cannot be found" class="more-link">>
+		                <a href="http://localhost:4000/front-end%20web/knockout-js-foreach-binding-to-an-array-of-strings-or-numbers-or-bools" data-toggle="tooltip" title="Read more about [knockout.js] Foreach binding to an array of strings (or numbers, or bools…)" class="more-link">>
 		                    <i class="icon-link"></i> read more...
 		                </a>
 		                
@@ -252,20 +245,20 @@ I am constantly getting these buttons mixed up, which is not helped by the fact 
 	               <header class="post-header">
 	                    
 	                    <h2 class="post-title text-center super lighter bordered-bottom">
-	                        <a href="http://localhost:4000/open%20source/seo-for-single-page-asp-net-apps-with-spoon">SEO for Single Page ASP.NET Apps with Spoon</a>
+	                        <a href="http://localhost:4000/front-end%20web/knockout-js-boolean-binding-not-working">[knockout.js] Boolean binding not working</a>
 	                    
 	                    </h2>
 	                    <div class="post-info text-center small">
-	                        <time datetime="2014-03-24T00:00:00+01:00" class="post-time">24 Mar 2014</time>
-	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#open source" data-toggle="tooltip" title="Other posts from the Open source category" rel="tag">Open source</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;4 minutes read</span>
+	                        <time datetime="2014-01-28T00:00:00+00:00" class="post-time">28 Jan 2014</time>
+	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#front-end web" data-toggle="tooltip" title="Other posts from the Front-end web category" rel="tag">Front-end web</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;1 minute read</span>
 	                    </div>
 	                </header>
 	                <div class="post-body bordered-bottom">
 	                
 	                
-	                    <p>Search engine optimisation is one of the most important aspects of any public web application. However single page application developers face a significant challenge in exposing their content to search engines and web crawlers. The problem is that the concept of a web page is not necessarily the same for a web server as it is for a user. While the user of an SPA could navigate through an entire site and be convinced that it was made up of countless individual web pages, a crawler attempting to crawl such a site would only ever end up downloading and analysing...&hellip;</p>
+	                    <p>Here’s a quick fix if you’re doing data binding in knockout and wondering why a binding like the following isn’t working: &lt;div data-bind=&quot;visible: !isMessageHidden&quot;&gt; &lt;script&gt; // In your view model self.isMessageHidden: ko.observable(true) }; // ... &lt;/script&gt; You need to add a set of parentheses after the isMessageHidden like so. &lt;div data-bind=&quot;visible: !isMessageHidden()&quot;&gt; The key to understanding this is understanding that isMessageHidden is not a boolean value, but an observable which stores a boolean value. If we simply refer to this observable by name in our data-binding code, then knockout will infer that we want to retrieve the stored value. However,...&hellip;</p>
 	                    
-		                <a href="http://localhost:4000/open%20source/seo-for-single-page-asp-net-apps-with-spoon" data-toggle="tooltip" title="Read more about SEO for Single Page ASP.NET Apps with Spoon" class="more-link">>
+		                <a href="http://localhost:4000/front-end%20web/knockout-js-boolean-binding-not-working" data-toggle="tooltip" title="Read more about [knockout.js] Boolean binding not working" class="more-link">>
 		                    <i class="icon-link"></i> read more...
 		                </a>
 		                
@@ -291,21 +284,20 @@ I am constantly getting these buttons mixed up, which is not helped by the fact 
 	               <header class="post-header">
 	                    
 	                    <h2 class="post-title text-center super lighter bordered-bottom">
-	                        <a href="http://localhost:4000/front-end%20web/angularjs-vs-knockoutjs">AngularJS vs KnockoutJS</a>
+	                        <a href="http://localhost:4000/c%23/c-how-can-is-outperform-as">[C#] How can is outperform as?</a>
 	                    
 	                    </h2>
 	                    <div class="post-info text-center small">
-	                        <time datetime="2014-03-11T00:00:00+01:00" class="post-time">11 Mar 2014</time>
-	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#front-end web" data-toggle="tooltip" title="Other posts from the Front-end web category" rel="tag">Front-end web</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;4 minutes read</span>
+	                        <time datetime="2014-01-26T00:00:00+00:00" class="post-time">26 Jan 2014</time>
+	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#c#" data-toggle="tooltip" title="Other posts from the C# category" rel="tag">C#</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;4 minutes read</span>
 	                    </div>
 	                </header>
 	                <div class="post-body bordered-bottom">
 	                
-	                <p class = "lead">Lately I’ve been spending a lot of time with AngularJS. Coming from a KnockoutJS background, one of the first questions I had when I first started out with Angular was how the two frameworks compare. Hopefully this article will provide some answers for those in the same situation that I was.
-
-</p>&hellip;
+	                
+	                    <p>Take a look at this code var sum = 0; for (var i = 0; i &lt; 100000000; i++) { object val; if (i % 2 == 0) val = 1; else val = null; // either var intVal = val as int?; if (val != null) sum += intVal.Value; // or if (val is int) sum += (int)val; } Would you believe that the variant using is executes over six times faster than the variant that uses as? And before you accuse me of being unfair, the difference is not only due to the overhead involved in using a...&hellip;</p>
 	                    
-		                <a href="http://localhost:4000/front-end%20web/angularjs-vs-knockoutjs" data-toggle="tooltip" title="Read more about AngularJS vs KnockoutJS" class="more-link">>
+		                <a href="http://localhost:4000/c%23/c-how-can-is-outperform-as" data-toggle="tooltip" title="Read more about [C#] How can is outperform as?" class="more-link">>
 		                    <i class="icon-link"></i> read more...
 		                </a>
 		                
@@ -331,20 +323,20 @@ I am constantly getting these buttons mixed up, which is not helped by the fact 
 	               <header class="post-header">
 	                    
 	                    <h2 class="post-title text-center super lighter bordered-bottom">
-	                        <a href="http://localhost:4000/c%23/c-the-operator-in-c-6">[C#] The "?." operator in C# 6?</a>
+	                        <a href="http://localhost:4000/c%23/c-compare-generic-variables-for-equality">[C#] Compare generic variables for equality</a>
 	                    
 	                    </h2>
 	                    <div class="post-info text-center small">
-	                        <time datetime="2014-02-26T00:00:00+00:00" class="post-time">26 Feb 2014</time>
+	                        <time datetime="2014-01-13T00:00:00+00:00" class="post-time">13 Jan 2014</time>
 	                        in <span class="post-tags"><a href="http://localhost:4000/categories/index.html#c#" data-toggle="tooltip" title="Other posts from the C# category" rel="tag">C#</a></span>&nbsp;<span class="post-tags"><i class="icon-time"></i>&nbsp;1 minute read</span>
 	                    </div>
 	                </header>
 	                <div class="post-body bordered-bottom">
 	                
 	                
-	                    <p>Visual Studio User Voice is a great site. It lets the community at large propose and vote for features in upcoming Microsoft products. Some time ago I cast my vote for a feature which I felt has been lacking for a long time in C#: the ?. operator. ?. would serve to eliminate chained null reference checks when accessing fields and properties on objects. The idea is that instead of writing this return obj != null ? obj.X : null; you could simply write this return obj?.X; Pretty useful eh? Especially when you are dealing with several layers of objects...&hellip;</p>
+	                    <p>This is a simple task, yet one which is frequently carried out incorrectly. This kind of comparison is often required when dealing with classes that look like the following. class GenericContainer&lt;T&gt; { T _variable; public T Variable { get { return _variable; } set { // Test for equality before setting. _variable = value; // Invoke an event here... } } } Now the knee-jerk reaction to compare _variable and value in this case is to do this. set { if (_variable == value) return; _variable = value; // Monkey business... } However, this doesn’t compile. This makes sense, because...&hellip;</p>
 	                    
-		                <a href="http://localhost:4000/c%23/c-the-operator-in-c-6" data-toggle="tooltip" title="Read more about [C#] The "?." operator in C# 6?" class="more-link">>
+		                <a href="http://localhost:4000/c%23/c-compare-generic-variables-for-equality" data-toggle="tooltip" title="Read more about [C#] Compare generic variables for equality" class="more-link">>
 		                    <i class="icon-link"></i> read more...
 		                </a>
 		                
@@ -366,37 +358,36 @@ I am constantly getting these buttons mixed up, which is not helped by the fact 
     
     
     
-    
-    
-    
      
     <div class="page-body col-md-12">
       <ul class="pagination pagination-centered">
          
         
-          <li class="disabled">
-            <a>&laquo;&laquo;</a>
-          </li>
-        
-        
-        
-          <li class="disabled">
-            <a>&laquo;</a>
-          </li>
-        
-        
-      
-      
-        
-          <li class="active">
-            <a>1</a>
-          </li>
+            <li>
+              <a href="http://localhost:4000/">&laquo;&laquo;</a>
+            </li>
         
         
         
           
             <li>
-              <a href="http://localhost:4000/page2">2</a>
+              <a href="http://localhost:4000">&laquo;</a>
+            </li>
+          
+        
+        
+      
+      
+        
+          <li>
+            <a href="http://localhost:4000">1</a>
+          </li>
+        
+        
+        
+          
+            <li class="active">
+              <a>2</a>
             </li>
           
         
@@ -418,9 +409,15 @@ I am constantly getting these buttons mixed up, which is not helped by the fact 
             </li>
           
         
+          
+            <li>
+              <a href="http://localhost:4000/page6">6</a>
+            </li>
+          
+        
         
           <li>
-            <a href="http://localhost:4000/page2">&raquo;</a>
+            <a href="http://localhost:4000/page3">&raquo;</a>
           </li>
         
          

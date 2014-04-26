@@ -1,7 +1,7 @@
-title:            Site Title
-description:      Site description for the metas.
+title:            Levi Botelho's Coding Blog
+description:      Articles about C#, web development and various other technologies.
 logo:             site-logo.png
-disqus_shortname: shortname
+disqus_shortname: levibotelho
 # Assign a default image for your site's header and footer
 default_bg:       some-image.jpg
 search:           true
@@ -13,27 +13,22 @@ animated_fins:    true
 # Specify the fin color in RGB value
 fin_color:        "255,255,255"
 # Change url to your domain. Leave localhost server or blank when working locally.
-url:              "http://localhost:4000"
-
+url:              "http://levibotelho.github.io"
 
 # Owner/author information
 owner:
-  name:           Your Name
+  name:           Levi Botelho
   avatar:         your-photo.jpg
-  email:          your@email.com
+  email:          levi_botelho@hotmail.com
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
-  description:    Some Details about yourself
+  description:    Web developer, C# enthusiast, and technology addict...
   # Social networking links used in footer. Update and remove as you like.
   # To register at HMFAYSAL SOCIAL, visit http://social.hmfaysal.tk
-  twitter:
-  facebook:
-  github:
-  linkedin:
-  instagram:
-  tumblr:
-  hmfaysalsocial:
+  twitter: https://twitter.com/LeviBotelho
+  github: https://github.com/LeviBotelho
+  linkedin: https://www.linkedin.com/pub/levi-botelho/64/aa1/889
   # For Google Authorship https://plus.google.com/authorship
-  google_plus:    "http://plus.google.com/123123123123132123"
+  google_plus:    "http://plus.google.com/114943939762387174074"
 
 # Analytics and webmaster tools stuff goes here
 google_analytics:
@@ -48,17 +43,9 @@ links:
     url: /
     external: false
     icon: home
-  - title: <i class="icon-book"></i> Documentation
-    url: /documentation
-  - title: Categories
-    url: /categories
-  - title: Tags
-    url: /tags
-  - title: Faysal who?
-    url: /hossain-mohd-faysal
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
+timezone:    Europe/Paris
 future:      true
 pygments:    true
 markdown:    kramdown
