@@ -29,5 +29,5 @@ request.send();
 WebAPI will now send us JSON data in response to our calls. This data can then be parsed into JavaScript objects using the JSON.Parse() method.
 
 <hr />
-** The “q” value (known as the “relative quality factor”) of the XML and “any” types in this header provides a means of prioritising which types to serve to the calling client. Types with no associated value are served first, followed by the rest in descending order. [You can read more about the Accept header and the relative quality factor here](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).*
+* The “q” value (known as the “relative quality factor”) of the XML and “any” types in this header provides a means of prioritising which types to serve to the calling client. Types with no associated value are served first, followed by the rest in descending order. [You can read more about the Accept header and the relative quality factor here](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
