@@ -1,7 +1,7 @@
 ---
 layout: post
 title: call and callvirt in CIL
-category: [C#]
+category: C#
 tags: [c#, clr]
 comments: true
 share: true

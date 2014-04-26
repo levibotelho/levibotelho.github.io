@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Make WebAPI Return JSON to an AJAX Request
-category: [ASP.NET]
+category: ASP.NET
 tags: [asp.net, http, ajax, javascript, json, webapi, jquery]
 comments: true
 share: true

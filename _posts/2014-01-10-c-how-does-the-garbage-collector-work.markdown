@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[C#] How does the garbage collector work?'
-category: [C#]
+category: C#
 tags: [c#, clr]
 comments: true
 share: true

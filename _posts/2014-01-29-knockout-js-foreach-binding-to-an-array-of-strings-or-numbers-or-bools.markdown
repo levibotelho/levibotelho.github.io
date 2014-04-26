@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[knockout.js] Foreach binding to an array of strings (or numbers, or bools…)'
-category: [Front-end Web]
+category: Front-End Web
 tags: [javascript, knockout.js]
 comments: true
 share: true

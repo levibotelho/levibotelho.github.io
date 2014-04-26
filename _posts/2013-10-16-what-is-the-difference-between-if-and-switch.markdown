@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What is the difference between if and switch?
-category: [C#]
+category: C#
 tags: [c#, clr, performance]
 comments: true
 share: true

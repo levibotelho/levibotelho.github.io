@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Team Foundation Service Error TF30063
-categories: [Visual Studio]
-tags:[tfs, visual studio]
+category: Visual Studio
+tags: [tfs, visual studio]
 comments: true
 share: true
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[Azure/ClearDB] Migrating a MySQL database'
-category: [Windows Azure]
+category: Windows Azure
 tags: [azure, mysql, cleardb, migration]
 comments: true
 share: true

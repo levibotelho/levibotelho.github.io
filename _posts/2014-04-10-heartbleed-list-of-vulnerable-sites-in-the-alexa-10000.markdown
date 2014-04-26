@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Heartbleed - List of vulnerable sites in the Alexa 10000
-category: [Security]
+category: Security
 tags: [heartbleed, security]
 comments: true
 share: true

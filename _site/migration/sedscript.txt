@@ -1,0 +1,33 @@
+# Erase
+s:<p>|<a id="more"></a>|<a id="more-\d*"></a>::Ig
+
+# HTML Replacements
+s:</p>|<br\s?/>:\
+:Ig
+s:<br />::Ig
+s:<h1>\(.*\)</h1>:\# \1\
+:Ig
+s:<h2>\(.*\)</h2>:\#\# \1\
+:Ig
+s:<h3>\(.*\)</h3>:\#\#\# \1\
+:Ig
+s:<h4>\(.*\)</h4>:\#\#\#\# \1\
+:Ig
+s:<h5>\(.*\)</h5>:\#\#\#\#\# \1\
+:Ig
+s:</?code>:`:Ig
+s:</?i>|</?em>:*:Ig
+s:</?b>|</?strong>:**:Ig
+s:<a.*href="\(\S*\)".*>\(.*\)</a>:[\2](\1):Ig
+
+# Character Replacements
+s:&quot;:":Ig
+s:&gt;:>:Ig
+s:&lt;:<:Ig
+
+# Syntax Highlighting
+s:\[sourcecode language="\(\w*\)"\]:{% highlight \1 %}:Ig
+s:\[sourcecode]:{% highlight text %}:Ig
+s:\[/sourcecode\]:{% endhighlight %}:Ig
+s:^\[\(\w*\)\]$:{% highlight \1 %}:Ig
+s:^\[/\w*\]$:{% endhighlight %}:Ig

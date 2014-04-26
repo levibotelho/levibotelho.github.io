@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The ins and outs of generic interface variance
-category: [C#]
+category: C#
 tags: [c#, clr]
 comments: true
 share: true

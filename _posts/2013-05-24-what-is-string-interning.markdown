@@ -1,13 +1,10 @@
 ---
 layout: post
-status: publish
-published: true
 title: What is string interning?
 category: C#
 tags: [c#, clr]
-- c#
-- clr
-comments: []
+comments: true
+share: true
 ---
 Execute this block of code in a new console application:
 

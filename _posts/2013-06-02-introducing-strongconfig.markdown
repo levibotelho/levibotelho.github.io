@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introducing strong.config
-category: [Open Source]
+category: Open Source
 tags: [strong.config, open source]
 comments: true
 share: true

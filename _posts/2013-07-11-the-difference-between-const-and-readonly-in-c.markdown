@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The difference between const and readonly in C#
-category: [C#]
+category: C#
 tags: [c#, clr]
 comments: true
 share: true

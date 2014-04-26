@@ -1,9 +1,7 @@
 ---
 layout: post
-status: publish
-published: true
 title: The Great Big Microsoft Certification 70-487 Study Guide
-categories: [learning]
+category: Learning
 tags: [iis, entity framework, webapi, xml, certification, 70-487, ado.net, azure, caching, deployment, nuget, odata, transactions, wcf, web services, windows]
 comments: true
 share: true

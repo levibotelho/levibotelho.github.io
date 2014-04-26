@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Create a WordPress blog on Windows Azure in five minutes
-category: [Windows Azure]
+category: Windows Azure
 tags: [azure, wordpress]
 comments: true
 share: true

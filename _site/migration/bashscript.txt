@@ -1,0 +1,1 @@
+find ./_posts/ -type f -exec sed -i -f sedscript.txt {} \;

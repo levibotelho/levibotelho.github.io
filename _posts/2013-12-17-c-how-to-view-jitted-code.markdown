@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! "[Visual Studio] How to view JITted code"
-category: [Visual Studio]
+category: Visual Studio
 tags: [visual studio]
 comments: true
 share: true

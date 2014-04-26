@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[Node.js] The build tools for Visual Studio XXXX cannot be found'
-category: [Node.js]
+category: Node.js
 tags: [visual studio, node.js, npm]
 comments: true
 share: true

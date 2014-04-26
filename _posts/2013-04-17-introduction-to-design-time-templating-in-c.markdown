@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introduction to Design Time Templating in C#
-category: [Metaprogramming]
+category: Metaprogramming
 tags: [c#, T4]
 comments: true
 share: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[Visual Studio] A humble design request...'
-category: [Visual Studio]
+category: Visual Studio
 tags: [visual studio, design]
 comments: true
 share: true

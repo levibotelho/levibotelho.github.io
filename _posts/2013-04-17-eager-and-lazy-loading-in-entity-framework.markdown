@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Eager and Lazy Loading in Entity Framework
-category: [Database]
+category: Database
 tags: [c#, entity framework, performance]
 comments: true
 share: true

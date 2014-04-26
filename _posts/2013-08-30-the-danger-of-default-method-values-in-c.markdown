@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The danger of default method values in C#
-category: [C#]
+category: C#
 tags: [c#]
 comments: true
 share: true

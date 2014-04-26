@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Changing TFS Servers for a Visual Studio Project
-categories: [Visual Studio]
+category: Visual Studio
 tags: [visual studio, tfs]
 comments: true
 share: true

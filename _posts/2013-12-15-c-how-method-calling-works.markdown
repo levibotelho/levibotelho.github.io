@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! "[C#] How method calling works"
-category: [C#]
+category: C#
 tags: [c#, clr]
 comments: true
 share: true

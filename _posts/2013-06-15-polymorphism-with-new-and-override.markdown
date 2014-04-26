@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Polymorphism with new and override
-category: [C#]
+category: C#
 tags: [c#, clr]
 comments: true
 share: true

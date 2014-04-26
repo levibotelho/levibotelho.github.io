@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[C#] Compare generic variables for equality'
-category: [C#]
+category: C#
 tags: [c#, generics]
 comments: true
 share: true

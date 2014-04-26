@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Encrypting a web.config file
-category: [Deployment]
+category: Deployment
 tags: [c#, iis, web.config, deployment]
 comments: true
 share: true

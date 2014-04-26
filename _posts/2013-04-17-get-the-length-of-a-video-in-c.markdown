@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Get the Length of a Video in C#
-category: [C#]
+category: C#
 tags: [c#; video, com, shell]
 comments: true
 share: true

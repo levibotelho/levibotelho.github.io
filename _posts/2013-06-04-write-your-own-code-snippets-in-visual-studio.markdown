@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Write your own code snippets in Visual Studio
-category: [Visual Studio]
+category: Visual Studio
 tags: [visual studio, snippets]
 comments: true
 share: true

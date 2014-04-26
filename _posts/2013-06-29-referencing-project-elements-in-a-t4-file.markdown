@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Referencing project elements in a T4 file
-category: [C#]
+category: C#
 tags: [c#, t4, metaprogramming]
 comments: true
 share: true

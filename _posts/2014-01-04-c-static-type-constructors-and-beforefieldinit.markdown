@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[C#] Static type constructors and beforefieldinit'
-category: [C#]
+category: C#
 tags: [c#, clr, performance]
 comments: true
 share: true

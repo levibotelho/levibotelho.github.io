@@ -1,7 +1,7 @@
 ---
 layout: post
 title: When should a C# method be made virtual?
-category: [C#]
+category: C#
 tags: [c#]
 comments: true
 share: true
