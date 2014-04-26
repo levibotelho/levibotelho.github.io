@@ -1,9 +1,9 @@
 title:            Levi Botelho's Coding Blog
 description:      Articles about C#, web development and various other technologies.
-logo:             site-logo.png
+logo:             logo.png
 disqus_shortname: levibotelho
 # Assign a default image for your site's header and footer
-default_bg:       some-image.jpg
+default_bg:       background.jpg
 search:           true
 share:            true
 # Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
@@ -14,21 +14,22 @@ animated_fins:    true
 fin_color:        "255,255,255"
 # Change url to your domain. Leave localhost server or blank when working locally.
 url:              "http://levibotelho.github.io"
+#url:              "http://localhost:4000"
 
 # Owner/author information
 owner:
   name:           Levi Botelho
-  avatar:         your-photo.jpg
+  avatar:         me.jpg
   email:          levi_botelho@hotmail.com
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
   description:    Web developer, C# enthusiast, and technology addict...
-  # Social networking links used in footer. Update and remove as you like.
-  # To register at HMFAYSAL SOCIAL, visit http://social.hmfaysal.tk
   twitter: https://twitter.com/LeviBotelho
   github: https://github.com/LeviBotelho
   linkedin: https://www.linkedin.com/pub/levi-botelho/64/aa1/889
+  stackexchange: http://stackoverflow.com/users/1068266/levi-botelho
   # For Google Authorship https://plus.google.com/authorship
-  google_plus:    "http://plus.google.com/114943939762387174074"
+  google_plus: "http://plus.google.com/114943939762387174074"
+  
 
 # Analytics and webmaster tools stuff goes here
 google_analytics:

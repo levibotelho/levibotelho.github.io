@@ -102,7 +102,7 @@ This is all the server side code we need. Let’s fire up our website and run th
 
 If we insert a breakpoint in our ProcessData method and execute our JavaScript, this the result we get in Visual Studio.
 
-[](http://www.levibotelho.com/wp-content/uploads/2013/11/ajax0.png)
+![Visual Studio Debugger Screenshot](({{ site.url }}/images/2013-11-24-posting-javascript-objects-with-ajax-and-asp-net-mvc/0.png)
 
 As you can see, the model binder has done a wonderful job. Not only has it instantiated our object and mapped the simple Name property, but it has also translated the JavaScript Date value into a valid C# DateTime object, and mapped out our string array perfectly. We can now go ahead and do what we like with the data.
 

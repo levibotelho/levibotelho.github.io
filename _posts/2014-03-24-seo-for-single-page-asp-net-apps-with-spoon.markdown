@@ -12,7 +12,7 @@ The problem is that the concept of a web page is not necessarily the same for a 
 
 The result of all this is that while SPAs provide users with an enjoyable user experience, web crawlers aren't adapted to understand how SPAs are built and what kinds of content they contain.
 
-## Google's solution
+##Google's solution
 
 Luckily for us, Google has come up with a solution to this problem. The solution consists of a protocol which allows sites to tell crawlers about their dynamic content. [The full text of the protocol can be found here](https://developers.google.com/webmasters/ajax-crawling/docs/specification), but the general idea is as follows. Normally SPAs use hash fragments to denote different pages in an app, like this.
 
@@ -28,15 +28,15 @@ Now, whenever a crawler sees a link to a page containing a hashbang fragment suc
 
 When the server sees such a request come in, it can serve up a static HTML page containing all the content that is dynamically presented in the actual one.
 
-## This can be a pain...
+##This can be a pain...
 
 While this hashbang solution is quite good, it has one annoying consequence for web developers. In order to use this protocol, developers need to maintain static copies of all their dynamic pages which are publicly exposed to web crawlers. Keeping this content up to date as a site evolves is both repetitive and error prone. "There must be a better way!"
 
-## There is!
+##There is!
 
 This is the problem that I have attempted to solve with Spoon. Spoon is a class library which takes snapshots of your dynamic web pages and serves them up when `_escaped_fragment_` requests come in.
 
-## How to use Spoon
+##How to use Spoon
 
 Using Spoon is really easy. Get the NuGet package (`PM> Install-Package Spoon`) and hook the following code into to your site's `Application_Start()` method.
 
@@ -88,7 +88,7 @@ public async Task<ActionResult> Index(string _escaped_fragment_)
 
 That's all there is to it. When an `_escaped_fragment_` is passed to the method, Spoon will look to see if that fragment has been registered. If it has, Spoon will return to you the path to the snapshot file that you can serve with ASP.NET's `File()` method. If the fragment hasn't been registered, an `ArgumentException` is thrown. It is up to you to catch this exception and do what you please. Be careful! If a snapshot cannot be served for a given page, then web crawlers won't be able to tell what that page contains and that page will risk not being indexed correctly. At the very least the `catch` should contain some form of logic to alert you, the developer, that a given `_escaped_fragment_` has gone unserved in your web app.
 
-## The code
+##The code
 
 Spoon is fully open source, licensed under the MIT license. If you're interested, the source code is available [create an issue on the GitHub page](https://github.com/LeviBotelho/spoon/issues). Good luck, and happy SEO-ing!
 
