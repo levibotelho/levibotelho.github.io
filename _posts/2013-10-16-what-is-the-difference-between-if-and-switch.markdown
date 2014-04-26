@@ -19,7 +19,7 @@ else if (val == 2)
 	Console.WriteLine("Two");
 else if (val == 3)
 	Console.WriteLine("Three");
-[/csharp]
+{% endhighlight %}
 
 {% highlight text %}
 IL_000E:  ldloc.0     // Load our “val” value onto the stack
@@ -63,7 +63,7 @@ switch (val)
 		Console.WriteLine("Three");
 		break;
 }
-[/csharp]
+{% endhighlight %}
 
 {% highlight text %}
 IL_0002:  ldloc.0     // Load our “val” value onto the stack
@@ -128,7 +128,7 @@ switch (val)
 		Console.WriteLine("Five");
 		break;
 }
-[/csharp]
+{% endhighlight %}
 
 {% highlight text %}
 IL_0002:  ldloc.0     // val
@@ -165,7 +165,7 @@ switch (val)
 		Console.WriteLine("Five hundred.");
 		break;
 }
-[/csharp]
+{% endhighlight %}
 
 {% highlight text %}
 IL_0002:  ldloc.0     // val
@@ -205,7 +205,7 @@ switch (val)
 		Console.WriteLine("Five hundred.");
 		break;
 }
-[/csharp]
+{% endhighlight %}
 
 {% highlight text %}
 IL_0002:  ldloc.0     // val

@@ -1,1 +1,1 @@
-find ./_posts.old/ -type f -exec sed -i -f sedscript.txt {} \;
+find ./_posts/ -type f -exec sed -i -f sedscript.txt {} \;

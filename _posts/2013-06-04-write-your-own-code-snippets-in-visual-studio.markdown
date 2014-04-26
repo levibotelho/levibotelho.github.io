@@ -13,7 +13,7 @@ For the purposes of this demo, I’m going to create a template to return the re
 <a id="more"></a><a id="more-952"></a>
 {% highlight csharp %}
 return ([something Boolean]) ? [if true] : [if false];
-[/csharp]
+{% endhighlight %}
 
 # Write the snippet
 

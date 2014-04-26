@@ -10,7 +10,7 @@ share: true
 
 ## 2. Determine the identity of your application
 
-This is often going to be **“IIS APPPOOL[Your application pool name]</strong>. Mine for example is <strong>“IIS APPPOOLDefaultAppPool”**.
+This is often going to be `IIS APPPOOL[Your application pool name]</strong>. Mine for example is <strong>“IIS APPPOOLDefaultAppPool`.
 If you wish to verify this, it is accessible via the following line of code:
 
 {% highlight csharp %}
@@ -25,7 +25,7 @@ The RSA key container contains the RSA key data that is used to encrypt and decr
 
 Then, execute the following command:
 
-[sourcecode lang="powershell"]
+{% highlight powershell %}
  aspnet_regiis –pa “NetFrameworkConfigurationKey” “[Your application identity]”
 {% endhighlight %}
 
@@ -44,7 +44,9 @@ Then in the following window in the “Actions” bar on the right, click “Gen
 
 Now, open your deployed web.config file and verify that there is an entry called
 
-{% highlight xml %}{% endhighlight %}
+{% highlight xml %}
+
+{% endhighlight %}
 
 What this does is insert a key into the web.config file of the selected application, allowing its sections to be encrypted and decrypted by IIS.
 
@@ -62,7 +64,7 @@ Again, don’t forget the quotation marks. <span style="line-height:1.6;">This 
 <li>Looks in the configuration file of the given application for the given configuration element and encrypts it.</li>
 <li>Specifies to ASP.NET that this element in this application needs to be decrypted before it is accessed.</li>
 </ol>
-<span style="line-height:1.6;">Once you have finished encrypting the desired sections, you need to finish by encrypting the machine key. Do this by passing</span><strong style="line-height:1.6;"> “system.web/machineKey”</strong><span style="line-height:1.6;"> as the first argument to the above command.</span>
+Once you have finished encrypting the desired sections, you need to finish by encrypting the machine key. Do this by passing `system.web/machineKey` as the first argument to the above command.
 
-That’s all there is to it. IIS will be able to read the encrypted configuration settings and your sensitive data will be obscured from anybody who has access to the web.config. Should you ever need to decrypt a section, simply run the encryption command, specifying **-pd</strong> instead of <strong>-pe**.
+That’s all there is to it. IIS will be able to read the encrypted configuration settings and your sensitive data will be obscured from anybody who has access to the web.config. Should you ever need to decrypt a section, simply run the encryption command, specifying **-pd** instead of **-pe**.
 
