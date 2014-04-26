@@ -23,9 +23,9 @@ owner:
   email:          levi_botelho@hotmail.com
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
   description:    Web developer, C# enthusiast, and technology addict...
-  twitter: https://twitter.com/LeviBotelho
-  github: https://github.com/LeviBotelho
-  linkedin: https://www.linkedin.com/pub/levi-botelho/64/aa1/889
+  twitter: LeviBotelho
+  github: LeviBotelho
+  linkedin: levi-botelho
   stackexchange: http://stackoverflow.com/users/1068266/levi-botelho
   # For Google Authorship https://plus.google.com/authorship
   google_plus: "http://plus.google.com/114943939762387174074"
