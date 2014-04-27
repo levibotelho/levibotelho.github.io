@@ -5,6 +5,7 @@ category: Development
 tags: [c#, asp.net, encoding]
 comments: true
 share: true
+redirect_from: "/different-uri-encoding-formats-in-c/"
 ---
 Ever need to encode a string of text to make it web-compliant in some way but didn’t know which encoding function to use? I recently stumbled across a StackOverflow post where a user has provided a sample table of the different encodings provided by the HttpUtility and Uri classes in C# and thought I would share it here. As an example, this is what is provided for the greater-than sign (>):
 

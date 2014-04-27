@@ -5,6 +5,7 @@ category: Development
 tags: [c#]
 comments: true
 share: true
+redirect_from: "/c-the-operator-in-c-6/"
 ---
 [Visual Studio User Voice](http://visualstudio.uservoice.com/) is a great site. It lets the community at large propose and vote for features in upcoming Microsoft products.
 

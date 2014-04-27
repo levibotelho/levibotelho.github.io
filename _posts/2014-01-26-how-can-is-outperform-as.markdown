@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr, performance]
 comments: true
 share: true
+redirect_from: "/c-how-can-is-outperform-as/"
 ---
 Take a look at this code
 

@@ -5,6 +5,7 @@ category: Development
 tags: [visual studio, node.js, npm]
 comments: true
 share: true
+redirect_from: "/node-js-the-build-tools-for-visual-studio-xxxx-cannot-be-found/"
 ---
 I got this error when trying to install a node.js package that wanted to build some associated .cc files with the Visual Studio 2010 compiler (v100 build tools). I haven't had Visual Studio 2010 installed on my machine since Visual Studio 2012 came out, and *really* didn't want to reinstall it.
 

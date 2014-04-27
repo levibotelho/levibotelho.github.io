@@ -5,6 +5,7 @@ category: Miscellaneous
 tags: [iis, entity framework, webapi, xml, certification, 70-487, ado.net, azure, caching, deployment, nuget, odata, transactions, wcf, web services, windows]
 comments: true
 share: true
+redirect_from: "/the-great-big-microsoft-certification-70-487-study-guide-materials/"
 ---
 So, I ended up passing the certification. I hope that you'll find [the links ](http://www.levibotelho.com/the-great-big-microsoft-certification-70-487-study-guide/)as helpful as I did. As an added bonus, I've decided to post here two files which helped me study for the certification:
 

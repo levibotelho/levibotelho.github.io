@@ -5,6 +5,7 @@ category: Development
 tags: [c#, t4, metaprogramming]
 comments: true
 share: true
+redirect_from: "/referencing-project-elements-in-a-t4-file/"
 ---
 *Inspired by [this Stack Overflow question](http://stackoverflow.com/q/17123991/1068266). Give the asker an upvote if you have a minute.*
 

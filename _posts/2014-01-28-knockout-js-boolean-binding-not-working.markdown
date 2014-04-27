@@ -5,6 +5,7 @@ category: Development
 tags: [javascript, knockout.js]
 comments: true
 share: true
+redirect_from: "/knockout-js-boolean-binding-not-working/"
 ---
 Here's a quick fix if you’re doing data binding in knockout and wondering why a binding like the following isn’t working:
 

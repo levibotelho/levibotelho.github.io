@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr, performance]
 comments: true
 share: true
+redirect_from: "/c-static-type-constructors-and-beforefieldinit/"
 ---
 If you’re a professional programmer (and chances are that you are), I’ll bet that at one time or another you’ve gotten into some form of quarrel over which of the following is “better”.
 

@@ -5,6 +5,7 @@ category: Development
 tags: [c#, email]
 comments: true
 share: true
+redirect_from: "/sending-email-from-c-via-hotmailoutlookwindows-live/"
 ---
 I recently found myself wanting to send an email from an ASP.NET web application. I didn't want to go to all the hassle of setting up an SMTP server just to test my code, so decided to do it through an outlook.com email account. Here's how:
 

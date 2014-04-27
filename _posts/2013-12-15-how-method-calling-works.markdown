@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr]
 comments: true
 share: true
+redirect_from: "/c-how-method-calling-works/"
 ---
 Method calling is a joint operation performed by the C# compiler and the CLR. As we will see in this article, the role of each can vary depending on the context in which the method is called.
 

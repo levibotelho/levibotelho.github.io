@@ -5,6 +5,7 @@ category: Development
 tags: [regex]
 comments: true
 share: true
+redirect_from: "/how-to-use-lookarounds-in-regular-expressions/"
 ---
 The trick to understanding lookarounds is understanding that they are made up of two components: the condition and the capture. Let’s explore this using an example. Let’s say that we want to find all words in a phrase that start with the lowercase letter w. First, let’s write an expression to capture all lowercase w’s at the beginning of words.
 

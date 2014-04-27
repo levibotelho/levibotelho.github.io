@@ -5,6 +5,7 @@ category: Development
 tags: [c#, asp.net, ajax, javascript]
 comments: true
 share: true
+redirect_from: "/posting-javascript-objects-with-ajax-and-asp-net-mvc/"
 ---
 As websites become more and more interactive the need frequently arises to send data back and forth between web clients and servers using Ajax. ASP.NET combined with jQuery makes this process simple to implement for web developers.
 

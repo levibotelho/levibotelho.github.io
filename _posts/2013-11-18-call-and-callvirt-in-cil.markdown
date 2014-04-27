@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr]
 comments: true
 share: true
+redirect_from: "/call-and-callvirt-in-cil/"
 ---
 If you’ve ever looked at even small amounts of CIL, you’ll notice that two different instructions are used to call methods: “call” and “callvirt”. My goal in this post is to introduce these two methods and provide a general understanding of how they are used.
 

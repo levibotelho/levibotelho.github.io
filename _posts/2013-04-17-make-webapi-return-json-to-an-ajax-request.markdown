@@ -5,6 +5,7 @@ category: Development
 tags: [asp.net, http, ajax, javascript, json, webapi, jquery]
 comments: true
 share: true
+redirect_from: "/make-webapi-return-json-to-an-ajax-request/"
 ---
 If you make an AJAX call to a WebAPI service using an XmlHttpRequest object, you’ll notice that the data returned to you is formatted as XML. This is because the “Accept” header in a typical XmlHttpRequest call looks something like this:
 

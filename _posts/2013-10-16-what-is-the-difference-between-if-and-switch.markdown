@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr, performance]
 comments: true
 share: true
+redirect_from: "/what-is-the-difference-between-if-and-switch/"
 ---
 Although switch and if may seem to be two nearly-equivalent representations of the same concept, under the hood they function in two very different ways. Understanding the differences between the two makes for good general knowledge and provides one with an interesting glimpse at how the C# compiler works to optimise your code without you even knowing it.
 

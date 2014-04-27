@@ -5,6 +5,7 @@ category: Deployment
 tags: [azure, wordpress]
 comments: true
 share: true
+redirect_from: "/create-a-wordpress-blog-on-windows-azure-in-five-minutes/"
 ---
 First off, this isn’t one of those fake “five minute” tutorials that take half an hour to go through. This really is easy. The only thing you’ll need for this tutorial is a Windows Azure account. If you don’t have one you can sign up for a one on [www.windowsazure.com](http://www.windowsazure.com) for free. Now then, let’s get started.
 

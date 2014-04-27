@@ -5,6 +5,7 @@ category: Development
 tags: [windows, assembly]
 comments: true
 share: true
+redirect_from: "/reference-windows-assembly/"
 ---
 The case may arise where you want to include the Windows assembly, as used in Windows 8 apps, in a project which doesn't reference it by default. Referencing this assembly isn't as trivial a task as it may seem, as the Windows assembly simply doesn’t appear in the list of available assemblies in the Reference Manager in most projects. The reason for this is that the assembly is only available for reference in applications which specifically target Windows 8. In order to make this the case for your project, you need to make a small modification to your.csproj file. In the first “PropertyGroup” element of your project file, add the following XML tag:
 

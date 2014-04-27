@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr]
 comments: true
 share: true
+redirect_from: "/polymorphism-with-new-and-override/"
 ---
 What would you expect the console output to be of the following program?
 

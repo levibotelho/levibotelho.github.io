@@ -5,6 +5,7 @@ category: Development
 tags: [c#]
 comments: true
 share: true
+redirect_from: "/the-danger-of-default-method-values-in-c/"
 ---
 While seemingly benign, methods containing default parameter values can be the cause of mysterious errors in deployed applications. To see why, let’s define a new class library called “ConsoleWriter” and add to it the following code.
 

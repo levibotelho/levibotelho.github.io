@@ -5,6 +5,7 @@ category: Open Source
 tags: [asp.net, angular.js, seo, google, spoon, open source]
 comments: true
 share: true
+redirect_from: "/seo-for-single-page-asp-net-apps-with-spoon/"
 ---
 Search engine optimisation is one of the most important aspects of any public web application. However single page application developers face a significant challenge in exposing their content to search engines and web crawlers.
 

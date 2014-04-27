@@ -5,6 +5,7 @@ category: Database
 tags: [c#, entity framework, performance]
 comments: true
 share: true
+redirect_from: "/eager-and-lazy-loading-in-entity-framework/"
 ---
 If you have a customer entity that looks like this…
 
@@ -30,7 +31,7 @@ public class Customer
     public ICollection<Purchase> Purchases { get; set; }
 }
 {% endhighlight %}
-<a id="more"></a><a id="more-152"></a>
+
 If the Purchases collection is rarely used during the lifetime of a given Customer object, the extra processing power and memory required to retrieve and store it may be wasteful. This cost is compounded if Purchase objects happen to be large. On the other hand, loading the collection along with the parent entity may be advantageous if it tends to play a key role in the use of a given Customer. Luckily, Entity Framework provides the developer with several different ways of managing the retrieval and storage of related entities. Two which are extremely useful to know of are called "lazy" and "explicit" loading.
 
 # Lazy Loading

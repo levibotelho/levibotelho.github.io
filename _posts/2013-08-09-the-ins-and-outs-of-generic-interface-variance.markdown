@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr]
 comments: true
 share: true
+redirect_from: "/the-ins-and-outs-of-generic-interface-variance/"
 ---
 In this post we’re going to look at generic interface polymorphism in C#. Let’s start by defining a couple of example classes.
 

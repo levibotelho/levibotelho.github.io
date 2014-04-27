@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr]
 comments: true
 share: true
+redirect_from: "/c-how-does-the-garbage-collector-work/"
 ---
 ## What is garbage?
 

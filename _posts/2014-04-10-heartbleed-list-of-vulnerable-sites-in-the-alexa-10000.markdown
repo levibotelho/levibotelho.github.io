@@ -5,6 +5,7 @@ category: Security
 tags: [heartbleed, security]
 comments: true
 share: true
+redirect_from: "/heartbleed-list-of-vulnerable-sites-in-the-alexa-10000/"
 ---
 Let's be clear from the start. I'm not going to provide yet another explanation of what Heartbleed is. If you live in a cave and haven't heard about it yet then check out these links for an explanation.
 

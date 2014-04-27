@@ -5,6 +5,7 @@ category: Development
 tags: [c#]
 comments: true
 share: true
+redirect_from: "/when-should-a-c-method-be-made-virtual/"
 ---
 [In the last post](http://www.levibotelho.com/polymorphism-with-new-and-override/) we saw how the behaviour of base and derived classes changes with the presence of the new or override keyword on inherited methods. In this post we’re going to see the impact that this has on class design. Let’s start with some code:
 

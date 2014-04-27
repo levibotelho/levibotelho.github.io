@@ -5,6 +5,7 @@ category: Development
 tags: [knockout.js, angular.js]
 comments: true
 share: true
+redirect_from: "/angularjs-vs-knockoutjs/"
 ---
 Lately I’ve been spending a lot of time with AngularJS. Coming from a KnockoutJS background, one of the first questions I had when I first started out with Angular was how the two frameworks compare. Hopefully this article will provide some answers for those in the same situation that I was.
 

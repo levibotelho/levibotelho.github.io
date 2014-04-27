@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr]
 comments: true
 share: true
+redirect_from: "/the-difference-between-const-and-readonly-in-c/"
 ---
 Const and readonly are two very useful keywords in C#. While they both perform roughly the same function, they are not implemented in the same way. As we’ll see later, being aware of the real difference between the two can help us write more robust applications.
 

@@ -5,6 +5,7 @@ category: Deployment
 tags: [azure, mysql, cleardb, migration]
 comments: true
 share: true
+redirect_from: "/azurecleardb-migrating-a-mysql-database/"
 ---
 ## Disclaimer
 

@@ -5,6 +5,7 @@ category: Development
 tags: [c#, T4]
 comments: true
 share: true
+redirect_from: "/introduction-to-design-time-templating-in-c/"
 ---
 While a good developer will always do their best to write DRY code, cases do arise when repetition is inevitable. Mapping one object type to another provides a good example of this. While reflection can be used to compare types against one another, in high-volume contexts the performance loss that reflection incurs may be too significant.
 

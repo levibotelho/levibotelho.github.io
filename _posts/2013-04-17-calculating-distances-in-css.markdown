@@ -5,6 +5,7 @@ category: Development
 tags: [css]
 comments: true
 share: true
+redirect_from: "/calculating-distances-in-css/"
 ---
 I was originally planning this week to write a short introduction to Entity Framework, when I saw that I had received a seventh upvote on my answer to [this Stack Overflow question](http://stackoverflow.com/q/2434602/1068266).
 

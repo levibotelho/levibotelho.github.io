@@ -5,6 +5,7 @@ category: Open Source
 tags: [strong.config, open source]
 comments: true
 share: true
+redirect_from: "/introducing-strongconfi/"
 ---
 I've always been surprised by the obvious lack of strong typing in accessing configuration data. Calls to ConfigurationManager are null reference exceptions waiting to happen, as key changes in the config file or typos in the string passed to the call aren't picked up until they hit you later on with a runtime exception.
 

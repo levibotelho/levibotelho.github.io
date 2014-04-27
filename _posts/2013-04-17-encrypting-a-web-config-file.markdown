@@ -5,6 +5,7 @@ category: Deployment
 tags: [c#, iis, web.config, deployment]
 comments: true
 share: true
+redirect_from: "/encrypting-a-web-config-file/"
 ---
 ## 1. Publish your web application to IIS
 

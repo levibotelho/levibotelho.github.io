@@ -5,6 +5,7 @@ category: Development
 tags: [tfs, visual studio]
 comments: true
 share: true
+redirect_from: "/team-foundation-service-error-tf30063/"
 ---
 
 I received this perplexing error message when opening a solution in a Visual Studio instance opened via the "Open a new instance of Visual Studio" link in a TF Service project:

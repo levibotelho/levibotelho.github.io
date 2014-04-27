@@ -5,6 +5,7 @@ category: Visual Studio
 tags: [visual studio, tfs]
 comments: true
 share: true
+redirect_from: "/changing-tfs-servers-for-a-visual-studio-project/"
 ---
 I recently had to change a project over from TF Service to Codeplex (more on this project in a coming post!) and found that the process required to change the source control server of a project in Visual Studio isn't necessarily intuitive. Here's how it's done:
 

@@ -5,6 +5,7 @@ category: Development
 tags: [javascript, knockout.js]
 comments: true
 share: true
+redirect_from: "/knockout-js-foreach-binding-to-an-array-of-strings-or-numbers-or-bools/"
 ---
 I’m currently working on a web application where I have to write an interface that allows users to delete photos that they have uploaded to the site. The user interface and corresponding view model are based on the following design.
 

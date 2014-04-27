@@ -5,6 +5,7 @@ category: Development
 tags: [c#, clr, performance, generics]
 comments: true
 share: true
+redirect_from: "/the-performance-advantage-of-generic-type-constraints/"
 ---
 Have a look at the following two methods.
 

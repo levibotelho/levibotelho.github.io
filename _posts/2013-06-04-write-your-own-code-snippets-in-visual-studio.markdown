@@ -5,6 +5,7 @@ category: Visual Studio
 tags: [visual studio, snippets]
 comments: true
 share: true
+redirect_from: "/write-your-own-code-snippets-in-visual-studio/"
 ---
 Code snippets are a great feature in Visual Studio that automate the writing of oft-repeated code. By typing a special shortcut followed by two strokes of the tab key, you get a preformatted template for a commonly-used code segment. (Try it with *prop* if you don’t know what I’m talking about.)
 While there are many snippets available in Visual Studio by default, it’s also easy to create your own. Here’s how:

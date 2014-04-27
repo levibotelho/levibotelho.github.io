@@ -5,6 +5,7 @@ category: Development
 tags: [c#, generics]
 comments: true
 share: true
+redirect_from: "/c-compare-generic-variables-for-equality/"
 ---
 This is a simple task, yet one which is frequently carried out incorrectly. This kind of comparison is often required when dealing with classes that look like the following.
 

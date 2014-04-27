@@ -5,6 +5,7 @@ category: Development
 tags: [c#; video, com, shell]
 comments: true
 share: true
+redirect_from: "/get-the-length-of-a-video-in-c/"
 ---
 There are two main ways to get the length of a video file in C#:
 

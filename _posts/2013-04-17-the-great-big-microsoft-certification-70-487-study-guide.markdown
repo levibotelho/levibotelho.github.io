@@ -5,6 +5,7 @@ category: Miscellaneous
 tags: [iis, entity framework, webapi, xml, certification, 70-487, ado.net, azure, caching, deployment, nuget, odata, transactions, wcf, web services, windows]
 comments: true
 share: true
+redirect_from: "/the-great-big-microsoft-certification-70-487-study-guide/"
 ---
 *Update: I passed the exam, so this guide isn't completely useless :). I've also posted two files that I used to help me better prepare for the exam. [You can find them here](http://www.levibotelho.com/?p=272).*
 

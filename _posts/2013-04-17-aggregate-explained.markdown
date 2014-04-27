@@ -5,6 +5,7 @@ category: Development
 tags: [c#, linq]
 comments: true
 share: true
+redirect_from: "/aggregate-explained/"
 ---
 For my money, LINQ is in itself a reason to program in C#. It saves time, reduces the amount of code needed to perform a given task, and is simple to debug. A function I really like is **Aggregate**. That said, I admit that it took a while for me to adopt it into my coding repertoire because its name doesn't do a very good job at describing what it does or how to use it.
 

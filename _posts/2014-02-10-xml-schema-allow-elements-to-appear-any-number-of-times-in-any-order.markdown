@@ -5,6 +5,7 @@ category: Development
 tags: [xml]
 comments: true
 share: true
+redirect_from: "/xml-schema-allow-elements-to-appear-any-number-of-times-in-any-order/"
 ---
 It’s not every day that I write XML schema files, but when I do I often have to remind myself of how to perform this simple task. For our example we'll write a schema to describe the following document.
 
