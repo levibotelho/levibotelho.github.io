@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Sending Email From C# Via Hotmail/Outlook/Windows Live
-category: C#
+category: Development
 tags: [c#, email]
 comments: true
 share: true

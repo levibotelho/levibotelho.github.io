@@ -1,12 +1,8 @@
 ---
 layout: post
 title: Aggregate Explained
-description:
-headline:
-modified: 2013-04-17
-category: C#
+category: Development
 tags: [c#, linq]
-image:
 comments: true
 share: true
 ---

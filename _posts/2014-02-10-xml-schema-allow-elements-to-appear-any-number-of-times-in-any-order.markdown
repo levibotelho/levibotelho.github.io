@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[XML Schema] Allow elements to appear any number of times, in any order'
-category: Miscellaneous
+category: Development
 tags: [xml]
 comments: true
 share: true

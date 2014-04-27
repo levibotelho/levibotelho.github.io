@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AngularJS vs KnockoutJS
-category: Front-End Web
+category: Development
 tags: [knockout.js, angular.js]
 comments: true
 share: true

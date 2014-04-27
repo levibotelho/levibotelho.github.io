@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What is string interning?
-category: C#
+category: Development
 tags: [c#, clr]
 comments: true
 share: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Different URI encoding formats in C#
-category: C#
+category: Development
 tags: [c#, asp.net, encoding]
 comments: true
 share: true

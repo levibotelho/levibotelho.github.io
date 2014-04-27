@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Calculating Distances in CSS
-category: Front-end Web
+category: Development
 tags: [css]
 comments: true
 share: true

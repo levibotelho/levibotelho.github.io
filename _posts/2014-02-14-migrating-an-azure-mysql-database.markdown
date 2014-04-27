@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! 'Migrating an Azure MySQL database'
-category: Microsoft Azure
+category: Deployment
 tags: [azure, mysql, cleardb, migration]
 comments: true
 share: true

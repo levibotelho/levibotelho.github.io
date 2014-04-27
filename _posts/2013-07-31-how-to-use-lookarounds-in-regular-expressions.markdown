@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to use lookarounds in regular expressions
-category: Miscellaneous
+category: Development
 tags: [regex]
 comments: true
 share: true

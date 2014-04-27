@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The performance advantage of generic type constraints
-category: C#
+category: Development
 tags: [c#, clr, performance, generics]
 comments: true
 share: true

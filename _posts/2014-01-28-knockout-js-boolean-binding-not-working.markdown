@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[knockout.js] Boolean binding not working'
-category: Front-End Web
+category: Development
 tags: [javascript, knockout.js]
 comments: true
 share: true

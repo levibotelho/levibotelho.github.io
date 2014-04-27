@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Posting JavaScript objects with Ajax and ASP.NET MVC
-category: ASP.NET
+category: Development
 tags: [c#, asp.net, ajax, javascript]
 comments: true
 share: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Reference the Windows Assembly in a C# Project
-category: C#
+category: Development
 tags: [windows, assembly]
 comments: true
 share: true

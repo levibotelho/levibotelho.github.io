@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '[C#] The "?." operator in C# 6?'
-category: C#
+category: Development
 tags: [c#]
 comments: true
 share: true
