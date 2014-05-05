@@ -2,7 +2,7 @@
 layout: post
 title: Introducing LearnAngular Beta
 category: Open Source
-tags: [learnangular]
+tags: [learnangular, angular.js, open source]
 comments: true
 share: true
 ---
