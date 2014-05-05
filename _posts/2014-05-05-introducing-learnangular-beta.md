@@ -1,4 +1,9 @@
-Introducing LearnAngular Beta
+---
+layout: post
+title: Introducing LearnAngular Beta
+category: Open Source
+tags: [learnangular]
+---
 
 I'm very pleased to announce the launch of the beta version of [LearnAngular (www.learn-angular.org)](http://www.learn-angular.org).
 
