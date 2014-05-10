@@ -16,7 +16,7 @@ So that's why I wrote Spoon Standalone. Spoon Standalone does the same thing as 
 ## How it is used
 
 1. You download Spoon Standalone and configure it to use a certain Azure blob storage container and to crawl a collection of URLs. These can be configured manually, but Spoon Standalone also knows how to read simple sitemaps.
-2. You hook code into your web application to retrieve a page snapshot from your Azure blob storage container when a crawler makes a request using an `_escaped_fragment_` parameter. If you're developing an ASP.NET MVC site, then you simply grab the Spoon Standalone Connector off of NuGet (`PM> Package-Install Spoon.Standalone.Connector`) and make a single call to the `SnapshotManager` class which handles all this for you.
+2. You hook code into your web application to retrieve a page snapshot from your Azure blob storage container when a crawler makes a request using an `_escaped_fragment_` parameter. If you're developing an ASP.NET MVC site, then you simply grab the Spoon Standalone Connector off of NuGet (`PM> Install-Package Spoon.Standalone.Connector`) which handles this step for you.
 3. You publish your application.
 4. You launch Spoon Standalone, which fills your blob storage container with snapshots of all the pages you asked it to crawl. Execution completes, and you're done!
 
