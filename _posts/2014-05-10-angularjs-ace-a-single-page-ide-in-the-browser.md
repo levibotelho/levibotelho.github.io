@@ -27,9 +27,9 @@ Reference them in your application in the following order.
 
 ## Step 2 - Write the HTML
 
-{{% highlight html %}}
+{% highlight html %}
 <div class="editor" ui-ace="{ mode: "javascript", theme: "monokai" }" ng-model="javascriptCode"></div>
-{{% endhighlight %}}
+{% endhighlight %}
 
 Believe it or not, this is all the HTML you'll need in order to integrate Ace into your site. Let's quickly run through what we've done here.
 
@@ -43,12 +43,12 @@ Finally, we add the ubiquitous `ng-model` directive so that whatever the user ty
 
 The CSS that we're going to apply to the editor serves to give it size and position on our page. As mentioned a moment ago, the actual look of the editor is controlled by applying a theme.
 
-{{% highlight css %}}
+{% highlight css %}
 .editor { 
 	height: 200px;
 	position: relative;
 }
-{{% endhighlight %}}
+{% endhighlight %}
 
 ## Step 4 - Try it out
 
