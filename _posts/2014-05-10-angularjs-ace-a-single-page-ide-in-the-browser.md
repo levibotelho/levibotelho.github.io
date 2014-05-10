@@ -2,7 +2,7 @@
 layout: post
 title: [AngularJS/Ace] A single page IDE in the browser
 category: Development
-tags: [angular.js, ace.js, learnangular, open source]
+tags: [angularjs, ace, learnangular]
 comments: true
 share: true
 ---

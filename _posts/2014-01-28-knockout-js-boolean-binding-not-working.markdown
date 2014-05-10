@@ -2,7 +2,7 @@
 layout: post
 title: ! '[knockout.js] Boolean binding not working'
 category: Development
-tags: [javascript, knockout.js]
+tags: [javascript, knockoutjs]
 comments: true
 share: true
 redirect_from: "/knockout-js-boolean-binding-not-working/"
