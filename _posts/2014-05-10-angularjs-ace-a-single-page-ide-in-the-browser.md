@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [AngularJS/Ace] A single page IDE in the browser
+title: ! '[AngularJS/Ace] A single page IDE in the browser'
 category: Development
 tags: [angularjs, ace, learnangular]
 comments: true
