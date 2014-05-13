@@ -36,10 +36,9 @@ process.Exited += (sender, args) =>
 };
 
 _process.Start();
-// ...
 {% endhighlight %}
 
-This code works, but it's not terribly convenient to use. Let's look at how we can make it `async`-compatible.
+This code works, but it's not terribly convenient to use. Let's look at how we can make it `async` compatible.
 
 ## TaskCompletionSource basics
 
@@ -67,7 +66,7 @@ static Task<int> DoWork()
 }
 {% endhighlight %}
 
-When run, this code outputs `DoWork called`, pauses for approximately one second, and then outputs `6`. This behaviour is all due to the `TaskCompletionSource` object that is created in the `DoWork` method.
+When run, this code outputs "DoWork called", pauses for approximately one second, and then outputs "6". This behaviour is all due to the `TaskCompletionSource` object that is created in the `DoWork` method.
 
 When a `TaskCompletionSource` is first instantiated, the status of its underlying `Task` object is set to `WaitingForActivation`. In this state, any code which awaits the task will block. However, when `SetResult` is called, the status of the task changes to `Completed` and the task's `Result` property is set to the value passed to the `SetResult` call. This causes threads waiting on the task to unblock and program execution to resume. In our example, the call to `task.Result` in `Main` blocks until `tcs.SetResult(6)` is called by the task launched in `DoWork`.
 
