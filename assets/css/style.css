@@ -402,7 +402,7 @@ blockquote:before {
   background-color: rgba(255, 255, 255, 0.15);
 }
 .overlay:after {
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.35);
 }
 #masthead {
   background-color: #1e1e1f;
@@ -626,7 +626,6 @@ html {
 /* - Theme Backgrounds - */
 .blog-background {
   background-repeat: no-repeat;
-  background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

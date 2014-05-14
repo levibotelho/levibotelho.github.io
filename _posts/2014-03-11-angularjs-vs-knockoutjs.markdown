@@ -2,7 +2,7 @@
 layout: post
 title: AngularJS vs KnockoutJS
 category: Development
-tags: [knockout.js, angular.js]
+tags: [knockoutjs, angularjs]
 comments: true
 share: true
 redirect_from: "/angularjs-vs-knockoutjs/"

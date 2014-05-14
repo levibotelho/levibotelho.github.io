@@ -2,7 +2,7 @@
 layout: post
 title: SEO for Single Page ASP.NET Apps with Spoon
 category: Open Source
-tags: [asp.net, angular.js, seo, google, spoon, open source]
+tags: [asp.net, angularjs, seo, google, spoon, open source]
 comments: true
 share: true
 redirect_from: "/seo-for-single-page-asp-net-apps-with-spoon/"
