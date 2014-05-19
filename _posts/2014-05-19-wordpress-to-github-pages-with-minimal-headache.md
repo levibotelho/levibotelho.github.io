@@ -1,3 +1,12 @@
+---
+layout: post
+title: WordPress to GitHub Pages with minimal headache
+category: Miscellaneous
+tags: [wordpress, github, jekyll]
+comments: true
+share: true
+---
+
 WordPress to GitHub Pages with minimal headache
 
 About a month and a half ago I migrated this blog from an Azure-hosted WordPress setup to GitHub Pages, which runs on Jekyll. While I wouldn't describe the migration process as painful, I wish I would have had a guide such as this one when I began the transition as it would have certainly saved me a few headaches along the way. Hopefully this will be able to help someone in the same place that I was!
