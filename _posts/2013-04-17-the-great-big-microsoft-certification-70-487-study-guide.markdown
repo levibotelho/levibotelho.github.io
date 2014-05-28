@@ -111,6 +111,7 @@ So, with that taken care of, here are the links!
 + [http://msdn.microsoft.com/en-us/library/cc668794.aspx](http://msdn.microsoft.com/en-us/library/cc668794.aspx)
 + [http://msdn.microsoft.com/en-us/library/cc668792.aspx](http://msdn.microsoft.com/en-us/library/cc668792.aspx)
 + [http://msdn.microsoft.com/en-us/library/dd728286.aspx](http://msdn.microsoft.com/en-us/library/dd728286.aspx)
+
 ###Address resources
 
 + [http://msdn.microsoft.com/en-us/library/dd728283.aspx](http://msdn.microsoft.com/en-us/library/dd728283.aspx)
@@ -267,6 +268,7 @@ So, with that taken care of, here are the links!
 
 
 ###Implement POCO objects
+
 ###Describe a data model by using conceptual schema definitions, storage schema definition, and mapping language (CSDL, SSDL, MSL)
 
 + [http://msdn.microsoft.com/en-us/data/jj652004](http://msdn.microsoft.com/en-us/data/jj652004)
@@ -281,6 +283,7 @@ So, with that taken care of, here are the links!
 
 
 + [http://msdn.microsoft.com/en-us/magazine/cc163447.aspx](http://msdn.microsoft.com/en-us/magazine/cc163447.aspx)
+
 ###Create contracts (service, data, message, callback, and fault)
 
 + [http://msdn.microsoft.com/en-us/library/ms733070.aspx](http://msdn.microsoft.com/en-us/library/ms733070.aspx)
@@ -330,6 +333,7 @@ So, with that taken care of, here are the links!
 
 
 ###Specify a service contract
+
 ###Expose service metadata (XSDs, WSDL and metadata exchange endpoint)
 
 + [http://msdn.microsoft.com/en-us/library/ms734765.aspx](http://msdn.microsoft.com/en-us/library/ms734765.aspx)
@@ -537,6 +541,7 @@ So, with that taken care of, here are the links!
 
 
 ###Accept data in JSON format (in JavaScript, in an AJAX callback)
+
 ###Use content negotiation to deliver different data formats to clients
 
 + [http://www.asp.net/web-api/overview/formats-and-model-binding/content-negotiation](http://www.asp.net/web-api/overview/formats-and-model-binding/content-negotiation)
@@ -612,6 +617,7 @@ So, with that taken care of, here are the links!
 
 
 ###Host Web API in an ASP.NET app
+
 ###Host services in a Windows Azure worker role
 
 + [http://www.dotnetglobe.com/2012/04/hosting-aspnet-web-api-on-windows-azure.html](http://www.dotnetglobe.com/2012/04/hosting-aspnet-web-api-on-windows-azure.html)
@@ -681,7 +687,7 @@ So, with that taken care of, here are the links!
 
 ###Perform an in-place upgrade and VIP swap
 
-+ [http://www.windowsazure.com/en-us/develop/net/common-tasks/staging-deployment/?bcsi-ac-bbaf765720ef3335=20190C6B00000503aHYllMrACWM2RwoWOHeWxZgS###FG7BgAAAwUAAJMKZQAIBwAAAgEAAKXSEgA](http://www.windowsazure.com/en-us/develop/net/common-tasks/staging-deployment/?bcsi-ac-bbaf765720ef3335=20190C6B00000503aHYllMrACWM2RwoWOHeWxZgS###FG7BgAAAwUAAJMKZQAIBwAAAgEAAKXSEgA)
++ [http://msdn.microsoft.com/en-us/library/azure/hh472157.aspx](http://msdn.microsoft.com/en-us/library/azure/hh472157.aspx)
 
 
 ###Configure an upgrade domain
@@ -718,6 +724,7 @@ So, with that taken care of, here are the links!
 
 
 ###Configure WCF endpoints, bindings, and behaviors
+
 ###Transform web.config by using XSLT (for example, across development, test, and production/release environments)
 
 + [http://msdn.microsoft.com/en-us/library/dd465326(v=vs.100).aspx](http://msdn.microsoft.com/en-us/library/dd465326(v=vs.100).aspx)
