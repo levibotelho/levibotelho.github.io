@@ -355,6 +355,7 @@ So, with that taken care of, here are the links!
 
 
 ###Specify a service contract
+
 ###Expose service metadata (XSDs, WSDL and metadata exchange endpoint)
 
 + [http://msdn.microsoft.com/en-us/library/aa738489.aspx](http://msdn.microsoft.com/en-us/library/aa738489.aspx)
