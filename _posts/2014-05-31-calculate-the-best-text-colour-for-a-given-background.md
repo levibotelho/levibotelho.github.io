@@ -56,11 +56,10 @@ So, given that a colour with a brightness of 186/255 will *appear* to be midway 
 {% highlight csharp %}
 public static Color GetForegroundColor(Color background)
 {
-    var luminosity = Math.Sqrt(
-		Math.Pow(background.R, 2) * 0.299 +
-		Math.Pow(background.G, 2) * 0.587 +
-		Math.Pow(background.B, 2) * 0.114);
+    var luminosity = Math.Sqrt(Math.Pow(background.R, 2) * 0.299 +
+							   Math.Pow(background.G, 2) * 0.587 +
+							   Math.Pow(background.B, 2) * 0.114);
 
-    return grayscaleBackground > 186 ? Colors.Black : Colors.White;
+    return luminosity > 186 ? Colors.Black : Colors.White;
 }
 {% endhighlight %}
