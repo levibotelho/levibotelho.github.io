@@ -49,7 +49,7 @@ Well actually, no. While our formula for calculating relative brightness is corr
 
 This has an impact on our brightness algorithm, because we don't actually care about how bright a colour is supposed to be. We care about how bright a colour will *appear to be on the user's screen*. A colour which has a  brightness of 140 according to our algorithm will actually be displayed with a brightness of (((140/255)^2.2) * 255) = **68**. This colour should therefore be considered dark and take white text. Not the other way around.
 
-To adapt our algorithm to take gamma correction into account, we simply need to calculate the gamma-corrected midpoint between 0 and 255 and use it instead of 128. This is easy to do. We just need to raise 0.5 to the reciprocal of 2.2 and scale it up to use it on values ranging from 0 to 255. This gives us a new midpoint value of (0.5^(1/2.2) * 255) = **186.08371**
+To adapt our algorithm to take gamma correction into account, we simply need to calculate the gamma-corrected midpoint between 0 and 255 and use it instead of 128. This is easy to do. We just need to raise 0.5 to the reciprocal of 2.2 and scale it up to use it on values ranging from 0 to 255. This gives us a new midpoint value of (0.5^(1/2.2) * 255) = **186.08371**.
 
 So, given that a colour with a brightness of 186/255 will *appear* to be midway between black and white, we can now state that any colour with a brightness above 186 should be considered light and have black text, and that all other colours should be considered to be dark and have white text. We can incorporate this into our algorithm and create a function which returns the optimum text colour as follows.
 
