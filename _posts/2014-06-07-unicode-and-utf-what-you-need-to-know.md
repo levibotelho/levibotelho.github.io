@@ -2,7 +2,7 @@
 layout: post
 title: Unicode and UTF - What you need to know
 category: Development
-tags: [c#, encoding]
+tags: [c#, unicode, encoding]
 comments: true
 share: true
 ---
