@@ -1,6 +1,6 @@
 ---
 layout: post
-title: !'[C#] Remove diacritics (accents) from a string' 
+title: ! '[C#] Remove diacritics (accents) from a string' 
 category: Development
 tags: [c#, unicode, encoding]
 comments: true
