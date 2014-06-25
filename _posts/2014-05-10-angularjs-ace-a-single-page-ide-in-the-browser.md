@@ -28,7 +28,7 @@ Reference them in your application in the following order.
 ## Step 2 - Write the HTML
 
 {% highlight html %}
-<div class="editor" ui-ace="{ mode: "javascript", theme: "monokai" }" ng-model="javascriptCode"></div>
+<div class="editor" ui-ace="{ mode: 'javascript', theme: 'monokai' }" ng-model="javascriptCode"></div>
 {% endhighlight %}
 
 Believe it or not, this is all the HTML you'll need in order to integrate Ace into your site. Let's quickly run through what we've done here.

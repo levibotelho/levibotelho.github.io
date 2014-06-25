@@ -10,7 +10,9 @@
 <meta name="twitter:image" content="{% if page.image.thumb %}{{ site.url }}/images/{{ page.image.thumb }}{% else %}{{ site.url }}/images/{{ site.logo }}{% endif %}">{% endif %}
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
 <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-<meta name="twitter:creator" content="@{{ site.owner.twitter }}">{% endif %}
+<meta name="twitter:site" content="@{{ site.owner.twitter }}">
+{% if page.author.twitter %}<meta name="twitter:creator" content="@{{ page.author.twitter }}">{% endif %}
+{% endif %}
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
@@ -19,7 +21,6 @@
 <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:site_name" content="{{ site.title }}">
-{% if page.image.feature %}<meta property="og:image" content="{{ site.url }}/images/{{ page.image.feature }}">{% else %}<meta property="og:image" content="{{ site.url }}/images/{{ site.default_bg }}">{% endif %}
 
 {% if site.google_verify %}<meta name="google-site-verification" content="{{ site.google_verify }}">{% endif %}
 {% if site.bing_verify %}<meta name="msvalidate.01" content="{{ site.bing_verify }}">{% endif %}
@@ -34,50 +35,19 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
-    <link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="{{ site.url }}/assets/css/style.css" />
+<!-- For all browsers -->
+<link rel="stylesheet" href="{{ site.url }}/assets/css/main.min.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
 
-{% if site.search %}<div class="search-wrapper">
-    <div class="search-form">
-        <input type="text" class="search-field" placeholder="Search...">
-        <i class="icon-remove-sign"></i>
-        <ul class="search-results post-list"></ul><!-- /.search-results -->
-    </div><!-- /.search-form -->
-</div><!-- ./search-wrapper -->{% endif %}
+<meta http-equiv="cleartype" content="on">
 
-{% if page.mathjax %}
-<!--Load Mathjax-->
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script>
-        MathJax.Hub.Config({
-            config: ["MMLorHTML.js"],
-            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
-            jax: ["input/TeX"],
-            tex2jax: {
-                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                processEscapes: false
-            },
-            TeX: {
-                TagSide: "right",
-                TagIndent: ".8em",
-                MultLineWidth: "85%",
-                equationNumbers: {
-                   autoNumber: "AMS",
-                },
-                unicode: {
-                   fonts: "STIXGeneral,'Arial Unicode MS'" 
-                }
-            },
-            showProcessingMessages: false
-        });
-    </script>{% endif %}
-
+<!-- Load Modernizr -->
+<script src="{{ site.url }}/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="{{ site.url }}/favicon.ico">
+<!-- <link rel="shortcut icon" href="{{ site.url }}/favicon.ico"> -->
 <!-- 32x32 -->
 <link rel="shortcut icon" href="{{ site.url }}/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->

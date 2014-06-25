@@ -1,35 +1,28 @@
 title:            Levi Botelho's Coding Blog
-description:      C#, web development and other interesting stuff.
+description:      C#, web development, and other interesting stuff.
 logo:             logo.png
 disqus_shortname: levibotelho
-# Assign a default image for your site's header and footer
-default_bg:       background.png
-search:           false
-share:            true
-# Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
-readtime:         true
-# Turn on or off the fin animations in the header and footer
-animated_fins:    true
-# Specify the fin color in RGB value
-fin_color:        "255,255,255"
+search:           true
 # Change url to your domain. Leave localhost server or blank when working locally.
-url:              http://www.levibotelho.com
-#url:             "http://localhost:4000"
+# You don't need to specify the protocol if you want it available on http and https. Example: //localhost:4000
+url:              http://localhost:4000
 
 # Owner/author information
 owner:
   name:           Levi Botelho
   avatar:         me.jpg
   email:          levi_botelho@hotmail.com
-  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
-  description:    Web developer, C# enthusiast, and technology addict...
-  twitter: LeviBotelho
-  github: LeviBotelho
-  linkedin: https://www.linkedin.com/pub/levi-botelho/64/aa1/889
-  stackexchange: http://stackoverflow.com/users/1068266/levi-botelho
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:        LeviBotelho
+  facebook:
+  github:         LeviBotelho
+  stackexchange:  http://stackoverflow.com/users/1068266/levi-botelho
+  linkedin:       levibotelho
+  instagram:
+  flickr:
+  tumblr:
   # For Google Authorship https://plus.google.com/authorship
-  google_plus: http://plus.google.com/114943939762387174074
-  
+  google_plus:    http://plus.google.com/114943939762387174074
 
 # Analytics and webmaster tools stuff goes here
 google_analytics: UA-41233178-1
@@ -44,17 +37,20 @@ links:
     url: /
     external: false
     icon: home
+  - title: About
+    url: /about/
+  - title: Articles
+    url: /articles/
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    Europe/Paris
+timezone:    America/New_York
 future:      true
 pygments:    true
+#highlighter: pygments
 markdown:    kramdown
-paginate:    6
-paginate_path: "page:num"
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   /:categories/:title
+permalink:   /:categories/:title/
 
 kramdown:
   auto_ids: true
@@ -64,11 +60,14 @@ kramdown:
   use_coderay: false
 
   coderay:
-    coderay_line_numbers: 
+    coderay_line_numbers:
     coderay_line_numbers_start: 1
     coderay_tab_width: 4
     coderay_bold_every: 10
     coderay_css: class
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Gemfile", "Capfile", "README.md", "LICENSE", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
 
 gems:
   - jekyll-redirect-from
