@@ -3,6 +3,7 @@ layout: post
 title: When should a C# method be made virtual?
 category: Development
 tags: [c#]
+description: Making a method virtual has its pros and cons. Have a look at what it means to make a method virtual and when it makes sense to do so.
 comments: true
 share: true
 redirect_from: "/when-should-a-c-method-be-made-virtual/"

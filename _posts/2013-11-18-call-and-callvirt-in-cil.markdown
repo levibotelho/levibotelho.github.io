@@ -3,6 +3,7 @@ layout: post
 title: call and callvirt in CIL
 category: Development
 tags: [c#, clr]
+description: The call and callvirt CIL instructions dictate how method calling behaves in .NET applications. See how they work and how they impact your programs.
 comments: true
 share: true
 redirect_from: "/call-and-callvirt-in-cil/"

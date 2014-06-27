@@ -3,6 +3,7 @@ layout: post
 title: Team Foundation Service Error TF30063
 category: Development
 tags: [tfs, visual studio]
+description: This annoying error has a simple solution. Here's how to fix it.
 comments: true
 share: true
 redirect_from: "/team-foundation-service-error-tf30063/"

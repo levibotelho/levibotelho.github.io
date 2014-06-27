@@ -3,6 +3,7 @@ layout: post
 title: Different URI encoding formats in C#
 category: Development
 tags: [c#, asp.net, encoding]
+description: A handy guide to all the different URI encoding methods in C#.
 comments: true
 share: true
 redirect_from: "/different-uri-encoding-formats-in-c/"

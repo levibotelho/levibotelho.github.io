@@ -3,6 +3,7 @@ layout: post
 title: The performance advantage of generic type constraints
 category: Development
 tags: [c#, clr, performance, generics]
+description: Generic type constraints offer a small performance advantage when compared to generic interfaces for method parameters. Although knowing why may not be terribly useful, it is quite interesting!
 comments: true
 share: true
 redirect_from: "/the-performance-advantage-of-generic-type-constraints/"

@@ -3,6 +3,7 @@ layout: post
 title: Eager and Lazy Loading in Entity Framework
 category: Database
 tags: [c#, entity framework, performance]
+description: An explanation of the difference between eager and lazy loading, and when to use one over the other.
 comments: true
 share: true
 redirect_from: "/eager-and-lazy-loading-in-entity-framework/"

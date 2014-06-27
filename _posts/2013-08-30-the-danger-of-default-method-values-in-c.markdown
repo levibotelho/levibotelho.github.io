@@ -3,6 +3,7 @@ layout: post
 title: The danger of default method values in C#
 category: Development
 tags: [c#]
+description: Default method argument values can introduce tough to track down bugs in your code. Learn how to avoid this pitfall.
 comments: true
 share: true
 redirect_from: "/the-danger-of-default-method-values-in-c/"

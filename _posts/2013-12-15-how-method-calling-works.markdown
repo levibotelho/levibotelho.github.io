@@ -3,6 +3,7 @@ layout: post
 title: ! "[C#] How method calling works"
 category: Development
 tags: [c#, clr]
+description: Learn about the inner workings of the CLR and how it goes about calling methods.
 comments: true
 share: true
 redirect_from: "/c-how-method-calling-works/"

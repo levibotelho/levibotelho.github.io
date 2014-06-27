@@ -3,6 +3,7 @@ layout: post
 title: ! '[Node.js] The build tools for Visual Studio XXXX cannot be found'
 category: Development
 tags: [visual studio, node.js, npm]
+description: If you develop NodeJS on Windows, you've probably run into this annoying error. Luckily, the fix is really simple. 
 comments: true
 share: true
 redirect_from: "/node-js-the-build-tools-for-visual-studio-xxxx-cannot-be-found/"

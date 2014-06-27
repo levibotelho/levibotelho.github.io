@@ -3,6 +3,7 @@ layout: post
 title: ! '[C#] How can is outperform as?'
 category: Development
 tags: [c#, clr, performance]
+description: For performance reasons, the as keyword is usually favoured over the is keyword when checking that a variable is of a specific type. However there is a case where is turns out to be the significantly faster option.
 comments: true
 share: true
 redirect_from: "/c-how-can-is-outperform-as/"

@@ -3,6 +3,7 @@ layout: post
 title: ! '[C#] Async processes with TaskCompletionSource'
 category: Development
 tags: [c#, async]
+description: The TaskCompletionSource object is incredibly useful in writing asynchronous wrappers around legacy APIs. See how it can be used to instantiate and return from processes using "async".
 comments: true
 share: true
 ---

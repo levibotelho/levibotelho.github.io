@@ -3,6 +3,7 @@ layout: post
 title: Changing TFS Servers for a Visual Studio Project
 category: Visual Studio
 tags: [visual studio, tfs]
+description: Ever needed to migrate a project from one TFS server to another? Here's how you can do it quickly and easily using Visual Studio.
 comments: true
 share: true
 redirect_from: "/changing-tfs-servers-for-a-visual-studio-project/"

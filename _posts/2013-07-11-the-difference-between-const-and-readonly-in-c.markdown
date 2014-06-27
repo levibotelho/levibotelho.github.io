@@ -3,6 +3,7 @@ layout: post
 title: The difference between const and readonly in C#
 category: Development
 tags: [c#, clr]
+description: The const and readonly keywords are similar to one another, but not knowing how they differ can lead to particularly nasty bugs in certain circumstances. Learn about the difference between the two and when to use one over the other. 
 comments: true
 share: true
 redirect_from: "/the-difference-between-const-and-readonly-in-c/"

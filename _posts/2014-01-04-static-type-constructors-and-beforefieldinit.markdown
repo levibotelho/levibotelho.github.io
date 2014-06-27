@@ -3,6 +3,7 @@ layout: post
 title: ! '[C#] Static type constructors and beforefieldinit'
 category: Development
 tags: [c#, clr, performance]
+description: Do you initialise static variables in place, or do you use a static constructor? Contrary to what you may believe, the two aren't actually completely equivalent...
 comments: true
 share: true
 redirect_from: "/c-static-type-constructors-and-beforefieldinit/"

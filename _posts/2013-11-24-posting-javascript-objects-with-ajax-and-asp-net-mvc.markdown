@@ -3,6 +3,7 @@ layout: post
 title: Posting JavaScript objects with Ajax and ASP.NET MVC
 category: Development
 tags: [c#, asp.net, ajax, javascript]
+description: Step by step instructions on how to communicate using JavaScript objects with Ajax and ASP.NET MVC.
 comments: true
 share: true
 redirect_from: "/posting-javascript-objects-with-ajax-and-asp-net-mvc/"

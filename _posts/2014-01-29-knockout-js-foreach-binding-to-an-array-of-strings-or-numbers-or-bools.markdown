@@ -3,6 +3,7 @@ layout: post
 title: ! '[knockout.js] Foreach binding to an array of strings (or numbers, or bools…)'
 category: Development
 tags: [javascript, knockoutjs]
+description: It's easy to slip up when you're learning Knockout and want to bind to an array. Here we walk through the binding process with an easy to understand example. 
 comments: true
 share: true
 redirect_from: "/knockout-js-foreach-binding-to-an-array-of-strings-or-numbers-or-bools/"

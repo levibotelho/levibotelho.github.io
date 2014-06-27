@@ -3,6 +3,7 @@ layout: post
 title: ! '[AngularJS/Ace] A single page IDE in the browser'
 category: Development
 tags: [angularjs, ace, learnangular]
+description: JavaScript sure has come a long way in the past few years. Learn how to create an IDE right in your browser using AngularJS and the oustanding Ace project.
 comments: true
 share: true
 ---

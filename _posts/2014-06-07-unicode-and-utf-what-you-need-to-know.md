@@ -3,6 +3,7 @@ layout: post
 title: Unicode and UTF - What you need to know
 category: Development
 tags: [c#, unicode, encoding]
+description: It's hard to overstate the importance of Unicode in modern computing. Here's a quick introduction to Unicode and UTF, written for developers who want to get up to speed on the basics.
 comments: true
 share: true
 ---

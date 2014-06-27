@@ -3,6 +3,7 @@ layout: post
 title: The ins and outs of generic interface variance
 category: Development
 tags: [c#, clr]
+description: Covariance and contravariance are two very important concepts in computing. Learn the difference between the two with the help of a practical example using a generic interface in C#. 
 comments: true
 share: true
 redirect_from: "/the-ins-and-outs-of-generic-interface-variance/"

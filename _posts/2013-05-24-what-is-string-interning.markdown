@@ -3,6 +3,7 @@ layout: post
 title: What is string interning?
 category: Development
 tags: [c#, clr]
+description: Learn about string interning and how it impacts your .NET applications.
 comments: true
 share: true
 redirect_from: "/what-is-string-interning/"

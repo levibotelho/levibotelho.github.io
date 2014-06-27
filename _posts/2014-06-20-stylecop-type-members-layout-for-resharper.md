@@ -3,6 +3,7 @@ layout: post
 title: StyleCop type members layout for ReSharper 
 category: Development
 tags: [resharper, stylecop, c#]
+description: If you're a maniac and like your C# files arranged just so, you're in the right place. Grab the XML, paste it into your ReSharper settings, and CTRL+E, CTRL+C to your heart's content.
 comments: true
 share: true
 ---

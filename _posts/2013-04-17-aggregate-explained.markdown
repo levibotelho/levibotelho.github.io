@@ -3,6 +3,7 @@ layout: post
 title: Aggregate Explained
 category: Development
 tags: [c#, linq]
+description: An easy to understand explanation of how the Aggregate() method works in C#.
 comments: true
 share: true
 redirect_from: "/aggregate-explained/"

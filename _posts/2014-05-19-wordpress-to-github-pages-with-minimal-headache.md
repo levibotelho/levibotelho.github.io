@@ -3,6 +3,7 @@ layout: post
 title: WordPress to GitHub Pages with minimal headache
 category: Miscellaneous
 tags: [wordpress, github, jekyll]
+description: Learn about the mistakes I made when migrating from WordPress to Jekyll so that you don't make the same ones yourself!
 comments: true
 share: true
 ---

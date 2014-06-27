@@ -3,6 +3,7 @@ layout: post
 title: Calculate the best text colour for a given background
 category: Development
 tags: [c#, design, ui]
+description: Ever need to put text on top of a user-selected background colour? Here's a simple algorithm which maximises readability.
 comments: true
 share: true
 ---

@@ -3,6 +3,7 @@ layout: post
 title: Reference the Windows Assembly in a C# Project
 category: Development
 tags: [windows, assembly]
+description: Referencing the Windows 8 "Windows" assembly in a C# project isn't as simple as you might think. Learn how its done.
 comments: true
 share: true
 redirect_from: "/reference-windows-assembly/"

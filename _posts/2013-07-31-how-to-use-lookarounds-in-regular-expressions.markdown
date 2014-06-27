@@ -3,6 +3,7 @@ layout: post
 title: How to use lookarounds in regular expressions
 category: Development
 tags: [regex]
+description: Learn how you can use lookarounds to validate passwords with regular expressions. 
 comments: true
 share: true
 redirect_from: "/how-to-use-lookarounds-in-regular-expressions/"

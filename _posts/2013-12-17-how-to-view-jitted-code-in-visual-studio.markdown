@@ -3,6 +3,7 @@ layout: post
 title: ! "How to view JITted code in Visual Studio"
 category: Visual Studio
 tags: [visual studio]
+description: Go one level deeper than CIL and view the assembly language instructions outputted by the JITter in Visual Studio.
 comments: true
 share: true
 redirect_from: "/c-how-to-view-jitted-code/"

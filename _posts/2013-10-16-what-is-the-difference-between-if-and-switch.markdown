@@ -3,6 +3,7 @@ layout: post
 title: What is the difference between if and switch?
 category: Development
 tags: [c#, clr, performance]
+description: If and switch statements are not necessarily syntactic sugar for one another. Learn about the fundamental difference between the two.
 comments: true
 share: true
 redirect_from: "/what-is-the-difference-between-if-and-switch/"

@@ -3,6 +3,7 @@ layout: post
 title: ! '[C#] Compare generic variables for equality'
 category: Development
 tags: [c#, generics]
+development: It's easy to slip up when comparing two generic variables for equality. See how (and how not) to do it!
 comments: true
 share: true
 redirect_from: "/c-compare-generic-variables-for-equality/"

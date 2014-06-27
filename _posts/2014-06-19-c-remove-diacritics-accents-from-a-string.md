@@ -3,6 +3,7 @@ layout: post
 title: ! '[C#] Remove diacritics (accents) from a string' 
 category: Development
 tags: [c#, unicode, encoding]
+description: This is one of those things that should have a built-in method in C#, but doesn't. Luckily, the solution isn't very complicated. Plus, learn a bit about Unicode!
 comments: true
 share: true
 ---

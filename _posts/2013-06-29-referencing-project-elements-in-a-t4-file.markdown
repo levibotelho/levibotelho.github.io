@@ -3,6 +3,7 @@ layout: post
 title: Referencing project elements in a T4 file
 category: Development
 tags: [c#, t4, metaprogramming]
+description: Learn how to reference your own classes in T4 files.
 comments: true
 share: true
 redirect_from: "/referencing-project-elements-in-a-t4-file/"

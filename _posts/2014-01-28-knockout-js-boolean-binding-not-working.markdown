@@ -3,6 +3,7 @@ layout: post
 title: ! '[knockout.js] Boolean binding not working'
 category: Development
 tags: [javascript, knockoutjs]
+description: Are you learning Knockout and having trouble binding to a Boolean value? You're probably making a very simple mistake...
 comments: true
 share: true
 redirect_from: "/knockout-js-boolean-binding-not-working/"

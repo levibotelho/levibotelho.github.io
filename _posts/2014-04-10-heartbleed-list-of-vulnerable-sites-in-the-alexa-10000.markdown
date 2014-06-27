@@ -3,6 +3,7 @@ layout: post
 title: Heartbleed - List of vulnerable sites in the Alexa 10000
 category: Security
 tags: [heartbleed, security]
+description: I've compiled the list of the Alexa 10000 sites that are vulnerable to the Heartbleed bug as of 08/04/2014. Definitely worth a look.
 comments: true
 share: true
 redirect_from: "/heartbleed-list-of-vulnerable-sites-in-the-alexa-10000/"

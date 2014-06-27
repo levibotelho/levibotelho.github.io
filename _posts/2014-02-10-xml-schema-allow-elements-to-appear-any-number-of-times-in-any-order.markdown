@@ -3,6 +3,7 @@ layout: post
 title: ! '[XML Schema] Allow elements to appear any number of times, in any order'
 category: Development
 tags: [xml]
+description: XML schemas can be a pain to write, especially when it seems incredibly difficult to describe certain incredibly simple scenarios. Learn how to require that a set of elements appear any number of times in any order.
 comments: true
 share: true
 redirect_from: "/xml-schema-allow-elements-to-appear-any-number-of-times-in-any-order/"

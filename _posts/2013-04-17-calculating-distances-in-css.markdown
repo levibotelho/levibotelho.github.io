@@ -3,6 +3,7 @@ layout: post
 title: Calculating Distances in CSS
 category: Development
 tags: [css]
+description: An explanation of how to perform distance calculations in CSS.
 comments: true
 share: true
 redirect_from: "/calculating-distances-in-css/"

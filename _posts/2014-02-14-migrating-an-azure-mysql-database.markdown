@@ -3,6 +3,7 @@ layout: post
 title: ! 'Migrating an Azure MySQL database'
 category: Deployment
 tags: [azure, mysql, cleardb, migration]
+description: Migrating an Azure MySQL database isn't as easy as migrating most other Azure services. Here we walk through the process, and provide a handy little script to make the migration process just a little bit easier.
 comments: true
 share: true
 redirect_from: "/azurecleardb-migrating-a-mysql-database/"

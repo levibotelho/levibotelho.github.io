@@ -3,6 +3,7 @@ layout: post
 title: Dragging and dropping files not working with Knockout.js
 category: Development
 tags: [javascript, jquery, html, knockoutjs]
+description: Getting drag-and-drop to work with Knockout and jQuery isn't as obvious as it may seem. Learn the trick to getting it to work.
 comments: true
 share: true
 redirect_from: "/dragging-and-dropping-files-not-working-with-knockout-js/"

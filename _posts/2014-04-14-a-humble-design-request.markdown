@@ -3,6 +3,7 @@ layout: post
 category: Visual Studio
 tags: [visual studio, design]
 comments: true
+description: I don't often do "opinion" posts, but this small design detail in Visual Studio really bugs me.
 share: true
 redirect_from: "/visual-studio-a-humble-design-request/"
 ---

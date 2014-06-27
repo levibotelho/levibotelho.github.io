@@ -3,6 +3,7 @@ layout: post
 title: Recover lost Git commits 
 category: Development
 tags: [git]
+description: Were you just a bit too eager with that hard reset? Learn how to recover seemingly lost Git commits.
 comments: true
 share: true
 ---

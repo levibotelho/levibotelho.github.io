@@ -3,6 +3,7 @@ layout: post
 title: Introduction to Design Time Templating in C#
 category: Development
 tags: [c#, T4]
+description: An introduction to using T4 templates to pre-generate C# code.
 comments: true
 share: true
 redirect_from: "/introduction-to-design-time-templating-in-c/"

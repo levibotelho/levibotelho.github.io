@@ -3,6 +3,7 @@ layout: post
 title: Write your own code snippets in Visual Studio
 category: Visual Studio
 tags: [visual studio, snippets]
+description: Ever used the "prop" code snippet to make writing a property easier? Learn how to create your own custom snippets in Visual Studio.
 comments: true
 share: true
 redirect_from: "/write-your-own-code-snippets-in-visual-studio/"

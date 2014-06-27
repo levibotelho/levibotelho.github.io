@@ -3,6 +3,7 @@ layout: post
 title: ! '[C#] How does the garbage collector work?'
 category: Development
 tags: [c#, clr]
+description: The garbage collector is one of the most interesting facets of the CLR. In this post, we take a look at what garbage is, what purpose the garbage collector serves, and how it works.
 comments: true
 share: true
 redirect_from: "/c-how-does-the-garbage-collector-work/"

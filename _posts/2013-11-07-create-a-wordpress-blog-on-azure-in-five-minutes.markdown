@@ -3,6 +3,7 @@ layout: post
 title: Create a WordPress blog on Azure in five minutes
 category: Deployment
 tags: [azure, wordpress]
+description: Creating a WordPress blog on Azure is a snap. Here is a step-by-step guide that explains how its done.
 comments: true
 share: true
 redirect_from: "/create-a-wordpress-blog-on-windows-azure-in-five-minutes/"

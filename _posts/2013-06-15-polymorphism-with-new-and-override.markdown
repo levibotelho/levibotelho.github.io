@@ -3,6 +3,7 @@ layout: post
 title: Polymorphism with new and override
 category: Development
 tags: [c#, clr]
+description: The new and override keywords perform similar functions, but behave differently when using them in a polymorphic context. Learn how they work and when to use each one.
 comments: true
 share: true
 redirect_from: "/polymorphism-with-new-and-override/"

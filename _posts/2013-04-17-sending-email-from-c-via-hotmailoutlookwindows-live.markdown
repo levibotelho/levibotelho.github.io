@@ -3,6 +3,7 @@ layout: post
 title: Sending Email From C# Via Hotmail/Outlook/Windows Live
 category: Development
 tags: [c#, email]
+description: Use your Microsoft email account to send email from a C# application.
 comments: true
 share: true
 redirect_from: "/sending-email-from-c-via-hotmailoutlookwindows-live/"
