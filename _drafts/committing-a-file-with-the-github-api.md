@@ -42,7 +42,32 @@ Make a GET request to the URL returned in the last step. This will return a comm
 
 Make note of `tree.url` and `tree.sha`.
 
-## 3. Get a hold of the tree that the commit points to
+## 4. Post your new file to the server
+
+Now it's time to actually start adding your new file to your repository. Start off by posting it to the server using the following address.
+
+	POST /repos/:owner/:repo/git/blobs
+	
+The payload of your POST must contain the following data
+
+{
+  "content": "Content of the blob"
+  "encoding": "utf-8|base64"
+}
+  
+As you can see, the content can be encoded in either UTF-8, or base 64. In response to your POST, GitHub will respond with information about the blob you uploaded.
+
+{
+  "content": "Content of the blob",
+  "encoding": "utf-8",
+  "url": "https://api.github.com/repos/octocat/example/git/blobs/3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15",
+  "sha": "3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15",
+  "size": 100
+}
+
+As usual, take note of the `sha`.
+
+## 3. Get a hold of the tree that the commit points to (maybe)
 
 To get the tree, simply make a GET request to the URL retrieved in the last step. The response will be something along these lines.
 
@@ -77,31 +102,6 @@ To get the tree, simply make a GET request to the URL retrieved in the last step
 }
 
 As in the previous steps, make note of `sha`.
-
-## 4. Post your new file to the server
-
-Now it's time to actually start adding your new file to your repository. Start off by posting it to the server using the following address.
-
-	POST /repos/:owner/:repo/git/blobs
-	
-The payload of your POST must contain the following data
-
-{
-  "content": "Content of the blob"
-  "encoding": "utf-8|base64"
-}
-  
-As you can see, the content can be encoded in either UTF-8, or base 64. In response to your POST, GitHub will respond with information about the blob you uploaded.
-
-{
-  "content": "Content of the blob",
-  "encoding": "utf-8",
-  "url": "https://api.github.com/repos/octocat/example/git/blobs/3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15",
-  "sha": "3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15",
-  "size": 100
-}
-
-As usual, take note of the `sha`.
 
 ## 5. Create a tree containing your new file
 
