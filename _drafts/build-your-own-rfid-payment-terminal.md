@@ -1,47 +1,65 @@
+In my office we have a fridge and freezer stocked with drinks and ice cream. People can come by and for a small fee purchase one of the products that we have to offer. Formerly, our colleagues paid for their products by spending custom-engraved tokens, which they would purchase for a small fee beforehand. This system worked well enough, but earlier this year I sat down with Benoît, a colleague of mine, to design a simple, flexible, and open source RFID-based payment system as a replacement.
+
+This is the result.
+
 ## How it's used
 
-Every user is equipped with an RFID badge. In our company we already have key fobs that we use to get into the building in the morning, so we simply integrated a RFID reader into the terminal which operates on the same frequency.
+As is to be expected, everyone who wishes to use the system needs to be equipped with an RFID badge. While RFID badges are extremely cheap, we didn't actually need to give any out. In our company we all have key fobs that we use to get into the building in the morning, so when building the system we simply integrated an RFID reader that would read the fobs. Convenient!
 
-To purchase a product, the user simply selects a product using the two buttons below the LCD display, and when they've found one they like, scan their badge to make the purchase. The system responds with an onscreen message and musical melody to indicate whether the purchase was accepted or not. In addition to this, we also added a lottery whereby one out of every twenty purchases is on the house. When you win, you're treated to a special message onscreen and a small audio clip of "Disco Inferno" that sounds like it's playing on a Nokia from the 1990s.
+This is what the payment terminal looks like.
 
-Administrative tasks are handled on the website which accompanies the system. This includes user creation, password changes, and account reloads. Non admins can also use the website to consult their account balance.
+[Image here]
 
-## How it works
+Purchasing a product is really easy. Simply go up to the terminal, scroll through the list of available products using the two buttons below the screen, and scan your RFID badge to make the purchase. The terminal will respond with an onscreen message and musical melody indicating whether or not the purchase was accepted.
 
-The entire system is backed by a SQL Server database which holds all of the data that makes the platform run. The database is fronted by a transactional service layer which wraps all of the database calls. This layer makes use of Entity Framework for O/RM.
+To add an element of fun, we decided to add a lottery the system. By default, every purchase made has a 1:20 chance of being on the house :). Should you happen to win your purchase, the terminal displays a special message and plays a small clip of "Disco Inferno" that sounds like it came from a ringtone from a 1990s Nokia handset ;).
 
-Atop the server software stack sits an API and the web application. The web application, is used to perform administrative tasks, and runs on ASP.NET MVC. The API is implemented using ASP.NET Web API. The API exposes two RESTful endpoints which serve to handle all logic between the client and the server.
-
-We designed the system to be embarassingly server-centric. In fact, the terminal really only knows how to do three things.
-
-1. Request a list of products and display them onscreen.
-2. Send a "buy" request to the API.
-3. Display a message and play a melody returned from the server.
-
-That last point is important. The terminal has absolutely no knowledge of users, balances, or transactions. When a user purchases a product, it simply tells the server "the user with ID ______ wants the product with the ID _____". The API handles absolutely everything else. This makes the system extremely flexible and 
-
- The terminal itself contains very little logic. The server end of the web app runs on ASP.NET MVC, and the client-side experience is augmented  The API handles all communication between the terminal and the server 
-
-To add an element of fun to the system, we also integrated a lottery whereby one out of every twenty purchases is free. 
-
-Buying a drink with the system is really easy. Just select a product using the buttons under the screen, and when you've found the one you want scan your RFID badge to purchase it. In our company all employees have RFID badges to get into the building in the morning. We simply integrated a reader which operates on the same frequency as those which open the company doors.
-
-Scanning your badge causes the read
-
- All you need to do is go over to the terminal, scroll through the list of the available products using the two buttons under the screen, and when you've found the one you want, scan your RFID badge to purchase it. A message is displayed onscreen and a short musical melody is played to indicate whether or not your purchase was approved. With every purchase you have a 1:20 chance of winning your product. If you happen to win, your account isn't debited and you're informed with a special message and a short clip of "Disco Inferno" played off the terminal speaker.
-
-Administrative tasks such as registering new clients or adding money to accounts are handled using the web portal. Only certain administrative users have the right to perform these tasks, however all users can log into the site and consult their account balance.
-
-## How it's designed
-
-The drinks system is composed of three parts: the payment terminal, the web site, and an API. The terminal is built using an Arduino Ethernet and various other components, and both the API and website are built with ASP.NET (MVC/Web API) and C#.
-
-We designed the system with extensibility in mind. As such, the vast majority of the program logic is housed on the server. As an example, to make a purchase the terminal sends a product ID and badge ID to the API. The API makes the necessary calls on the server to check if there is sufficient funds on the account, deduct the correct amount, and returns a string and a two-element string array back to the terminal. The string contains the musical melody, encoded using a simple alphanumeric protocol, and the string array contains the text to show on each of the two lines of the terminal. At no point does the terminal have any notion of a price, 
-
- The brains of the system are housed on a server, where the API and web server are located, and the payment terminal uses basic RESTful commands to communicate with the server via the API.
+Administrative tasks, such as adding users or adding money to accounts, are handled using a web application that accompanies the system. Non-admin users can also use the site to check their account balance.
 
 ## How it works
 
-## How you can use it
+Understandably, 
 
-The code for the entire system (terminal, API and website) is available on GitHub. The terminal 
+The system's underlying architecture is best described with the help of a diagram.
+
+[Diagram here]
+
+As you can see, at the heart of the system is a SQL Server database and a transaction API which sits atop it and exposes methods which abstract common data-driven tasks. The transactional layer is the only code that has the right to call directly into the database. Every other component of the system passes through the transactional layer to read and write database data.
+
+In its current state, the transaction API powers two client components. The website, and the RESTful API. The RESTful API encapsulates most of the logic that makes the payment terminal run. In fact, the payment terminal only really performs four tasks:
+
+1. Get the product catalogue from the server.
+2. Display products to the user.
+3. Send purchase requests
+4. Present the response to a purchase request the user.
+
+All communication with the RESTful API is done via HTTP with JSON-encoded payloads. Due to technological constraints on the terminal end, communication between the client and server is not encrypted. Instead, message authenticity is validated using a hash value computed using the message contents, the time the message is created, and a secret key that is shared between the terminal and server. It's not industrial-strength security, but it has proved to be sufficient for our needs. It's worth stating that by far the biggest security feature offered by the RESTful API is the fact that you cannot use it to credit accounts.
+
+One interesting facet of the terminal/server architecture is that the terminal is essentially stateless. When the terminal is powered on, it requests the list of available products from the server. Each product is represented by an ID and description. When a purchase is made, The terminal sends a badge ID and product ID to the server and requests that a purchase be made. The server responds with a text message and melody (which is encoded alphanumerically), that the terminal displays and plays to the user. At no time does the terminal know the status of the transaction, how much money a user has on their account, or even how much a product costs. All this is handled entirely by the server, which means that system modifications can be made down the line without having to touch the terminal software.
+
+### A word about the hardware
+
+So far I've spent quite a bit of time discussing the system as a whole and the software that makes it run. The design and construction of the terminal, as well as the development of the software that makes it run, was done entirely by Benoît. He's written an article on his blog that goes into detail about the terminal--if you're still reading this, then that article would probably interest you :).
+
+## How _you_ can use it
+
+As mentioned up top, the entire RFID payment system is 100% open source and available on GitHub. The system is split into two projects. One project contains all the server-side code, and the other contains all the code for the terminal.
+
+While we built the system to serve a specific need of ours, hopefully you're convinced by now that due to the loosely-coupled nature of its components, the system is very moddable. Off the top of my head, here are a few things that you could do with it if you had the proper motivation.
+
+### 1. Simplify the system for single-product purchases
+
+If you wanted to replace a token-based payment system with an RFID payment solution, then this terminal is probably a bit overkill for you. Selling at a single price point would allow you to in principle slim down the terminal a bit, getting rid of the scroll buttons and LCD screen. This would allow not just for a simple user interface, but for a smaller terminal, which may be desirable in some cases.
+
+### 2. Add multiple terminals
+
+While our implementation of our system only has a single terminal, nothing says that it has to be that way! While there is no terminal identification mechanism coded into the system, if you don't care about what purchase came from what terminal, you could in principle build and deploy as many terminals as you wanted without making a single modification to the code! And if you did want to track terminals, it wouldn't be that hard to add a terminal ID to the communications protocol.
+
+### 3. Upgrade the system for commercial use
+
+We deployed our system back in February of this year, and so far it's been quite a success. However as we use the system in a casual environment, it lacks certain features which would be deemed necessary in order to use it in a real commercial environment. Things which come to mind include.
+
++ Add HTTPS support to the website, API, and terminal.
++ Add indexing to the database creation script.
++ Upgrade the terminal. The terminal works great as-is, but one could easily imagine a terminal with an upgraded screen which would allow users to see all available products at once without having to scroll through them one by one.
+
