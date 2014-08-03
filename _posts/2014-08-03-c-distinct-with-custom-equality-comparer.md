@@ -54,7 +54,7 @@ His implementation returned the following.
 3
 {% endhighlight %}
 
-The answer to why this happened is hidden in a two-line comment in the Examples section of the [`Enumerable.Distinct<TSource> Method (IEnumerable<TSource>, IEqualityComparer<TSource>)` MSDN page](http://msdn.microsoft.com/en-us/library/bb338049(v=vs.110).aspx). Specifically, it states that
+The answer to why this happened is hidden in a two-line comment in the Examples section of the [`Enumerable.Distinct` MSDN page](http://msdn.microsoft.com/en-us/library/bb338049(v=vs.110).aspx). Specifically, it states that
 
 > If Equals() returns true for a pair of objects then GetHashCode() must return the same value for these objects.
 
@@ -84,7 +84,8 @@ While this implementation will work, it relies on the fact that `Distinct` will 
 So, how can we get the result that we're after without compromising good design principles? Two simple solutions come to mind. The first thing that we could do is simply brute-force the problem.
 
 {% highlight csharp %}
-public static List<T> DistinctBruteForce<T>(this IEnumerable<T> source, Func<T, T, bool> comparer)
+public static List<T> DistinctBruteForce<T>(
+	this IEnumerable<T> source, Func<T, T, bool> comparer)
 {
     var result = new List<T>();
     foreach (var sourceElement in source)
@@ -101,7 +102,8 @@ The obvious issue with this method is that it will execute in O(n²) time.
 An alternative solution is to sort the list first.
 
 {% highlight csharp %}
-public static List<T> DistinctSorted<T>(this IEnumerable<T> source, Func<T, T, bool> areEqual)
+public static List<T> DistinctSorted<T>(
+	this IEnumerable<T> source, Func<T, T, bool> areEqual)
 {
     source = source.OrderBy(x => x);
     var lastElement = default(T);
