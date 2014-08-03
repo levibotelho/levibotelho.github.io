@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ! '[C#] Distinct with custom equality comparer'
+title: Distinct with custom equality comparer
 category: Development
 tags: [c#]
 description: A look at how to compare two collections using a custom equality comparer. It's not as easy as it may seem!
