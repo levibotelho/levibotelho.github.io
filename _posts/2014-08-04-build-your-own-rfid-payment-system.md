@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Build your own RFID payment system
-category: Development
-tags: [c#, arduino, open-source]
-description: Build your own RFID payment system! It's easier than it sounds! :)
+category: Open Source
+tags: [c#, asp.net, arduino, open source]
+description: Build your own RFID payment system! It's easier than it sounds, and we've got the open source code to get you started! :)
 comments: true
 share: true
 ---
@@ -18,7 +18,7 @@ As is to be expected, everyone who wishes to use the system needs to be equipped
 
 This is what the payment terminal looks like.
 
-![RFID Terminal]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-terminal/Buying.jpg)
+![RFID Terminal]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-system/Buying.jpg)
 
 Purchasing a product is really easy. Simply go up to the terminal, scroll through the list of available products using the two buttons below the screen, and scan your RFID badge to make the purchase. The terminal will respond with an onscreen message and musical melody indicating whether or not the purchase was accepted.
 
@@ -30,7 +30,7 @@ Administrative tasks, such as adding users or adding money to accounts, are hand
 
 The system architecture is best described with the help of a diagram.
 
-![Architecture Diagram]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-terminal/Diagram.png)
+![Architecture Diagram]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-system/Diagram.png)
 
 As you can see, the core of the system consists of a SQL Server database that is abstracted by a transaction API. The transaction API is the only component which calls directly into the database. The two client components, the website and the RESTful API, call into the transaction API to perform their data-driven tasks.
 
@@ -72,4 +72,3 @@ We deployed our system back in February of this year, and so far it's been quite
 + Upgrade the terminal. The terminal works great as-is, but one could easily imagine a terminal with an upgraded screen which would allow users to see all available products at once without having to scroll through them one by one.
 
 If you have any other ideas, or if you take this system and run with it to build something cool, let me know! Feel free to leave a comment or to contact me on Twitter @LeviBotelho. Same goes with questions/comments. I'm all ears :).
-
