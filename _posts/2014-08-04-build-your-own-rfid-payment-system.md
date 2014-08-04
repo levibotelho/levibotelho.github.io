@@ -10,6 +10,7 @@ share: true
 
 **[View the project on GitHub](https://github.com/drinks-wallet)**
 <br />
+<br />
 **[View the sister post about building the terminal](http://blog.benoitblanchon.fr/rfid-payment-terminal/)**
 
 ---
@@ -79,4 +80,4 @@ We deployed our system back in February of this year, and so far it's been quite
 + Add indexing to the database creation script.
 + Upgrade the terminal. The terminal works great as-is, but one could easily imagine a terminal with an upgraded screen which would allow users to see all available products at once without having to scroll through them one by one.
 
-If you have any other ideas, or if you take this system and run with it to build something cool, let me know! Feel free to leave a comment or to contact me on Twitter @LeviBotelho. Same goes with questions/comments. I'm all ears :).
+If you have any other ideas, or if you take this system and run with it to build something cool, let me know! Feel free to leave a comment or to contact me on Twitter [@LeviBotelho](https://twitter.com/intent/tweet?screen_name=LeviBotelho). Same goes with questions/comments. I'm all ears :).
