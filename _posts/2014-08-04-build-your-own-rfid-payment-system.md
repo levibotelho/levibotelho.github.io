@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Build your own RFID payment system
-category: Open Source
-tags: [c#, asp.net, arduino, open source]
+category: Development
+tags: [c#, asp.net, arduino, open-source]
 description: Build your own RFID payment system! It's easier than it sounds, and we've got the open source code to get you started! :)
 comments: true
 share: true
+redirect_from: "/open%20source/build-your-own-rfid-payment-system/"
 ---
 
 **[View the project on GitHub](https://github.com/drinks-wallet)**
