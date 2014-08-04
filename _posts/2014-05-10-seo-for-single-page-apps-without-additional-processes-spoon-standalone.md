@@ -2,7 +2,7 @@
 layout: post
 title: SEO for single page apps without additional processes - Spoon Standalone
 category: Open Source
-tags: [seo, open source, spoon standalone, angularjs]
+tags: [seo, open-source, spoon standalone, angularjs]
 comments: true
 share: true
 ---

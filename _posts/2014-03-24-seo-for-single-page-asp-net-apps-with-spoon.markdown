@@ -2,7 +2,7 @@
 layout: post
 title: SEO for Single Page ASP.NET Apps with Spoon
 category: Open Source
-tags: [asp.net, angularjs, seo, google, spoon, open source]
+tags: [asp.net, angularjs, seo, google, spoon, open-source]
 description: Spoon is an open source library that handles search engine optimisation for single page ASP.NET apps. See how it's used, and see how it can make your life as a web developer easier!
 comments: true
 share: true

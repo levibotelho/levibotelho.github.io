@@ -2,7 +2,7 @@
 layout: post
 title: Introducing LearnAngular Beta
 category: Open Source
-tags: [learnangular, angularjs, ace, open source]
+tags: [learnangular, angularjs, ace, open-source]
 description: Learn AngularJS online with free, interactive lessons! http://www.learn-angular.org
 comments: true
 share: true
