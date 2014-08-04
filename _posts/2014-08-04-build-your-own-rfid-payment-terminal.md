@@ -20,7 +20,7 @@ Administrative tasks, such as adding users or adding money to accounts, are hand
 
 The system architecture is best described with the help of a diagram.
 
-![Architecture Diagram]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-terminal/Diagram.jpg)
+![Architecture Diagram]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-terminal/Diagram.png)
 
 As you can see, the core of the system consists of a SQL Server database that is abstracted by a transaction API. The transaction API is the only component which calls directly into the database. The two client components, the website and the RESTful API, call into the transaction API to perform their data-driven tasks.
 
