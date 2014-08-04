@@ -26,6 +26,8 @@ To add an element of fun, we decided to integrate a lottery into the system. By 
 
 Administrative tasks, such as adding users or adding money to accounts, are handled using a web application that accompanies the system. Non-admin users can also use the site to check their account balance.
 
+![Web Application]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-system/site.png)
+
 ## How it works
 
 The system architecture is best described with the help of a diagram.
