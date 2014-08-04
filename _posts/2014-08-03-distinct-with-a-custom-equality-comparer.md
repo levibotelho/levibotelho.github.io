@@ -54,7 +54,7 @@ His implementation returned the following.
 3
 {% endhighlight %}
 
-The answer to why this happened is hidden in a two-line comment in the Examples section of the [`Enumerable.Distinct` MSDN page](http://msdn.microsoft.com/en-us/library/bb338049(v=vs.110).aspx). Specifically, it states that
+The answer to why this happened is hidden in a two-line comment in the Examples section of the [`Enumerable.Distinct` MSDN page](http://msdn.microsoft.com/en-us/library/bb338049(v=vs.110).aspx).
 
 > If Equals() returns true for a pair of objects then GetHashCode() must return the same value for these objects.
 
