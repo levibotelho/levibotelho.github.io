@@ -166,4 +166,4 @@ Sorted
 2
 {% endhighlight %}
 
-As you can see, the `Sorted` implementation includes `1` and `1.1`, whereas the other two only include the middle value, `1.01`. While in many cases I would expect the `Sorted` result to be the more desirable the two, knowing that these implementations give different results could no doubt prove to be useful when having to deal with a problem such as this.
+As you can see, the `Sorted` implementation includes `1` and `1.1`, whereas the other two only include the middle value, `1.01`. While in many cases I would expect the `Sorted` result to be the more desirable of the two, knowing that these implementations give different results could no doubt prove useful when having to deal with a problem such as this in the future.
