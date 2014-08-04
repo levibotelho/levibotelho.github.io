@@ -2,7 +2,7 @@
 layout: post
 title: strong.config is now available on NuGet!
 category: Open Source
-tags: [nuget, strong.config, open source]
+tags: [nuget, strong.config, open-source]
 description: The NuGet package for strong.config has been released! 
 comments: true
 share: true
