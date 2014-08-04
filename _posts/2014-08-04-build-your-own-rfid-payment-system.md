@@ -9,6 +9,7 @@ share: true
 ---
 
 **[View the project on GitHub](https://github.com/drinks-wallet)**
+<br />
 **[View the sister post about building the terminal](http://blog.benoitblanchon.fr/rfid-payment-terminal/)**
 
 ---
