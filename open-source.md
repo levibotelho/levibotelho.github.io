@@ -6,6 +6,12 @@ tags: [open-source]
 modified: 2014-06-26
 ---
 
+# Drinks Wallet
+
+The Drinks Wallet project is an open source RFID-based payment system. If you want to learn more about the project, [check out the post I wrote about it](http://www.levibotelho.com/development/build-your-own-rfid-payment-system/). Or, if you're the adventurous type, jump right in and check the code out on GitHub!
+
+[Drinks Wallet on GitHub](https://github.com/drinks-wallet)
+
 # LearnAngular
 
 LearnAngular is a free, interactive AngularJS tutorial. Code along with each lesson, and view the results right in your browser.
@@ -23,12 +29,6 @@ Spoon Standalone serves the same purpose as Spoon, but runs separate from your w
 [Spoon on GitHub](https://github.com/LeviBotelho/spoon)
 
 [Spoon Standalone on GitHub](https://github.com/LeviBotelho/spoon-standalone)
-
-# Drinks Wallet
-
-Drinks Wallet is an RFID-based wallet system to be used for small purchases (such as refreshments). [Benoît Blanchon](http://www.blog.benoitblanchon.fr) designed and developed the physical RFID terminal, and I wrote the server software as well as the accompanying web portal.
-
-[Drinks Wallet on GitHub](https://github.com/drinks-wallet)
 
 # Strong.config
 
