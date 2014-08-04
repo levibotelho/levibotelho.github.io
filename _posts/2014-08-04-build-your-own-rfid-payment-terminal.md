@@ -8,7 +8,7 @@ As is to be expected, everyone who wishes to use the system needs to be equipped
 
 This is what the payment terminal looks like.
 
-![RFID Terminal]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-terminal/Buying.jpg)
+
 
 Purchasing a product is really easy. Simply go up to the terminal, scroll through the list of available products using the two buttons below the screen, and scan your RFID badge to make the purchase. The terminal will respond with an onscreen message and musical melody indicating whether or not the purchase was accepted.
 
@@ -20,7 +20,7 @@ Administrative tasks, such as adding users or adding money to accounts, are hand
 
 The system architecture is best described with the help of a diagram.
 
-![Architecture Diagram]({{ site.url }}/images/2014-08-04-build-your-own-rfid-payment-terminal/Diagram.png)
+
 
 As you can see, the core of the system consists of a SQL Server database that is abstracted by a transaction API. The transaction API is the only component which calls directly into the database. The two client components, the website and the RESTful API, call into the transaction API to perform their data-driven tasks.
 
