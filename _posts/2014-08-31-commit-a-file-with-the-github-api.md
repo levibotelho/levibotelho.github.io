@@ -58,10 +58,10 @@ Create a tree consisting only of the files that you wish to add or modify, and g
   "base_tree": "",
   "tree": [
 	{
-		"path": "",
-		"mode": "",
-		"type": "",
-		"sha": ""
+	  "path": "",
+	  "mode": "",
+	  "type": "",
+	  "sha": ""
     }
   ]
 }
