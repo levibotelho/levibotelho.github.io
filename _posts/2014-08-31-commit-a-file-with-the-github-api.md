@@ -57,15 +57,18 @@ Create a tree consisting only of the files that you wish to add or modify, and g
 {
   "base_tree": "",	// SHA of the base tree
   "tree": [
-    {
-      "path": "",
-	  // One of 100644 (blob), 100755 (executable),
-	  // 040000 (subdirectory/tree), 160000 (submodule/commit),
-	  // or 120000 (blob specifying path of symlink).
-      "mode": "",	  
-	  // One of "blob", "tree", or "commit".
-      "type": "",	  
-      "sha": ""
+	{
+		"path": "",
+		
+		// One of 100644 (blob), 100755 (executable),
+		// 040000 (subdirectory/tree), 160000 (submodule/commit),
+		// or 120000 (blob specifying path of symlink).		
+		"mode": "",
+		
+		// One of "blob", "tree", or "commit".
+		"type": "",
+		
+		"sha": ""
     }
   ]
 }
