@@ -55,24 +55,19 @@ Create a tree consisting only of the files that you wish to add or modify, and g
 
 {% highlight json %}
 {
-  "base_tree": "",	// SHA of the base tree
+  "base_tree": "",
   "tree": [
 	{
 		"path": "",
-		
-		// One of 100644 (blob), 100755 (executable),
-		// 040000 (subdirectory/tree), 160000 (submodule/commit),
-		// or 120000 (blob specifying path of symlink).		
 		"mode": "",
-		
-		// One of "blob", "tree", or "commit".
 		"type": "",
-		
 		"sha": ""
     }
   ]
 }
 {% endhighlight %}
+
+Note that `mode` must be one of `100644` (blob), `100755` (executable), `040000` (subdirectory/tree), `160000` (submodule/commit), or `120000` (blob specifying path of symlink), and that `type` must be one of `"blob"`, `"tree"`, or `"commit"`.
 
 To add more files to the commit, simply include them in the `tree` array. The format of `tree` is exactly the same as the trees returned by the API, so if in doubt regarding the syntax, copy what GitHub sends you when you request a tree from a repository.
 
