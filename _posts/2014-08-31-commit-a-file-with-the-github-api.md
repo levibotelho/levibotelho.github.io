@@ -77,7 +77,7 @@ While you cannot delete files from your repository using this method, it's a rea
 
 [Grab a full version of your latest Git tree](https://developer.github.com/v3/git/trees/#get-a-tree-recursively) by appending `?recursive=1` to the tree URL retrieved in step 2, and modify it. When you POST the tree back to the API, simply leave out the `base_tree` parameter used above.
 
-There are a few caveats to be aware of when using this method.
+There two things to be aware of when using this method.
 
 + You must ensure that *all* of your repository's files are included in the tree that you POST to the server. Any omissions will not be present (read "deleted") in your new commit.
 + The GET tree API method, as mentioned above, returns a tree that contains subtree objects which describe your repository's directories. **You must remove these objects before posting your tree back to the server.** The API will automatically infer your repository's folder structure by looking at each object's `path` argument, and if it finds any subtrees in your tree, the API will respond with a `500` error and no additional information. At the time of writing, the API documentation makes no mention of this peculiarity, which makes it all the more frustrating to come across.
