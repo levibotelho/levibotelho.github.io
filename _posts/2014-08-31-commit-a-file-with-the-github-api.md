@@ -2,7 +2,7 @@
 layout: post
 title: Commit a file with the GitHub API
 category: Development
-tags: [github, api]
+tags: [github]
 description: A step by step walkthrough of how to commit a file to a GitHub repository using the GitHub API.
 comments: true
 share: true
