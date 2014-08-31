@@ -1,3 +1,13 @@
+---
+layout: post
+title: Commit a file with the GitHub API
+category: Development
+tags: [github, api]
+description: A step by step walkthrough of how to commit a file to a GitHub repository using the GitHub API.
+comments: true
+share: true
+---
+
 Committing to a GitHub repository via the API is a pretty daunting task if you've never done it before. Instead of exposing a high-level `commit` endpoint, the API relegates committing to a gauntlet of low-level methods which mirror what Git does internally when you run `commit`. While a bit challenging to comprehend at first, as you walk through the steps you'll see that they're actually quite logical, and while learning to commit to the API, you'll simultaneously be learning a bit about how Git works under the covers.
 
 ## Required reading
