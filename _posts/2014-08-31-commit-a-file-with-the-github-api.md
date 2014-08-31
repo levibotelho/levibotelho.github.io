@@ -14,7 +14,7 @@ Committing to a GitHub repository via the API is a pretty daunting task if you'v
 
 This post will be a lot easier to follow if you take a quick look at [this article which talks about how Git structures objects](http://git-scm.com/book/en/Git-Internals-Git-Objects). Pay special attention to Figure 9-3, shown here, which shows how Git objects are linked to one another.
 
-![Git object graph]({{ site.url }}/images/2014-08-31-commit-a-file-with-the-github-api/pro-git-9-3.jpg)
+![Git object graph]({{ site.url }}/images/2014-08-31-commit-a-file-with-the-github-api/pro-git-9-3.png)
 
 Don't worry if all this seems a bit confusing. Once we actually start committing a file we'll be turning the theory into practice, and everything will become a whole lot clearer.
 
