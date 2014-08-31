@@ -34,7 +34,7 @@ Now it's time to actually start adding your new file. Start off by [posting it t
 	
 {% highlight json %}
 {
-  "content": "Content of the blob"
+  "content": "Content of the blob",
   "encoding": "utf-8|base64"
 }
 {% endhighlight %}
