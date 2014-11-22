@@ -179,7 +179,7 @@ class EventFirer
 }
 {% endhighlight %}
 
-The output to the console window is as follows
+The output to the console window is as follows:
 
 {% highlight text %}
 Printing method parameters
