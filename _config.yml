@@ -37,8 +37,6 @@ links:
     url: /
     external: false
     icon: home
-  - title: About
-    url: /about/
   - title: Articles
     url: /articles/
   - title: Open Source
