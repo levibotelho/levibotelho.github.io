@@ -43,7 +43,7 @@ links:
     url: /open-source/
   - title: CV
     url: http://careers.stackoverflow.com/levibotelho
-	external: true
+    external: true
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/New_York
