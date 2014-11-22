@@ -10,7 +10,7 @@ share: true
 
 When trying to fix bugs that involve objects that fire a lot of events, sometimes the best way to get a good idea of what’s happening in your program is to log what’s going on. However, attaching a logger to all the events exposed by a class can be extremely time-consuming, making this solution something of a last resort, if not virtually impossible.
 
-In this article we’re going to build a class which will automatically attach itself to all the events exposed by a class and log when they fire and what arguments they pass.
+In this article we’re going to build a class which will automatically attach itself to all the events exposed by a class and log the arguments they pass.
 
 **Note to the reader: If you're not interested in how the class works and just want to make use of the result, feel free to skip to the end of the following section where you'll find the code for the entire class all in one place.**
 
