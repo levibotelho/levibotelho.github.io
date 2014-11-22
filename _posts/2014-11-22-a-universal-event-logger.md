@@ -85,7 +85,8 @@ o[0] = 6;
 However, if you take an expression representing an integer and attempt to put it into an expression representing an `object[]`, you will encounter an exception. The reason is that when the C# compiler compiles the above code, it boxes the integer `6` behind the scenes before inserting it into the array. When working with expression trees we are essentially working at the level of the compiler, and as such need to manually replicate the steps that it normally does for us automatically. Concretely, this means that we need to convert all parameters to `object` before creating an object array out of them. `boxingExpressions` in the `NewArrayInit` call represents a list of expressions that cast variables of any type to variables of the type `object`. Here is how we define those expressions.
 
 {% highlight csharp %}
-var boxingExpressions = parameterExpressions.Select(x => Expression.Convert(x, typeof(object))).ToArray();
+var boxingExpressions = parameterExpressions
+	.Select(x => Expression.Convert(x, typeof(object))).ToArray();
 {% endhighlight %}
 
 What we are doing here is really straightforward. We are taking a collection of expressions representing our method parameters (remember those parameters are filled with variables passed by the event that invokes the method), and converting each of those parameters to `object`.
@@ -93,7 +94,8 @@ What we are doing here is really straightforward. We are taking a collection of 
 To create the `parameterExpressions` collection, we simply use the `methodParameters` collection that we obtained earlier from the event handler’s `Invoke` method.
 
 {% highlight csharp %}
-var parameterExpressions = methodParameters.Select(x => Expression.Parameter(x.ParameterType, x.Name)).ToArray();
+var parameterExpressions = methodParameters
+	.Select(x => Expression.Parameter(x.ParameterType, x.Name)).ToArray();
 {% endhighlight %}
 
 Our expression tree is now complete! To recap, we have done the following:
@@ -121,12 +123,19 @@ class EventLogger
     {
         foreach (var eventInfo in o.GetType().GetEvents())
         {
-            var methodParameters = eventInfo.EventHandlerType.GetMethod("Invoke").GetParameters();
-            var parameterExpressions = methodParameters.Select(x => Expression.Parameter(x.ParameterType, x.Name)).ToArray();
-            var boxingExpressions = parameterExpressions.Select(x => Expression.Convert(x, typeof(object))).ToArray();
-            var arrayInitExpression = Expression.NewArrayInit(typeof(object), boxingExpressions);
-            var logExpression = Expression.Call(GetType().GetMethod("Log"), arrayInitExpression);
-            var handlerDelegate = Expression.Lambda(logExpression, parameterExpressions).Compile();
+            var methodParameters = eventInfo.EventHandlerType.GetMethod("Invoke")
+				.GetParameters();
+            var parameterExpressions = methodParameters
+				.Select(x => Expression.Parameter(x.ParameterType, x.Name))
+				.ToArray();
+            var boxingExpressions = parameterExpressions
+				.Select(x => Expression.Convert(x, typeof(object))).ToArray();
+            var arrayInitExpression =
+				Expression.NewArrayInit(typeof(object), boxingExpressions);
+            var logExpression =
+				Expression.Call(GetType().GetMethod("Log"), arrayInitExpression);
+            var handlerDelegate =
+				Expression.Lambda(logExpression, parameterExpressions).Compile();
             eventInfo.AddEventHandler(o, handlerDelegate);
         }
     }
