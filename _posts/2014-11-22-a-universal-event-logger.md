@@ -169,7 +169,7 @@ class Program
 class EventFirer
 {
     public event Action<int> Event1 = delegate { };
-    public event Action<double, bool, object> Event2 = delegate { };
+    public event Action<double, bool, string> Event2 = delegate { };
 
     public void Fire()
     {
