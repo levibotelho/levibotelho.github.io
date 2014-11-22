@@ -124,18 +124,18 @@ class EventLogger
         foreach (var eventInfo in o.GetType().GetEvents())
         {
             var methodParameters = eventInfo.EventHandlerType.GetMethod("Invoke")
-	.GetParameters();
+		.GetParameters();
             var parameterExpressions = methodParameters
-	.Select(x => Expression.Parameter(x.ParameterType, x.Name))
-	.ToArray();
+		.Select(x => Expression.Parameter(x.ParameterType, x.Name))
+		.ToArray();
             var boxingExpressions = parameterExpressions
-	.Select(x => Expression.Convert(x, typeof(object))).ToArray();
+		.Select(x => Expression.Convert(x, typeof(object))).ToArray();
             var arrayInitExpression =
-	Expression.NewArrayInit(typeof(object), boxingExpressions);
+		Expression.NewArrayInit(typeof(object), boxingExpressions);
             var logExpression =
-	Expression.Call(GetType().GetMethod("Log"), arrayInitExpression);
+		Expression.Call(GetType().GetMethod("Log"), arrayInitExpression);
             var handlerDelegate =
-	Expression.Lambda(logExpression, parameterExpressions).Compile();
+		Expression.Lambda(logExpression, parameterExpressions).Compile();
             eventInfo.AddEventHandler(o, handlerDelegate);
         }
     }
