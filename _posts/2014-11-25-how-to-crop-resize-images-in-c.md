@@ -15,7 +15,8 @@ I remember taking quite some time figuring out how to crop an image the first ti
 	{
 		if (destinationRectangle == null)
 		{
-			destinationRectangle = new Rectangle(Point.Empty, sourceRectangle.Size);
+			destinationRectangle =
+				new Rectangle(Point.Empty, sourceRectangle.Size);
 		}
 
 		var croppedImage = new Bitmap(destinationRectangle.Value.Width,
