@@ -11,22 +11,21 @@ I remember taking quite some time figuring out how to crop an image the first ti
 
 {% highlight csharp %}
 static Bitmap CropImage(Image originalImage, Rectangle sourceRectangle,
-    Rectangle? destinationRectangle = null)
+	Rectangle? destinationRectangle = null)
 {
-    if (destinationRectangle == null)
-    {
-        destinationRectangle = new Rectangle(Point.Empty, sourceRectangle.Size);
-    }
+	if (destinationRectangle == null)
+	{
+		destinationRectangle = new Rectangle(Point.Empty, sourceRectangle.Size);
+	}
 
-    var croppedImage = new Bitmap(destinationRectangle.Value.Width,
-         destinationRectangle.Value.Height);
-    using (var graphics = Graphics.FromImage(croppedImage))
-    {
-        graphics.DrawImage(originalImage, destinationRectangle.Value,
-            sourceRectangle, GraphicsUnit.Pixel);
-    }
-
-    return croppedImage;
+	var croppedImage = new Bitmap(destinationRectangle.Value.Width,
+		destinationRectangle.Value.Height);
+	using (var graphics = Graphics.FromImage(croppedImage))
+	{
+		graphics.DrawImage(originalImage, destinationRectangle.Value,
+			sourceRectangle, GraphicsUnit.Pixel);
+	}
+	return croppedImage;
 }
 {% endhighlight %}
 
