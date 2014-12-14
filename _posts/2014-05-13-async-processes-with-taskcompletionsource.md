@@ -93,10 +93,13 @@ public static Task RunProcessAsync(string processPath)
         if (process.ExitCode != 0)
         {
             var errorMessage = process.StandardError.ReadToEnd();
-            throw new InvalidOperationException("The process did not exit correctly. " +
-                "The corresponding error message was: " + errorMessage);
+            tcs.SetException(new InvalidOperationException("The process did not exit correctly. " +
+                "The corresponding error message was: " + errorMessage));
         }
-        tcs.SetResult(null);
+        else
+		{
+			tcs.SetResult(null);
+		}
         process.Dispose();
     };
     process.Start();
