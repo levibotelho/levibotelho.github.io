@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cannot cast Microsoft.SqlServer.Types.SqlGeography
+title: Cannot cast SqlGeography to SqlGeography
 category: Development
 tags: [c#, sql-server, dapper, gis, assemblies]
 description: Explains how to resolve the InvalidCastException "Unable to cast object of type 'Microsoft.SqlServer.Types.SqlGeography' to type 'Microsoft.SqlServer.Types.SqlGeography".
