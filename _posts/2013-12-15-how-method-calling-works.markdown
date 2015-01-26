@@ -72,7 +72,7 @@ When ToString() is called on the StringBuilder instance, we can see that on the 
 
 This changes considerably, however, when we call ToString() on System.Int32, a value type which does not have an integrated a type object pointer. In this case, the C# compiler has instructed the CLR to make a nonvirtual call to the implementation of ToString() that is written directly into System.Int32. The CLR therefore doesn’t need to access the type object. It simply follows the instructions that the C# compiler has given it.
 
-Now let’s look at what happens when we call GetString(), which takes an `object` as a parameter and returns the result of calling ToString() on the object. The first thing we need to do is to look at the IL for the GetString method.
+Now let’s look at what happens when we call GetString(), which takes an object as a parameter and returns the result of calling ToString() on the object. The first thing we need to do is to look at the IL for the GetString method.
 
 {% highlight text %}
 .method private hidebysig static string  GetString(object arg) cil managed
