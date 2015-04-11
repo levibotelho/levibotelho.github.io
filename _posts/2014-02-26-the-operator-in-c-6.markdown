@@ -3,7 +3,6 @@ layout: post
 title: ! '[C#] The "?." operator in C# 6?'
 category: Development
 tags: [c#]
-description: Straight from Visual Studio User Voice: C# 6 may contain the "?." operator!
 comments: true
 share: true
 redirect_from: "/c-the-operator-in-c-6/"
