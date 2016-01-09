@@ -1,3 +1,0 @@
-AngularJS was designed with unit testing in mind. The loose coupling between components, combined with strong dependency injection throughout the framework means that virtually any Angular app is, at least to some extent, unit-test ready.
-
-However while the framework design is condusive to unit testing, the Angular docs aren't of much help when it comes to actually implementing unit tests in a project of your own. In this post we'll loo
