@@ -14,7 +14,7 @@ However this simplicity comes at a cost of reduced flexibility. If you’re buil
 
 However it is entirely possible to integrate Azure Websites with a CI system by using MSBuild and MSDeploy. Here’s how:
 
-# 1. Get your files
+## 1. Get your files
 
 This requires a simple call to your source control repository. For Git, we do the following:
 
@@ -28,7 +28,7 @@ I put all of my CI-related files into a folder called `CI` in the server user’
 
 Quick note here before we continue. Notice that we’re checking out `origin/master` and not pulling. This updates our code to the latest commit on the master branch of the remote server. Pulling takes the changes on the remote server and merges them into our local version of the branch. Normally on a CI server these two actions would give us the same result, but there is no guarantee of such. Checking out origin/master is semantically exactly what we want to do.
 
-# 2. Build your project
+## 2. Build your project
 
 This step is a bit tricky because MSBuild has so many different options and therefore there are many ways that you can get this step wrong. What we actually need here is not to build the project, but to publish it. Building the project won’t transform web.config files, for example. Publishing it to the filesystem will give us exactly what we need to send to Azure.
 
@@ -40,7 +40,7 @@ MSBuild "%UserProfile%\CI\ceelk\Ceelk.Api\Ceelk.Api.csproj" /p:Configuration=Rel
 
 This will publish the project to the build folder of your choosing. At this point you could run IIS on this directory and your app would be up and running.
 
-# 3. Deploy your project
+## 3. Deploy your project
 
 As mentioned at the top of the article, MSDeploy is definitely the easiest way to deploy an application to an Azure Website from a continuous integration server. Unfortunately however it’s not well documented, as Microsoft appears to want to show off their more advanced deployment options like Git deployment or integration with third party project hosting platforms.
 
