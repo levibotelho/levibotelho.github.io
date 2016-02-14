@@ -3,7 +3,7 @@ layout: post
 title: Introducing strong.config
 category: Open Source
 tags: [strong.config, open source]
-description: Introducing strong.config: a T4 file that generates a strongly-typed façade for accessing configuration variables.
+description: Introducing strong.config - a T4 file that generates a strongly-typed façade for accessing configuration variables.
 comments: true
 share: true
 redirect_from: "/introducing-strongconfi/"
