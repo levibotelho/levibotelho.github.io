@@ -1,3 +1,13 @@
+---
+layout: post
+title: Inlining table-valued functions in SQL Server
+category: Database
+tags: [sql server, performance]
+description: Increase the performance of table-valued functions in SQL Server with inlining.
+comments: true
+share: true
+---
+
 Table valued functions in SQL Server are great for writing DRY SQL code by encapsulating commonly-used snippets of database logic. However, in some cases they can be at the root of serious performance problems. Let's take a look at an example of this. Say that we have a table that looks like the following.
 
 {% highlight sql %}
