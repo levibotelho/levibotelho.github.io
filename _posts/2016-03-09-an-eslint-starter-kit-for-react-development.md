@@ -1,6 +1,6 @@
 ---
 layout: post
-title: An ESLint starter kit for ReactJS development
+title: An ESLint starter kit for React development
 category: Development
 tags: [javascript, react, eslint]
 description: An .eslintrc file to help you get started linting your ReactJS development projects.
@@ -66,7 +66,7 @@ While I won’t go over every line in this file, there are a couple settings tha
 - I use tab indentation, and require that `case` statements be indented one level deeper than their containing `select` statement.
 - I use what I consider to be a reasonable subset of the possible React linting rules. For example, I don’t require that properties be in alphabetical order.
 - I allow `console` statements.
-- Although I hate jQuery I’ve set `$` as a global, readonly variable because it’s sometimes needed when working with Bootstrap components.
+- Although I really do not like jQuery I’ve set `$` as a global, readonly variable because it’s sometimes needed when working with Bootstrap components.
 
 To actually use this in your project, all you need to do is include both ESLint and the [React ESLint plugin](https://github.com/yannickcr/eslint-plugin-react) in your project. If you’re using Babel, you’ll also want to include [Babel ESLint](https://github.com/babel/babel-eslint) and add the line `parser: "babel-eslint"` to the configuration to enable linting for all of Babel’s features.
 
